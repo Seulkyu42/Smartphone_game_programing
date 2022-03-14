@@ -14,5 +14,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView tv = findViewById(R.id.subText);
+        tv.setText("I am a good Programmer");
     }
 }
