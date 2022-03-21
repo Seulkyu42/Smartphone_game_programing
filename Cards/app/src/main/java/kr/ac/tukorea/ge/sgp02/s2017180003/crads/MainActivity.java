@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int[] BUTTON_IDS = new int[]{
-            R.id.card00,R.id.card02,R.id.card03,R.id.card04,
+            R.id.card00,R.id.card01,R.id.card02,R.id.card03,
             R.id.card04,R.id.card05,R.id.card06,R.id.card07,
             R.id.card09,R.id.card10,R.id.card11,R.id.card12,
             R.id.card13,R.id.card14,R.id.card15,R.id.card16,
@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
         int btnIndex = findButtonIndex(imageButton.getId());
         Log.d(TAG,"onBtnCard : " + btnIndex);
 
+
+        imageButton.setImageResource(R.mipmap.card_as);
+        if(previousBtn != null) {
+            previousBtn.setImageResource(R.mipmap.card_blue_back);
+        }
         previousBtn = imageButton;
     }
 
