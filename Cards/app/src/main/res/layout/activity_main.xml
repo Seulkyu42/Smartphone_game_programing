@@ -24,9 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="Restart" />
-
-
+            android:text="Restart"
+            android:onClick="onBtnRestart"/>
 
     </LinearLayout>
 
@@ -37,15 +36,96 @@
 
         <ImageButton
             android:id="@+id/card00"
-            android:src="@mipmap/card_blue_back"
-            android:onClick="onBtnCard"
             style="@style/cardBtnStyle">
         </ImageButton>
-
-
+        <ImageButton
+            android:id="@+id/card01"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/card02"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/card03"
+            style="@style/cardBtnStyle">
+        </ImageButton>
 <!--            android:background="@mipmap/card_blue_back" />-->
 
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/card05"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/card06"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/card07"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/card08"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <!--            android:background="@mipmap/card_blue_back" />-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/card09"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/card10"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/card11"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/card12"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <!--            android:background="@mipmap/card_blue_back" />-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/card13"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/card14"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/card15"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/card16"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <!--            android:background="@mipmap/card_blue_back" />-->
 
     </LinearLayout>
 
