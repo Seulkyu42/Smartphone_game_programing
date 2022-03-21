@@ -60,6 +60,10 @@
         android:layout_weight="1">
 
         <ImageButton
+            android:id="@+id/card04"
+            style="@style/cardBtnStyle">
+        </ImageButton>
+        <ImageButton
             android:id="@+id/card05"
             style="@style/cardBtnStyle">
         </ImageButton>
@@ -69,10 +73,6 @@
         </ImageButton>
         <ImageButton
             android:id="@+id/card07"
-            style="@style/cardBtnStyle">
-        </ImageButton>
-        <ImageButton
-            android:id="@+id/card08"
             style="@style/cardBtnStyle">
         </ImageButton>
         <!--            android:background="@mipmap/card_blue_back" />-->
