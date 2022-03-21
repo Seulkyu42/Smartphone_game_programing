@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
             R.id.card13,R.id.card14,R.id.card15,R.id.card16,
     };
 
+    private ImageButton previousBtn;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -26,8 +29,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtnCard(View view) {
-        int btnIndex = findButtonIndex(view.getId());
+        if (!(view instanceof ImageButton)){
+            Log.e(TAG,"Not an ImageButton" + view); // 타입이 다를때 미리 자르고 들어가기
+            return;
+        }
+        ImageButton imageButton = (ImageButton) view;
+
+        if (imageButton == previousBtn){
+            Log.v(TAG,"Same Button");
+            return; // 방금눌린 버튼이 이전버튼과 같으면 무시하기
+        }
+        int btnIndex = findButtonIndex(imageButton.getId());
         Log.d(TAG,"onBtnCard : " + btnIndex);
+
+        previousBtn = imageButton;
     }
 
     private int findButtonIndex(int id) {
