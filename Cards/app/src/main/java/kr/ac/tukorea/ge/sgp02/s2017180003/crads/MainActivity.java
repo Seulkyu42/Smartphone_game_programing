@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,13 +19,35 @@ public class MainActivity extends AppCompatActivity {
             R.id.card09,R.id.card10,R.id.card11,R.id.card12,
             R.id.card13,R.id.card14,R.id.card15,R.id.card16,
     };
+    private  int[] resIds = new int[]{
+            R.mipmap.card_as, R.mipmap.card_2c,R.mipmap.card_3d,R.mipmap.card_4h,
+            R.mipmap.card_5s,R.mipmap.card_jc,R.mipmap.card_qh,R.mipmap.card_kd,
+            R.mipmap.card_as, R.mipmap.card_2c,R.mipmap.card_3d,R.mipmap.card_4h,
+            R.mipmap.card_5s,R.mipmap.card_jc,R.mipmap.card_qh,R.mipmap.card_kd,
+    };
+
 
     private ImageButton previousBtn;
+    private int flips;
+    private TextView scoreTextView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        scoreTextView = findViewById(R.id.textView);
+        startGame();
     }
+
+    private void startGame() {
+        for (int i = 0; i< BUTTON_IDS.length; ++i){
+            int resId = resIds[i];
+
+            ImageButton btn = findViewById(BUTTON_IDS[i]);
+            btn.setTag(resId);
+        }
+        setScore(0);
+    } // 게임이 시작되었을 때 해야하는 일
 
     public void onBtnRestart(View view) {
         Log.d(TAG,"onBtnRestart");
@@ -42,12 +67,36 @@ public class MainActivity extends AppCompatActivity {
         int btnIndex = findButtonIndex(imageButton.getId());
         Log.d(TAG,"onBtnCard : " + btnIndex);
 
-
-        imageButton.setImageResource(R.mipmap.card_as);
-        if(previousBtn != null) {
-            previousBtn.setImageResource(R.mipmap.card_blue_back);
+        int prevResId = 0;
+        if (previousBtn != null){
+            prevResId = (Integer) previousBtn.getTag();
         }
-        previousBtn = imageButton;
+
+        int resId = (Integer) imageButton.getTag();
+
+        if (resId != prevResId){
+            imageButton.setImageResource(resId);
+            if(previousBtn != null) {
+                previousBtn.setImageResource(R.mipmap.card_blue_back);
+            }
+
+            previousBtn = imageButton;
+            setScore(flips+1);
+        }
+        else{
+            imageButton.setVisibility(view.INVISIBLE);
+            previousBtn.setVisibility(view.INVISIBLE);
+
+            previousBtn = null;
+        }
+
+
+    }
+
+    private void setScore(int flips) {
+        this.flips = flips;
+
+        scoreTextView.setText("Flips : " + flips);
     }
 
     private int findButtonIndex(int id) {
