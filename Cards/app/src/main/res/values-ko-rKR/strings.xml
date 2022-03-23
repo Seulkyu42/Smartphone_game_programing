@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cards</string>
+    <string name="restart">재시작</string>
+    <string name="restart_alert_msg">정말 다시 시작하시겠습니까?</string>
+    <string name="Yes">응</string>
+    <string name="no">아녀</string>
+    <string name="same_card_toast">똑같은 카드를 누르셨네요</string>
+    <string name="flips_format">뒤집은 횟수 : %d</string>
+</resources>

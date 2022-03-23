@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Crads</string>
+    <string name="app_name">Cards</string>
     <string name="restart_alert_msg">Do you Really want to restart the game?</string>
     <string name="restart">Restart</string>
     <string name="Yes">Yes</string>
