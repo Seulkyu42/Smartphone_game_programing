@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -28,12 +30,16 @@ public class MainActivity extends AppCompatActivity {
             R.mipmap.card_as, R.mipmap.card_2c,R.mipmap.card_3d,R.mipmap.card_4h,
             R.mipmap.card_5s,R.mipmap.card_jc,R.mipmap.card_qh,R.mipmap.card_kd,
     };
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     private ImageButton previousBtn;
     private int flips;
     private int openCount;
     private TextView scoreTextView;
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +51,14 @@ public class MainActivity extends AppCompatActivity {
 
     ///////////////////////////////////////////////// STRATGAME ////////////////////////////////////
     private void startGame() {
+        Random random = new Random();
+        for(int i = 0; i< resIds.length; ++i){
+            int t = random.nextInt(resIds.length);
+            int id = resIds[i];
+            resIds[i] = resIds[t];
+            resIds[t] = id;
 
-
+        }
 
 
         for (int i = 0; i< BUTTON_IDS.length; ++i){
@@ -68,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG,"onBtnRestart");
         askRetry();
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void askRetry() {
         new AlertDialog.Builder(this)
@@ -83,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 .create()
                 .show();
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void onBtnCard(View view) {
         if (!(view instanceof ImageButton)){
@@ -125,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
             previousBtn = null;
         }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void setScore(int flips) {
         this.flips = flips;
