@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageButton previousBtn;
     private int flips;
+    private int openCount;
     private TextView scoreTextView;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +43,26 @@ public class MainActivity extends AppCompatActivity {
         startGame();
     }
 
+    ///////////////////////////////////////////////// STRATGAME ////////////////////////////////////
     private void startGame() {
+
+
+
+
         for (int i = 0; i< BUTTON_IDS.length; ++i){
             int resId = resIds[i];
 
             ImageButton btn = findViewById(BUTTON_IDS[i]);
             btn.setTag(resId);
+            btn.setVisibility(View.VISIBLE);
+            btn.setImageResource(R.mipmap.card_blue_back);
         }
+
+        previousBtn = null;
+        openCount = resIds.length; // 지금은 16개
         setScore(0);
     } // 게임이 시작되었을 때 해야하는 일
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void onBtnRestart(View view) {
         Log.d(TAG,"onBtnRestart");
@@ -80,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (imageButton == previousBtn){
             Log.v(TAG,"Same Button");
+            Toast.makeText(this, "You Pressed same Card!", Toast.LENGTH_SHORT).show();
             return; // 방금눌린 버튼이 이전버튼과 같으면 무시하기
         }
         int btnIndex = findButtonIndex(imageButton.getId());
@@ -104,11 +118,12 @@ public class MainActivity extends AppCompatActivity {
         else{
             imageButton.setVisibility(view.INVISIBLE);
             previousBtn.setVisibility(view.INVISIBLE);
-
+            openCount -=2;
+            if(openCount == 0){
+                askRetry();
+            }
             previousBtn = null;
         }
-
-
     }
 
     private void setScore(int flips) {
