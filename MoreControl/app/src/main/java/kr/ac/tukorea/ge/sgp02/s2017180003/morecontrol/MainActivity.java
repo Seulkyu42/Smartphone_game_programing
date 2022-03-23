@@ -3,6 +3,8 @@ package kr.ac.tukorea.ge.sgp02.s2017180003.morecontrol;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -26,6 +28,24 @@ public class MainActivity extends AppCompatActivity {
         checkbox = findViewById(R.id.checkbox1);
         outputTextView = findViewById(R.id.textview);
         nameEdit1 = findViewById(R.id.nameEdit);
+
+        nameEdit1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Log.v(TAG,"before");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Log.v(TAG,"before" + charSequence);
+                outputTextView.setText("TextLength"+charSequence.length());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Log.v(TAG,"after");
+            }
+        });
     }
 
     public void onClickBox(View view) {
