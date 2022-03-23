@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Crads</string>
+    <string name="restart_alert_msg">Do you Really want to restart the game?</string>
+    <string name="restart">Restart</string>
+    <string name="Yes">Yes</string>
+    <string name="no">No</string>
+    <string name="same_card_toast">You Pressed same Card!</string>
+    <string name="flips_format">Flips : %d</string>
 </resources>
