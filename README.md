@@ -51,6 +51,9 @@
   * 무한모드 
  
 # 　:video_game:예상 게임 흐름 및 스크린샷 
+![ex_screenshot](./Lb1.png) ![ex_screenshot](./Lb2.jpg)
+>(레이디 버그 게임 스크린샷)
+
 
 # 　　　　　:date:개발일정 
 
