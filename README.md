@@ -1,5 +1,5 @@
 
-# 　　　　　　　:bookmark:게임제목 : MonsterSurvival
+# 　:bookmark:게임제목 : MonsterSurvival
 
 ## 게임컨셉
 > 기존 게임 "레이디 버그"를 모티브로
@@ -11,7 +11,7 @@
 랜덤으로 생성되는 아이템을 통해 몰려오는 적들로부터 살아남기
 >>※플레이어는 직접 공격 불가능※
 
-# 　　　 　　　　　　　:white_check_mark:개발범위
+# 　　　 　:white_check_mark:개발범위
 
 ## 조작 
   * 로비 버튼조작 
@@ -50,9 +50,9 @@
   * 2단계
   * 무한모드 
  
-# 　　　　　　　:video_game:예상 게임 흐름 및 스크린샷 
+# 　:video_game:예상 게임 흐름 및 스크린샷 
 
-# 　　　　　　　　　　　:date:개발일정 
+# 　　　　　:date:개발일정 
 
 |　기간　|　내용　|
 |:---|:---:|
