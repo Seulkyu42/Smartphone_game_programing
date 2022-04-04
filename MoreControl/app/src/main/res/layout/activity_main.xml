@@ -9,25 +9,50 @@
 
     <TextView
         android:id="@+id/textview"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textSize="30sp" />
+        android:text="Pac-Man!"
+        android:textSize="30sp"
+        android:background="#fcc"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        />
 
     <EditText
         android:id="@+id/nameEdit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
     </EditText>
 
-
-    <CheckBox
-        android:id="@+id/checkbox1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Checkboxtext"
-        android:onClick="onClickBox">
-    </CheckBox>
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/checkbox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Checkboxtext"
+            android:onClick="onClickBox"
+            android:padding="10dp">
+        </CheckBox>
+
+        <kr.ac.tukorea.ge.sgp02.s2017180003.morecontrol.GameView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            >
+        </kr.ac.tukorea.ge.sgp02.s2017180003.morecontrol.GameView>
+
+    </LinearLayout>
+
+
+    <kr.ac.tukorea.ge.sgp02.s2017180003.morecontrol.GameView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+    </kr.ac.tukorea.ge.sgp02.s2017180003.morecontrol.GameView>
 
     <Button
         android:layout_width="match_parent"
