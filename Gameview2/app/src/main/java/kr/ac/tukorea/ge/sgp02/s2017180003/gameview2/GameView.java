@@ -37,7 +37,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
     private Paint fpsPaint = new Paint();
 
     public static GameView view;
-    private int BALL_COUNT = 10;
+    private int BALL_COUNT = 1000;
 
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -59,12 +59,14 @@ public class GameView extends View implements Choreographer.FrameCallback {
         for(int i =0;i < BALL_COUNT; ++i){
             int dx = random.nextInt(10)+5; // 0~9 + 5 값 임
             int dy = random.nextInt(10)+5;
+            Ball ball = new Ball(dx,dy);
+            balls.add(ball);
         }
-        Ball ball1 = new Ball(10,10);
-        Ball ball2 = new Ball(15,20);
-
-        balls.add(ball1);
-        balls.add(ball2);
+//        Ball ball1 = new Ball(10,10);
+//        Ball ball2 = new Ball(15,20);
+//
+//        balls.add(ball1);
+//        balls.add(ball2);
 
 //        soccerDstRect1.set(0,0,100,100);
 //        ballDx1 = 10;
