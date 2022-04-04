@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Choreographer;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -29,15 +30,17 @@ public class GameView extends View implements Choreographer.FrameCallback {
 //    private int ballDx2,ballDy2;
 
     private ArrayList<Ball> balls = new ArrayList<>();
+    private FIghter fighter;
 
-    Ball ball1,ball2;
     private Handler handler = new Handler();
     private long previousTime;
     private int framePerSecond; // 멤버변수로 바꾸면 이름길게쓰라
     private Paint fpsPaint = new Paint();
 
     public static GameView view;
-    private int BALL_COUNT = 1000;
+    private int BALL_COUNT = 10;
+
+
 
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -50,10 +53,6 @@ public class GameView extends View implements Choreographer.FrameCallback {
 
         fpsPaint.setTextSize(100);
         paint.setColor(0xFFCCCCCC);
-        Resources res = getResources();
-        Bitmap soccerBitmap = BitmapFactory.decodeResource(res, R.mipmap.soccer_ball_240);
-        Ball.setBitmap(soccerBitmap);
-//        soccerSrcRect.set(0, 0, soccerBitmap.getWidth(), soccerBitmap.getHeight());
 
         Random random = new Random();
         for(int i =0;i < BALL_COUNT; ++i){
@@ -62,15 +61,8 @@ public class GameView extends View implements Choreographer.FrameCallback {
             Ball ball = new Ball(dx,dy);
             balls.add(ball);
         }
-//        Ball ball1 = new Ball(10,10);
-//        Ball ball2 = new Ball(15,20);
-//
-//        balls.add(ball1);
-//        balls.add(ball2);
 
-//        soccerDstRect1.set(0,0,100,100);
-//        ballDx1 = 10;
-//        ballDy1 = 10;
+        fighter = new FIghter();
 
         Choreographer.getInstance().postFrameCallback(this);
         //updateFrame();
@@ -81,21 +73,14 @@ public class GameView extends View implements Choreographer.FrameCallback {
         long now = currentTimeNanos;
 //        long now = System.currentTimeMillis();
         int elapsed = (int) (now - previousTime);
-        framePerSecond = 1_000_000_000 / elapsed;
-        //Log.d(TAG, "Elapsed: " + elapsed + "FPS: " + fps);
-        previousTime = now;
-        update();
-        invalidate();
+        if(elapsed != 0) {
+            framePerSecond = 1_000_000_000 / elapsed;
+            //Log.d(TAG, "Elapsed: " + elapsed + "FPS: " + fps);
+            previousTime = now;
+            update();
+            invalidate();
+        }
         Choreographer.getInstance().postFrameCallback(this);
-    }
-
-    private void updateFrame() {
-//        postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                updateFrame();
-//            }
-//        },16); // 33밀리세컨드 30프레임 // 16밀리세컨드 60프레임? 믿지못하는 값
     }
 
     private void update() {
@@ -155,6 +140,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
         for(Ball ball : balls){
             ball.draw(canvas);
         }
+        fighter.draw(canvas);
 
         //ball1.draw(canvas);
         //ball2.draw(canvas);
@@ -164,5 +150,21 @@ public class GameView extends View implements Choreographer.FrameCallback {
     }
 
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        //if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_MOVE){
+          switch(action){
+              case MotionEvent.ACTION_DOWN:
+              case MotionEvent.ACTION_MOVE:
+            int x = (int) event.getX();
+            int y = (int) event.getY();
+
+
+            fighter.setPosition(x,y);
+            return true;
+          }
+        return super.onTouchEvent(event);
+    }
 }
 
