@@ -65,8 +65,23 @@ public class FIghter implements GameObject  {
             }
         }
 
-        x += dx;
-        y += dy;
+        if(dy > 0){
+            if(y + dy > ty) {
+                dy = ty - y;
+                y = ty;
+            }else{
+                y += dy;
+            }
+
+        }else{
+            if(y + dy < ty) {
+                dy = ty - y;
+                y = ty;
+            }else{
+                y += dy;
+            }
+        }
+
 
         dstRect.offset(dx,dy);
     }
