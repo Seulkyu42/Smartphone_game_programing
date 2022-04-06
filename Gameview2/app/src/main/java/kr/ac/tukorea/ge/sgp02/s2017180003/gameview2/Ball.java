@@ -45,22 +45,22 @@ public class Ball implements GameObject {
         dstRect.offset(deltaX, deltaY);
         if (deltaX >= 0) {
             if (dstRect.right > GameView.view.getWidth()) {
-                this.deltaX = -deltaX;
+                this.deltaX = -this.deltaX;
             }
         }
         else{
             if(dstRect.left < 0){
-                this.deltaX = -deltaX;
+                this.deltaX = -this.deltaX;
             }
         }
         if(deltaY > 0){
             if(dstRect.bottom > GameView.view.getHeight()){
-                this.deltaY = -deltaY;
+                this.deltaY = -this.deltaY;
             }
         }
         else{
             if(dstRect.top <0){
-                this.deltaY = -deltaY;
+                this.deltaY = -this.deltaY;
             }
         }
     }

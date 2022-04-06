@@ -5,11 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.graphics.RectF;
 
 public class FIghter implements GameObject  {
     private static Bitmap bitmap;
     private static Rect srcRect = new Rect(); // static을 붙여서 클래스 하나만 가지고 있어도 여러객체 공유시키기
-    private Rect dstRect = new Rect();
+    private RectF dstRect = new RectF();
 
     private float x,y;
     private float dx,dy; //deltaX,Y
@@ -19,7 +20,7 @@ public class FIghter implements GameObject  {
     public FIghter() {
         x = 100;
         y = 100;
-        dstRect.set(100,100,200,200);
+        dstRect.set(0,0,200,200);
 
         tx = x;
         ty = y;
@@ -40,17 +41,43 @@ public class FIghter implements GameObject  {
     }
 
     public void update() {
+        float angle = (float) Math.atan2(ty-y,tx-x); // 앵글
+        float speed = 1000;
+        float dist = speed * MainGame.getInstance().frameTime;
 
+        dx = (float) (dist * Math.cos(angle));
+        dy = (float) (dist * Math.sin(angle));
+
+        if(dx > 0){
+            if(x + dx > tx) {
+                dx = tx - x;
+                x = tx;
+            }else{
+                x += dx;
+            }
+
+        }else{
+            if(x + dx < tx) {
+                dx = tx - x;
+                x = tx;
+            }else{
+                x += dx;
+            }
+        }
+
+        x += dx;
+        y += dy;
+
+        dstRect.offset(dx,dy);
     }
 
     public void draw(Canvas canvas) {
         canvas.drawBitmap(bitmap,srcRect,dstRect,null);
     }
 
-    public void setPosition(int x, int y) {
+    public void setTargetPosition(int x, int y) {
         tx = x;
         ty = y;
-        int radius = dstRect.width() / 2;
-        dstRect.set(x-radius,y-radius,x+radius,y+radius);
+
     }
 }

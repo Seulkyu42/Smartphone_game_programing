@@ -30,8 +30,8 @@ public class MainGame {
     public void init() {
         Random random = new Random();
         for(int i =0;i < BALL_COUNT; ++i){
-            float dx = random.nextInt(100)+100; // 0~9 + 5 값 임
-            float dy = random.nextInt(100)+100;
+            float dx = random.nextInt(500)+100; // 0~9 + 5 값 임
+            float dy = random.nextInt(500)+100;
             Ball ball = new Ball(dx,dy);
             objects.add(ball);
         }
@@ -63,7 +63,7 @@ public class MainGame {
                 int y = (int) event.getY();
 
 
-                fighter.setPosition(x,y);
+                fighter.setTargetPosition(x,y);
                 return true;
         }
         return false;
