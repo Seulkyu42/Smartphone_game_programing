@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-public class FIghter {
+public class FIghter implements GameObject  {
     private static Bitmap bitmap;
     private static Rect srcRect = new Rect(); // static을 붙여서 클래스 하나만 가지고 있어도 여러객체 공유시키기
     private Rect dstRect = new Rect();

@@ -29,7 +29,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
 //    private int ballDx1,ballDy1;
 //    private int ballDx2,ballDy2;
 
-    private ArrayList<Ball> balls = new ArrayList<>();
+    private ArrayList<GameObject> objects = new ArrayList<>();
     private FIghter fighter;
 
     private Handler handler = new Handler();
@@ -59,10 +59,12 @@ public class GameView extends View implements Choreographer.FrameCallback {
             int dx = random.nextInt(10)+5; // 0~9 + 5 값 임
             int dy = random.nextInt(10)+5;
             Ball ball = new Ball(dx,dy);
-            balls.add(ball);
+            objects.add(ball);
         }
 
         fighter = new FIghter();
+        objects.add(fighter);
+
 
         Choreographer.getInstance().postFrameCallback(this);
         //updateFrame();
@@ -86,8 +88,8 @@ public class GameView extends View implements Choreographer.FrameCallback {
     private void update() {
 //        ball1.update();
 //        ball2.update();
-        for(Ball ball : balls){
-            ball.update();
+        for(GameObject gameObject : objects){
+            gameObject.update();
         }
 //        soccerDstRect1.offset(ballDx1, ballDy1);
 //        if (ballDx1 >= 0) {
@@ -137,11 +139,10 @@ public class GameView extends View implements Choreographer.FrameCallback {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawText("Fps :"+framePerSecond,framePerSecond*10,100,fpsPaint);
-        for(Ball ball : balls){
-            ball.draw(canvas);
+        for(GameObject gameObject : objects){
+            gameObject.draw(canvas);
         }
-        fighter.draw(canvas);
-
+        //fighter.draw(canvas);
         //ball1.draw(canvas);
         //ball2.draw(canvas);
 //        canvas.drawBitmap(Ball.bitmap, Ball.srcRect, Ball.dstRect, null);
