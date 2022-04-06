@@ -5,16 +5,17 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.graphics.RectF;
 
 public class Ball implements GameObject {
     private static Bitmap bitmap;
     private static Rect srcRect = new Rect(); // static을 붙여서 클래스 하나만 가지고 있어도 여러객체 공유시키기
-    private Rect dstRect = new Rect();
-    private int deltaX,deltaY;
+    private RectF dstRect = new RectF();
+    private float deltaX,deltaY;
 
 
     // alt + insert 하면 컨스트럭트 자동으로 만들어줌
-    public Ball(int deltaX, int deltaY) {
+    public Ball(float deltaX, float deltaY) {
         this.deltaX = deltaX;
         this.deltaY = deltaY;
 
@@ -36,25 +37,30 @@ public class Ball implements GameObject {
     }
 
     public void update() {
+        MainGame game = MainGame.getInstance();
+        float deltaX = this.deltaX * game.frameTime;
+        float deltaY = this.deltaY * game.frameTime;
+
+
         dstRect.offset(deltaX, deltaY);
         if (deltaX >= 0) {
             if (dstRect.right > GameView.view.getWidth()) {
-                deltaX = -deltaX;
+                this.deltaX = -deltaX;
             }
         }
         else{
             if(dstRect.left < 0){
-                deltaX = -deltaX;
+                this.deltaX = -deltaX;
             }
         }
         if(deltaY > 0){
             if(dstRect.bottom > GameView.view.getHeight()){
-                deltaY = -deltaY;
+                this.deltaY = -deltaY;
             }
         }
         else{
             if(dstRect.top <0){
-                deltaY = -deltaY;
+                this.deltaY = -deltaY;
             }
         }
     }

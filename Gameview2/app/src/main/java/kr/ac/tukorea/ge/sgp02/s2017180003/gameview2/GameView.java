@@ -22,15 +22,6 @@ import java.util.Random;
 public class GameView extends View implements Choreographer.FrameCallback {
     private static final String TAG = GameView.class.getSimpleName();
     private final Paint paint = new Paint();
-//    private Bitmap soccerBitmap;
-//    private final Rect soccerSrcRect = new Rect();
-//    private final Rect soccerDstRect1 = new Rect();
-//    private final Rect soccerDstRect2 = new Rect();
-//    private int ballDx1,ballDy1;
-//    private int ballDx2,ballDy2;
-
-    private ArrayList<GameObject> objects = new ArrayList<>();
-    private FIghter fighter;
 
     private Handler handler = new Handler();
     private long previousTime;
@@ -38,10 +29,6 @@ public class GameView extends View implements Choreographer.FrameCallback {
     private Paint fpsPaint = new Paint();
 
     public static GameView view;
-    private int BALL_COUNT = 10;
-
-
-
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initView();
@@ -54,20 +41,11 @@ public class GameView extends View implements Choreographer.FrameCallback {
         fpsPaint.setTextSize(100);
         paint.setColor(0xFFCCCCCC);
 
-        Random random = new Random();
-        for(int i =0;i < BALL_COUNT; ++i){
-            int dx = random.nextInt(10)+5; // 0~9 + 5 값 임
-            int dy = random.nextInt(10)+5;
-            Ball ball = new Ball(dx,dy);
-            objects.add(ball);
-        }
-
-        fighter = new FIghter();
-        objects.add(fighter);
+        MainGame game = MainGame.getInstance();
+        game.init();
 
 
         Choreographer.getInstance().postFrameCallback(this);
-        //updateFrame();
     }
 
     @Override
@@ -79,93 +57,25 @@ public class GameView extends View implements Choreographer.FrameCallback {
             framePerSecond = 1_000_000_000 / elapsed;
             //Log.d(TAG, "Elapsed: " + elapsed + "FPS: " + fps);
             previousTime = now;
-            update();
+            MainGame.getInstance().update(elapsed);
             invalidate();
         }
         Choreographer.getInstance().postFrameCallback(this);
     }
 
-    private void update() {
-//        ball1.update();
-//        ball2.update();
-        for(GameObject gameObject : objects){
-            gameObject.update();
-        }
-//        soccerDstRect1.offset(ballDx1, ballDy1);
-//        if (ballDx1 >= 0) {
-//            if (soccerDstRect1.right > getWidth()) {
-//                ballDx1 = -ballDx1;
-//            }
-//        }
-//        else{
-//            if(soccerDstRect1.left < 0){
-//                ballDx1 = -ballDx1;
-//            }
-//        }
-//        if(ballDy1 > 0){
-//            if(soccerDstRect1.bottom > getHeight()){
-//                ballDy1 = -ballDy1;
-//            }
-//        }
-//        else{
-//            if(soccerDstRect1.top <0){
-//                ballDy1 = -ballDy1;
-//            }
-//        }
 
-//        soccerDstRect2.offset(ballDx2, ballDy2);
-//        if (ballDx2 >= 0) {
-//            if (soccerDstRect2.right > getWidth()) {
-//                ballDx2 = -ballDx2;
-//            }
-//        }
-//        else{
-//            if(soccerDstRect2.left < 0){
-//                ballDx2 = -ballDx2;
-//            }
-//        }
-//        if(ballDy2 > 0){
-//            if(soccerDstRect2.bottom > getHeight()){
-//                ballDy2 = -ballDy2;
-//            }
-//        }
-//        else{
-//            if(soccerDstRect2.top <0){
-//                ballDy2 = -ballDy2;
-//            }
-//        }
-    }
 
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawText("Fps :"+framePerSecond,framePerSecond*10,100,fpsPaint);
-        for(GameObject gameObject : objects){
-            gameObject.draw(canvas);
-        }
-        //fighter.draw(canvas);
-        //ball1.draw(canvas);
-        //ball2.draw(canvas);
-//        canvas.drawBitmap(Ball.bitmap, Ball.srcRect, Ball.dstRect, null);
-//        canvas.drawBitmap(soccerBitmap, soccerSrcRect, soccerDstRect1, null); // 비트맵은 null도 넣어도됨
-//        canvas.drawBitmap(soccerBitmap, soccerSrcRect, soccerDstRect2, null); // 비트맵은 null도 넣어도됨
+        MainGame.getInstance().draw(canvas);
+
     }
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int action = event.getAction();
-        //if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_MOVE){
-          switch(action){
-              case MotionEvent.ACTION_DOWN:
-              case MotionEvent.ACTION_MOVE:
-            int x = (int) event.getX();
-            int y = (int) event.getY();
-
-
-            fighter.setPosition(x,y);
-            return true;
-          }
-        return super.onTouchEvent(event);
+        return MainGame.getInstance().onTouchEvent(event);
     }
 }
 

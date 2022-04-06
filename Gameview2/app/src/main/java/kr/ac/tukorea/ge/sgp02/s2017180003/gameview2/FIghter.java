@@ -11,9 +11,18 @@ public class FIghter implements GameObject  {
     private static Rect srcRect = new Rect(); // static을 붙여서 클래스 하나만 가지고 있어도 여러객체 공유시키기
     private Rect dstRect = new Rect();
 
+    private float x,y;
+    private float dx,dy; //deltaX,Y
+    private float tx,ty; //targetX,Y
+
     // alt + insert 하면 컨스트럭트 자동으로 만들어줌
     public FIghter() {
-        dstRect.set(0,0,200,200);
+        x = 100;
+        y = 100;
+        dstRect.set(100,100,200,200);
+
+        tx = x;
+        ty = y;
 
         // 이미지가 로드되어있으면 다시 로드시키지 않음
         if (bitmap == null)
@@ -39,6 +48,8 @@ public class FIghter implements GameObject  {
     }
 
     public void setPosition(int x, int y) {
+        tx = x;
+        ty = y;
         int radius = dstRect.width() / 2;
         dstRect.set(x-radius,y-radius,x+radius,y+radius);
     }
