@@ -28,11 +28,26 @@ public class GameView extends View implements Choreographer.FrameCallback {
     private int framePerSecond; // 멤버변수로 바꾸면 이름길게쓰라
     private Paint fpsPaint = new Paint();
 
+    private boolean initialized;
+
+
     public static GameView view;
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        initView();
+        //initView();
 
+    }
+
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+
+        Metrics.width = w;
+        Metrics.height = h;
+
+        if(!initialized){
+            initView();
+            initialized = true;
+        }
     }
 
     private void initView() {

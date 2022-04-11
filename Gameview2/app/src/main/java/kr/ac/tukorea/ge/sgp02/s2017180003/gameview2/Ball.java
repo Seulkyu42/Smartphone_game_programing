@@ -44,7 +44,7 @@ public class Ball implements GameObject {
 
         dstRect.offset(deltaX, deltaY);
         if (deltaX >= 0) {
-            if (dstRect.right > GameView.view.getWidth()) {
+            if (dstRect.right > Metrics.width) {
                 this.deltaX = -this.deltaX;
             }
         }
@@ -54,7 +54,7 @@ public class Ball implements GameObject {
             }
         }
         if(deltaY > 0){
-            if(dstRect.bottom > GameView.view.getHeight()){
+            if(dstRect.bottom > Metrics.height){
                 this.deltaY = -this.deltaY;
             }
         }

@@ -7,6 +7,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainGame {
+    private int BALL_COUNT = 10;
+    private ArrayList<GameObject> objects = new ArrayList<>();
+    private FIghter fighter;
+
+    private static MainGame singleton;
+
+
     public static MainGame getInstance(){
         if(singleton == null){
             singleton = new MainGame();
@@ -20,13 +27,7 @@ public class MainGame {
     private MainGame(){
 
     }
-
-    private int BALL_COUNT = 10;
-    private ArrayList<GameObject> objects = new ArrayList<>();
-    private FIghter fighter;
-
-    private static MainGame singleton;
-
+    
     public void init() {
         Random random = new Random();
         for(int i =0;i < BALL_COUNT; ++i){
@@ -36,7 +37,7 @@ public class MainGame {
             objects.add(ball);
         }
 
-        fighter = new FIghter();
+        fighter = new FIghter(Metrics.width/2,Metrics.height/2);
         objects.add(fighter);
     }
 
