@@ -1,10 +1,8 @@
 package com.example.monstersurvival;
 
 import android.graphics.Canvas;
-import android.graphics.Paint;
 
 public class MainGame {
-
     public static MainGame getInstance() {
         if (singleton == null) {
             singleton = new MainGame();
