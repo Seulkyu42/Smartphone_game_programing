@@ -1,11 +1,14 @@
 package com.example.dragonflight.game;
 
 
+import android.graphics.RectF;
+
 import com.example.dragonflight.R;
+import com.example.dragonflight.framework.BoxCollidable;
 import com.example.dragonflight.framework.Metrics;
 import com.example.dragonflight.framework.Sprite;
 
-public class Enemy extends Sprite {
+public class Enemy extends Sprite implements BoxCollidable {
     protected float dy;
     public Enemy(float x, float speed) {
 //        super(x, 0, R.dimen.enemy_radius, R.mipmap.f_01_01);
@@ -28,4 +31,8 @@ public class Enemy extends Sprite {
         }
     }
 
+    @Override
+    public RectF getBoundingRect() {
+        return dstRect;
+    }
 }
