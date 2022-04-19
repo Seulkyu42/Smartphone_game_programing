@@ -22,9 +22,12 @@
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints">
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="368dp"
+            tools:layout_editor_absoluteY="532dp">
 
             <ImageButton
                 android:id="@+id/settingBtn"
@@ -39,6 +42,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:text="LeaderBoard" />
+
+            <ImageButton
+                android:id="@+id/gameStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Setting" />
 
         </LinearLayout>
 
