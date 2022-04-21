@@ -5,7 +5,9 @@ import android.graphics.Bitmap;
 import android.graphics.RectF;
 import android.graphics.Canvas;
 
-public class Player {
+import com.example.monstersurvival.R;
+
+public class Player extends Sprite {
     private Bitmap playerBitmap;
     private RectF playerRect = new RectF();
 
@@ -19,17 +21,20 @@ public class Player {
  
     // init
     public Player(float x,float y){
+//        super(x,y,R.dimen.player_radius, R.mipmap.player_image);
+        super(x,y,R.dimen.player_radius, R.mipmap.player_image);
         coin = 0;
-        speed = 10; //dimen에 넣을예정
+        speed = R.dimen.player_speed; //dimen에 넣을예정
         health = 3;
     }
 
     public void update(){
-
+        
     }
 
     public void draw(Canvas canvas){
         //canvas.drawBitmap(playerBitmap,);
+        canvas.drawBitmap(bitmap, null,dstRect,null);
     }
 
 }
