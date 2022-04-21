@@ -31,5 +31,6 @@ public class LobbyView extends  View implements Choreographer.FrameCallback {
 
     @Override
     protected void onDraw(Canvas canvas) {
+
     }
 }
