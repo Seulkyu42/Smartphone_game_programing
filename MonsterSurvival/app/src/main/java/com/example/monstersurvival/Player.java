@@ -23,9 +23,9 @@ public class Player extends Sprite {
     public Player(float x,float y){
 //        super(x,y,R.dimen.player_radius, R.mipmap.player_image);
         super(x,y,R.dimen.player_radius, R.mipmap.player_image);
-        coin = 0;
+        coin = 0; // 바뀔건데 dimen에 넣어도 괜찮은가
         speed = R.dimen.player_speed; //dimen에 넣을예정
-        health = 3;
+        health = R.dimen.player_health;
     }
 
     public void update(){

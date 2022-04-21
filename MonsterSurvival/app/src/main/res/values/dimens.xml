@@ -2,4 +2,5 @@
 <resources>
     <dimen name="player_radius">30dp</dimen>
     <dimen name="player_speed">10dp</dimen>
+    <dimen name="player_health">3</dimen>
 </resources>

@@ -2,6 +2,8 @@ package com.example.monstersurvival;
 
 import android.graphics.Canvas;
 
+import java.util.ArrayList;
+
 public class MainGame {
     public static MainGame getInstance() {
         if (singleton == null) {
@@ -15,20 +17,44 @@ public class MainGame {
     private MainGame(){
     }
 
+    private ArrayList<GameObject> objects = new ArrayList<>();
+
     private static MainGame singleton;
     private Player player;
 
-    private void init(){
+    public void init(){
+        objects.clear();
+
+        float playerY = Metrics.height/2;
+        player = new Player(Metrics.width/2, playerY);
+        objects.add(player);
+    }
+    public void update(){
 
     }
-    private void update(){
 
+    public void draw(Canvas canvas){
+        for(GameObject gobj : objects){
+            gobj.draw(canvas);
+        }
     }
 
-    private void draw(Canvas canvas){
-
+    public void add(GameObject gameObject) {
+        GameView.view.post(new Runnable() {
+            @Override
+            public void run() {
+                objects.add(gameObject);
+            }
+        });
     }
 
-
+    public void remove(GameObject gameObject) {
+        GameView.view.post(new Runnable() {
+            @Override
+            public void run() {
+                objects.remove(gameObject);
+            }
+        });
+    }
 
 }
