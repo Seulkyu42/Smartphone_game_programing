@@ -1,6 +1,7 @@
 package com.example.monstersurvival.game;
 
 import android.graphics.Canvas;
+import android.graphics.RectF;
 
 import com.example.monstersurvival.framework.GameObject;
 import com.example.monstersurvival.framework.GameView;
@@ -29,7 +30,7 @@ public class MainGame {
     /////////////////////////// 레이어
     protected ArrayList<ArrayList<GameObject>> layers;
     public enum Layer {
-        bg1, player,ui,COUNT
+        bg1, cntPlayer,ui,COUNT
     }
 
     public static void clear() {
@@ -38,11 +39,12 @@ public class MainGame {
 
     public void init(){
         initLayers(Layer.COUNT.ordinal());
-        objects.clear();
 
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);
-        objects.add(player);
+
+        add(Layer.cntPlayer, player);
+
     }
     private void initLayers(int count) {
         layers = new ArrayList<>();
@@ -51,21 +53,25 @@ public class MainGame {
         }
     }
 
-    public void update(){
-
-    }
-
-    public void draw(Canvas canvas){
-        for(GameObject gobj : objects){
-            gobj.draw(canvas);
+    public void draw(Canvas canvas) {
+        for (ArrayList<GameObject> gameObjects : layers) {
+            for (GameObject gobj : gameObjects) { gobj.draw(canvas); }
         }
     }
 
-    public void add(GameObject gameObject) {
+    public void update(int elapsedNanos) {
+        frameTime = (float) (elapsedNanos / 1_000_000_000f);
+        for (ArrayList<GameObject> gameObjects : layers) {
+            for (GameObject gobj : gameObjects) { gobj.update(); }
+        }
+    }
+
+    public void add(Layer layer, GameObject gameObject) {
         GameView.view.post(new Runnable() {
             @Override
             public void run() {
-                objects.add(gameObject);
+                ArrayList<GameObject> gameObjects = layers.get(layer.ordinal());
+                gameObjects.add(gameObject);
             }
         });
     }
@@ -74,9 +80,23 @@ public class MainGame {
         GameView.view.post(new Runnable() {
             @Override
             public void run() {
-                objects.remove(gameObject);
+                for (ArrayList<GameObject> gameObjects : layers) {
+                    boolean removed = gameObjects.remove(gameObject);
+                    if (!removed) continue;
+//                    if (gameObject instanceof Recyclable) {
+//                        RecycleBin.add((Recyclable) gameObject);
+//                    }
+                    break;
+                }
             }
         });
     }
-
+    
+    public int objectCount() {
+        int count = 0;
+        for (ArrayList<GameObject> gameObjects : layers) {
+            count += gameObjects.size();
+        }
+        return count;
+    }
 }
