@@ -1,7 +1,9 @@
-package com.example.monstersurvival;
+package com.example.monstersurvival.framework;
 
 import android.content.res.Resources;
 import android.util.TypedValue;
+
+import com.example.monstersurvival.framework.GameView;
 
 public class Metrics {
     public static int width;

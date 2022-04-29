@@ -1,6 +1,10 @@
-package com.example.monstersurvival;
+package com.example.monstersurvival.game;
 
 import android.graphics.Canvas;
+
+import com.example.monstersurvival.framework.GameObject;
+import com.example.monstersurvival.framework.GameView;
+import com.example.monstersurvival.framework.Metrics;
 
 import java.util.ArrayList;
 

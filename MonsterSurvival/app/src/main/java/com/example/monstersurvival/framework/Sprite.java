@@ -1,10 +1,8 @@
-package com.example.monstersurvival;
+package com.example.monstersurvival.framework;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.RectF;
-
-import com.example.monstersurvival.GameObject;
 
 public class Sprite implements GameObject {
     protected Bitmap bitmap;
@@ -26,6 +24,14 @@ public class Sprite implements GameObject {
         bitmap = BitmapPool.get(bitmapResId);
     }
 
+    public void setDstRectWithRadius() {
+        dstRect.set(x - radius, y - radius, x + radius, y + radius);
+    }
+
+    public void setDstRect(float width, float height) {
+        dstRect.set(x - width / 2, y - height / 2, x + width / 2, y + height / 2);
+    }
+
     @Override
     public void update() {
     }
@@ -33,14 +39,6 @@ public class Sprite implements GameObject {
     @Override
     public void draw(Canvas canvas) {
         canvas.drawBitmap(bitmap, null, dstRect, null);
-    }
-
-    public void setDstRectWithRadius() {
-        dstRect.set(x - radius, y - radius, x + radius, y + radius);
-    }
-
-    public void setDstRect(float width, float height) {
-        dstRect.set(x - width / 2, y - height / 2, x + width / 2, y + height / 2);
     }
 
 }

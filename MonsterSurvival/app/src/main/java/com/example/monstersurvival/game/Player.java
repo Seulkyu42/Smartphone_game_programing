@@ -1,4 +1,4 @@
-package com.example.monstersurvival;
+package com.example.monstersurvival.game;
 
 
 import android.graphics.Bitmap;
@@ -6,6 +6,7 @@ import android.graphics.RectF;
 import android.graphics.Canvas;
 
 import com.example.monstersurvival.R;
+import com.example.monstersurvival.framework.Sprite;
 
 public class Player extends Sprite {
     private Bitmap playerBitmap;
