@@ -26,6 +26,16 @@ public class MainGame {
     private static MainGame singleton;
     private Player player;
 
+    /////////////////////////// 레이어
+    protected ArrayList<ArrayList<GameObject>> layers;
+    public enum Layer {
+        bg1, player,ui
+    }
+
+    public static void clear() {
+        singleton = null;
+    }
+
     public void init(){
         objects.clear();
 
