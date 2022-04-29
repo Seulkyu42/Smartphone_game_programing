@@ -29,7 +29,7 @@ public class MainGame {
     /////////////////////////// 레이어
     protected ArrayList<ArrayList<GameObject>> layers;
     public enum Layer {
-        bg1, player,ui
+        bg1, player,ui,COUNT
     }
 
     public static void clear() {
@@ -37,12 +37,20 @@ public class MainGame {
     }
 
     public void init(){
+        initLayers(Layer.COUNT.ordinal());
         objects.clear();
 
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);
         objects.add(player);
     }
+    private void initLayers(int count) {
+        layers = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            layers.add(new ArrayList<>());
+        }
+    }
+
     public void update(){
 
     }
