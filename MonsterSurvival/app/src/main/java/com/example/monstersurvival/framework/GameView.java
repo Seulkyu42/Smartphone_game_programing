@@ -2,9 +2,12 @@ package com.example.monstersurvival.framework;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Choreographer;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -15,6 +18,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
 
     public static GameView view;
 
+    private Paint fpsPaint = new Paint();
     private long lastTimeNanos;
     private int framesPerSecond;
     private boolean isInitialized;
@@ -24,9 +28,9 @@ public class GameView extends View implements Choreographer.FrameCallback {
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         view = this;
-        //initView();
     }
 
+    @Override
     protected  void onSizeChanged(int w,int h, int oldw, int oldh){
         super.onSizeChanged(w,h,oldw,oldh);
 
@@ -62,14 +66,20 @@ public class GameView extends View implements Choreographer.FrameCallback {
     }
 
     private void initView() {
-        view = this;
-
         MainGame.getInstance().init();
+        fpsPaint.setColor(Color.BLUE);
+        fpsPaint.setTextSize(50);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return MainGame.getInstance().onTouchEvent(event);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         MainGame.getInstance().draw(canvas);
+        canvas.drawText("FPS:" + framesPerSecond, framesPerSecond * 10, 100, fpsPaint);
     }
 
     public void pauseGame() {

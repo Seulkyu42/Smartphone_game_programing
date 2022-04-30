@@ -22,20 +22,24 @@ public class Player extends Sprite {
  
     // init
     public Player(float x,float y){
-//        super(x,y,R.dimen.player_radius, R.mipmap.player_image);
         super(x,y,R.dimen.player_radius, R.mipmap.player_image);
         coin = 0; // 바뀔건데 dimen에 넣어도 괜찮은가
         speed = R.dimen.player_speed; //dimen에 넣을예정
         health = R.dimen.player_health;
     }
 
-    public void update(){
-        
-    }
+
 
     public void draw(Canvas canvas){
-        //canvas.drawBitmap(playerBitmap,);
         canvas.drawBitmap(bitmap, null,dstRect,null);
+    }
+
+    public void update(){
+        float frameTime = MainGame.getInstance().frameTime;
+        if (px == 0)
+            return;
+
+        float px = this.px * frameTime;
     }
 
 }

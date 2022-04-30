@@ -2,6 +2,7 @@ package com.example.monstersurvival.game;
 
 import android.graphics.Canvas;
 import android.graphics.RectF;
+import android.view.MotionEvent;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.GameObject;
@@ -28,7 +29,7 @@ public class MainGame {
     /////////////////////////// 레이어
     protected ArrayList<ArrayList<GameObject>> layers;
     public enum Layer {
-        bg1, cntPlayer,ui,COUNT
+        bg1, player,ui,COUNT
     }
 
     public static void clear() {
@@ -40,11 +41,14 @@ public class MainGame {
 
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);
+        add(Layer.player, player);
+
+        //add(Layer.ui, null);
 
         add(Layer.bg1, new HorizonScrollBackground(R.mipmap.background_high, Metrics.size(R.dimen.bg_speed_lobby)));
-        add(Layer.cntPlayer, player);
 
     }
+
     private void initLayers(int count) {
         layers = new ArrayList<>();
         for (int i = 0; i < count; i++) {
@@ -52,17 +56,32 @@ public class MainGame {
         }
     }
 
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+                float x = event.getX();
+                float y = event.getY();
+                return true;
+        }
+        return false;
+    }
+
     public void draw(Canvas canvas) {
         for (ArrayList<GameObject> gameObjects : layers) {
             for (GameObject gobj : gameObjects) { gobj.draw(canvas); }
         }
     }
-
     public void update(int elapsedNanos) {
         frameTime = (float) (elapsedNanos / 1_000_000_000f);
         for (ArrayList<GameObject> gameObjects : layers) {
             for (GameObject gobj : gameObjects) { gobj.update(); }
         }
+    }
+
+    public ArrayList<GameObject> objectsAt(Layer layer) {
+        return layers.get(layer.ordinal());
     }
 
     public void add(Layer layer, GameObject gameObject) {
