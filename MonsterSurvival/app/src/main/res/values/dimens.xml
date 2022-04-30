@@ -3,4 +3,5 @@
     <dimen name="player_radius">30dp</dimen>
     <dimen name="player_speed">10dp</dimen>
     <dimen name="player_health">3</dimen>
+    <dimen name="bg_speed_lobby">10dp</dimen>
 </resources>

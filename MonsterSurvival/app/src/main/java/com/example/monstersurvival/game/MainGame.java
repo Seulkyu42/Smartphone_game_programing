@@ -3,6 +3,7 @@ package com.example.monstersurvival.game;
 import android.graphics.Canvas;
 import android.graphics.RectF;
 
+import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.GameObject;
 import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.Metrics;
@@ -18,9 +19,6 @@ public class MainGame {
     }
 
     public float frameTime;
-
-    private MainGame(){
-    }
 
     private ArrayList<GameObject> objects = new ArrayList<>();
 
@@ -43,6 +41,7 @@ public class MainGame {
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);
 
+        add(Layer.bg1, new HorizonScrollBackground(R.mipmap.background_high, Metrics.size(R.dimen.bg_speed_lobby)));
         add(Layer.cntPlayer, player);
 
     }

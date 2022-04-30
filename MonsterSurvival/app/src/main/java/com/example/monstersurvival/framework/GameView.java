@@ -15,6 +15,8 @@ public class GameView extends View implements Choreographer.FrameCallback {
 
     public static GameView view;
 
+    private long lastTimeNanos;
+    private int framesPerSecond;
     private boolean isInitialized;
     private boolean running;
 
@@ -33,27 +35,36 @@ public class GameView extends View implements Choreographer.FrameCallback {
 
         if(!isInitialized){
             initView();
-            running = true;
             isInitialized = true;
+            running = true;
             Choreographer.getInstance().postFrameCallback(this);
         }
-    }
-
-    private void initView() {
-        view = this;
-
-        MainGame game = MainGame.getInstance();
-        game.init();
-
-        Choreographer.getInstance().postFrameCallback(this);
-
     }
 
     @Override
     public void doFrame(long currentTimeNanos) {
         if(!running){
-            // 로그부분 패스
+            return;
         }
+        long now = currentTimeNanos;
+        if (lastTimeNanos == 0) {
+            lastTimeNanos = now;
+        }
+        int elapsed = (int) (now - lastTimeNanos);
+        if (elapsed != 0) {
+            framesPerSecond = 1_000_000_000 / elapsed;
+            lastTimeNanos = now;
+            MainGame game = MainGame.getInstance();
+            game.update(elapsed);
+            invalidate();
+        }
+        Choreographer.getInstance().postFrameCallback(this);
+    }
+
+    private void initView() {
+        view = this;
+
+        MainGame.getInstance().init();
     }
 
     @Override
@@ -68,6 +79,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
     public void resumeGame() {
         if (isInitialized && !running) {
             running = true;
+            lastTimeNanos = 0;
             Choreographer.getInstance().postFrameCallback(this);
         }
     }
