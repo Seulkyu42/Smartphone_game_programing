@@ -1,5 +1,10 @@
 package com.example.monstersurvival.app;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +13,7 @@ import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.game.MainGame;
 
 public class GameActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +24,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onPause() {
         GameView.view.pauseGame();
         super.onPause();
-    }
+    };
 
     @Override
     protected void onResume() {
