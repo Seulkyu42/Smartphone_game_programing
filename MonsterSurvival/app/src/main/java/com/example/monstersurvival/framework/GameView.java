@@ -4,6 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Choreographer;
@@ -13,6 +16,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.example.monstersurvival.game.MainGame;
+import com.example.monstersurvival.game.Player;
 
 public class GameView extends View implements Choreographer.FrameCallback {
 
@@ -23,7 +27,6 @@ public class GameView extends View implements Choreographer.FrameCallback {
     private int framesPerSecond;
     private boolean isInitialized;
     private boolean running;
-
 
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -38,6 +41,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
         Metrics.height = h;
 
         if(!isInitialized){
+
             initView();
             isInitialized = true;
             running = true;
@@ -70,6 +74,8 @@ public class GameView extends View implements Choreographer.FrameCallback {
         fpsPaint.setColor(Color.BLUE);
         fpsPaint.setTextSize(50);
     }
+
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

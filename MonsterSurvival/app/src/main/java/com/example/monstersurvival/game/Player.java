@@ -24,12 +24,6 @@ public class Player extends Sprite {
     private int health;
     private int coin;
 
-    private float xPos, xAccel, xVel = 0.0f;
-    private float yPos, yAccel, yVel = 0.0f;
-    private float xMax, yMax;
-    private SensorManager sensorManager;
-
-
     // init
     public Player(float x,float y){
         super(x,y,R.dimen.player_radius, R.mipmap.player_image);
@@ -37,43 +31,16 @@ public class Player extends Sprite {
         speed = R.dimen.player_speed; //dimen에 넣을예정
         health = R.dimen.player_health;
 
-        xMax = Metrics.width;
-        yMax = Metrics.height;
-    }
-
-    public void onSensorChanged(SensorEvent sensorEvent) {
-        if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            xAccel = sensorEvent.values[0];
-            yAccel = -sensorEvent.values[1];
-            update();
-        }
     }
 
 
-    public void update(){
+    public void update(float x, float y){
         float frameTime = MainGame.getInstance().frameTime;
         if (px == 0)
             return;
 
-        xVel += (xAccel * frameTime);
-        yVel += (yAccel * frameTime);
-
-        float xS = (xVel / 2) * frameTime;
-        float yS = (yVel / 2) * frameTime;
-
-        px -= xS;
-        py -= yS;
-
-        if (xPos > xMax) {
-            xPos = xMax;
-        } else if (xPos < 0) {
-            xPos = 0;
-        }
-        if (yPos > yMax) {
-            yPos = yMax;
-        } else if (yPos < 0) {
-            yPos = 0;
-        }
+        px = x;
+        py = y;
     }
 
     public void draw(Canvas canvas){
