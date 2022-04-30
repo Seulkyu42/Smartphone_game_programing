@@ -91,7 +91,7 @@ public class MainGame {
             }
         });
     }
-    
+
     public int objectCount() {
         int count = 0;
         for (ArrayList<GameObject> gameObjects : layers) {
