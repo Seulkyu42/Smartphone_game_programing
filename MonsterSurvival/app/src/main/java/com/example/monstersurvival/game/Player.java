@@ -7,12 +7,15 @@ import android.graphics.Canvas;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
+import android.util.Log;
 
 import com.example.monstersurvival.R;
+import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.Metrics;
 import com.example.monstersurvival.framework.Sprite;
 
 public class Player extends Sprite {
+    private static final String TAG = GameView.class.getSimpleName();
     private Bitmap playerBitmap;
     private RectF playerRect = new RectF();
 
@@ -41,6 +44,9 @@ public class Player extends Sprite {
 
         px = x;
         py = y;
+        Log.d(TAG, "x : "+px);
+        Log.d(TAG, "y : "+py);
+
     }
 
     public void draw(Canvas canvas){
