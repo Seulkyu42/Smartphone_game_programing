@@ -6,16 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".app.MainActivity">
 
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/background_high">
+
+    </ImageView>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@mipmap/logo"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="100dp" />
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:gravity="bottom"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+        </TextView>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="right"
             android:onClick="onBtnStart"
             android:text="Start Game"
             android:textSize="30sp" />
@@ -23,14 +45,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="right"
             android:text="StageSelect"
             android:textSize="30sp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="right"
             android:text="Language"
             android:textSize="30sp" />
         <!--        소리 설정 버튼-->
@@ -43,5 +65,6 @@
         <!--            android:layout_gravity="center"-->
         <!--            />-->
     </LinearLayout>
+
 
 </RelativeLayout>
