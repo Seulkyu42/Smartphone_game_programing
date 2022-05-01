@@ -37,19 +37,24 @@ public class Player extends Sprite {
     }
 
 
+    public void draw(Canvas canvas){
+        canvas.drawBitmap(bitmap,null, dstRect,null);
+        Log.d(TAG, "draw "+dstRect);
+    }
+
     public void update(float x, float y){
         float frameTime = MainGame.getInstance().frameTime;
-        if (px == 0)
-            return;
 
-        px = x;
-        py = y;
-        Log.d(TAG, "x : "+px);
-        Log.d(TAG, "y : "+py);
+        px = x / 2;
+        py = y / 2;
 
+        dstRect.offset(px,py);
+        Log.d(TAG, "update"+dstRect);
+//        Log.d(TAG, "x : "+px);
+//        Log.d(TAG, "y : "+py);
     }
 
-    public void draw(Canvas canvas){
-        canvas.drawBitmap(bitmap,px,py,null);
-    }
+
+
+
 }

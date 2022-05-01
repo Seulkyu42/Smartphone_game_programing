@@ -2,6 +2,7 @@ package com.example.monstersurvival.game;
 
 import android.graphics.Canvas;
 import android.graphics.RectF;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.example.monstersurvival.R;
@@ -22,6 +23,7 @@ public class MainGame {
     public float frameTime;
 
     private ArrayList<GameObject> objects = new ArrayList<>();
+    private static final String TAG = GameView.class.getSimpleName();
 
     private static MainGame singleton;
     private Player player;
