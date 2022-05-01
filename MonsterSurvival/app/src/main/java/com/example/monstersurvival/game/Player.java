@@ -17,7 +17,6 @@ import com.example.monstersurvival.framework.Sprite;
 public class Player extends Sprite {
     private static final String TAG = GameView.class.getSimpleName();
     private Bitmap playerBitmap;
-    private RectF playerRect = new RectF();
 
     private float px; //Player X
     private float py; //Player Y
@@ -36,25 +35,30 @@ public class Player extends Sprite {
 
     }
 
-
     public void draw(Canvas canvas){
         canvas.drawBitmap(bitmap,null, dstRect,null);
-        Log.d(TAG, "draw "+dstRect);
+        //Log.d(TAG, "draw "+dstRect);
     }
 
     public void update(float x, float y){
-        float frameTime = MainGame.getInstance().frameTime;
+        // 메인게임에서 프레임 타임 씀 이미
+        //float frameTime = MainGame.getInstance().frameTime;
 
-        px = x / 2;
-        py = y / 2;
+        this.px = x;
+        this.py = y;
 
         dstRect.offset(px,py);
-        Log.d(TAG, "update"+dstRect);
+        //Log.d(TAG, "update"+dstRect);
 //        Log.d(TAG, "x : "+px);
 //        Log.d(TAG, "y : "+py);
     }
 
 
-
-
+    public void debugTouch(float x, float y) {
+        this.px = x;
+        this.py = y;
+        Log.d(TAG,"X" + px);
+        Log.d(TAG,"Y" + py);
+        dstRect.offset(px,py);
+    }
 }

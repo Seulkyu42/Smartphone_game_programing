@@ -65,6 +65,8 @@ public class MainGame {
             case MotionEvent.ACTION_MOVE:
                 float x = event.getX();
                 float y = event.getY();
+
+                player.debugTouch(x,y);
                 return true;
         }
         return false;
