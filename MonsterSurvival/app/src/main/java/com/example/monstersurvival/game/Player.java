@@ -44,7 +44,8 @@ public class Player extends Sprite {
         this.px += dx;
         this.py += dy;
 
-        dstRect.set(px-30,py-30,px+30,py+30);
+        dstRect.set(px-radius,py-radius,
+                px+radius,py+radius);
 //        dstRect.offset(px,py);
     }
 
@@ -53,9 +54,9 @@ public class Player extends Sprite {
         this.px = dx;
         this.py = dy;
 
-        dstRect.set(px-30,py-30,px+30,py+30);
-//        dstRect.set(px-R.dimen.player_radius/2,py-R.dimen.player_radius/2,
-//                px+R.dimen.player_radius/2,py+R.dimen.player_radius/2);
+        //dstRect.set(px-30,py-30,px+30,py+30);
+        dstRect.set(px-radius,py-radius,
+                px+radius,py+radius);
         Log.d(TAG, "Touch"+dstRect);
     }
 }
