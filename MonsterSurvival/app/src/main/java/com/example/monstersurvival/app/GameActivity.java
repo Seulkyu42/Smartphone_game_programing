@@ -38,6 +38,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         xMax = (float) size.x -100;
         yMax = (float) size.y -100;
+
         xPos = xMax / 2;
         yPos = yMax / 2;
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -48,7 +49,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onStart() {
         super.onStart();
-        sensorManager.registerListener((SensorEventListener) this, sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), SensorManager.SENSOR_DELAY_GAME);
+        sensorManager.registerListener((SensorEventListener) this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_GAME);
     }
     @Override
     protected void onStop() {
@@ -77,7 +78,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        if (sensorEvent.sensor.getType() == Sensor.TYPE_GYROSCOPE) {
+        if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             xAccel = sensorEvent.values[0];
             yAccel = -sensorEvent.values[1];
 
@@ -90,26 +91,24 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         float frameTime = MainGame.getInstance().frameTime;
         Player player = new Player(xPos,yPos);
 
-        xVel += (xAccel * frameTime);
-        yVel += (yAccel * frameTime);
+        xVel += (xAccel * frameTime) * R.dimen.player_speed;
+        yVel += (yAccel * frameTime) * R.dimen.player_speed;
 
-        float xS = (xVel / 2) * frameTime;
-        float yS = (yVel / 2) * frameTime;
+        float xS = (xVel / 2);
+        float yS = (yVel / 2);
 
         xPos -= xS;
         yPos -= yS;
-
-
-        if (xPos > xMax) {
-            xPos = xMax;
-        } else if (xPos < 0) {
-            xPos = 0;
-        }
-        if (yPos > yMax) {
-            yPos = yMax;
-        } else if (yPos < 0) {
-            yPos = 0;
-        }
+//        if (xPos > xMax) {
+//            xPos = xMax;
+//        } else if (xPos < 0) {
+//            xPos = 0;
+//        }
+//        if (yPos > yMax) {
+//            yPos = yMax;
+//        } else if (yPos < 0) {
+//            yPos = 0;
+//        }
         player.update(xPos,yPos);
 
     }

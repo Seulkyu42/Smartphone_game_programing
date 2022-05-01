@@ -41,15 +41,11 @@ public class Player extends Sprite {
     }
 
     public void update(float dx, float dy){
-        this.px = dx;
-        this.py = dy;
+        this.px += dx;
+        this.py += dy;
 
         dstRect.set(px-30,py-30,px+30,py+30);
-        //dstRect.offset(px,py);
-        //Log.d(TAG, "update"+dstRect);
-        Log.d(TAG, "Touch"+dstRect);
-//        Log.d(TAG, "x : "+px);
-//        Log.d(TAG, "y : "+py);
+//        dstRect.offset(px,py);
     }
 
 

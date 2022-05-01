@@ -49,7 +49,7 @@ public class MainGame {
 
         //add(Layer.ui, null);
 
-        add(Layer.bg1, new HorizonScrollBackground(R.mipmap.background_high, Metrics.size(R.dimen.bg_speed_lobby)));
+        add(Layer.bg1, new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
 
     }
 
