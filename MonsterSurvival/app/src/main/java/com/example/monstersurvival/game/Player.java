@@ -40,12 +40,9 @@ public class Player extends Sprite {
         //Log.d(TAG, "draw "+dstRect);
     }
 
-    public void update(float x, float y){
-        // 메인게임에서 프레임 타임 씀 이미
-        //float frameTime = MainGame.getInstance().frameTime;
-
-        this.px = x;
-        this.py = y;
+    public void update(float dx, float dy){
+        this.px = dx;
+        this.py = dy;
 
         dstRect.offset(px,py);
         //Log.d(TAG, "update"+dstRect);
@@ -54,18 +51,12 @@ public class Player extends Sprite {
     }
 
 
-    public void debugTouch(float tx, float ty) {
-        this.px = tx;
-        this.py = ty;
+    public void debugTouch(float dx, float dy) {
+        this.px = dx;
+        this.py = dy;
         Log.d(TAG,"X" + this.px);
         Log.d(TAG,"Y" + this.py);
         dstRect.offset(px,py);
-
-        if (px < x) {
-            px = -px;
-        }
-        if (py < y) {
-            py = -py;
-        }
+        Log.d(TAG, "Touch"+dstRect);
     }
 }

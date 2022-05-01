@@ -40,5 +40,4 @@ public class Sprite implements GameObject {
     public void draw(Canvas canvas) {
         canvas.drawBitmap(bitmap, null, dstRect, null);
     }
-
 }
