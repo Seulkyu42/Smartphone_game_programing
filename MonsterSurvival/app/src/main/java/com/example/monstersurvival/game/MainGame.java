@@ -29,11 +29,11 @@ public class MainGame {
 
     private static MainGame singleton;
     private Player player;
-
+    private Life life;
     /////////////////////////// 레이어
     protected ArrayList<ArrayList<GameObject>> layers;
     public enum Layer {
-        bg1, player,ui,COUNT
+        bg1, player,ui,health,COUNT
     }
 
     public static void clear() {
@@ -43,11 +43,12 @@ public class MainGame {
     public void init(){
         initLayers(Layer.COUNT.ordinal());
 
+        life = new Life(Metrics.width/2,Metrics.height/2);
+        //add(Layer.health, life);
+
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);
         add(Layer.player, player);
-
-        //add(Layer.ui, null);
 
         add(Layer.bg1, new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
 

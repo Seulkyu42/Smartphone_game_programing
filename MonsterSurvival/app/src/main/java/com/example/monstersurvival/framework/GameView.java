@@ -15,6 +15,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import com.example.monstersurvival.R;
 import com.example.monstersurvival.game.MainGame;
 import com.example.monstersurvival.game.Player;
 
@@ -86,6 +87,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
     @Override
     protected void onDraw(Canvas canvas) {
         MainGame.getInstance().draw(canvas);
+
         canvas.drawText("FPS:" + framesPerSecond, framesPerSecond * 10, 100, fpsPaint);
     }
 
