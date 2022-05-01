@@ -54,11 +54,18 @@ public class Player extends Sprite {
     }
 
 
-    public void debugTouch(float x, float y) {
-        this.px = x;
-        this.py = y;
-        Log.d(TAG,"X" + px);
-        Log.d(TAG,"Y" + py);
+    public void debugTouch(float tx, float ty) {
+        this.px = tx;
+        this.py = ty;
+        Log.d(TAG,"X" + this.px);
+        Log.d(TAG,"Y" + this.py);
         dstRect.offset(px,py);
+
+        if (px < x) {
+            px = -px;
+        }
+        if (py < y) {
+            py = -py;
+        }
     }
 }
