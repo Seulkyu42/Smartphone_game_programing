@@ -2,6 +2,8 @@ package com.example.monstersurvival.game;
 
 import android.graphics.Canvas;
 import android.graphics.RectF;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
 import android.util.Log;
 import android.view.MotionEvent;
 

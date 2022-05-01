@@ -13,6 +13,7 @@ import android.view.Display;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.Metrics;
 import com.example.monstersurvival.game.MainGame;

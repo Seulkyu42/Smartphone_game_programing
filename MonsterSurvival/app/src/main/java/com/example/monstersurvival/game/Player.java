@@ -44,8 +44,10 @@ public class Player extends Sprite {
         this.px = dx;
         this.py = dy;
 
-        dstRect.offset(px,py);
+        dstRect.set(px-30,py-30,px+30,py+30);
+        //dstRect.offset(px,py);
         //Log.d(TAG, "update"+dstRect);
+        Log.d(TAG, "Touch"+dstRect);
 //        Log.d(TAG, "x : "+px);
 //        Log.d(TAG, "y : "+py);
     }
@@ -54,9 +56,10 @@ public class Player extends Sprite {
     public void debugTouch(float dx, float dy) {
         this.px = dx;
         this.py = dy;
-        Log.d(TAG,"X" + this.px);
-        Log.d(TAG,"Y" + this.py);
-        dstRect.offset(px,py);
+
+        dstRect.set(px-30,py-30,px+30,py+30);
+//        dstRect.set(px-R.dimen.player_radius/2,py-R.dimen.player_radius/2,
+//                px+R.dimen.player_radius/2,py+R.dimen.player_radius/2);
         Log.d(TAG, "Touch"+dstRect);
     }
 }
