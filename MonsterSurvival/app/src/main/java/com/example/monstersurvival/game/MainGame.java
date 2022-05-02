@@ -30,10 +30,11 @@ public class MainGame {
     private static MainGame singleton;
     private Player player;
     private Life life;
+    private Button pausebutton;
     /////////////////////////// 레이어
     protected ArrayList<ArrayList<GameObject>> layers;
     public enum Layer {
-        bg1, player,score,health,COUNT
+        bg1, player,score,pausebutton,health,COUNT
     }
 
     public static void clear() {
@@ -47,6 +48,9 @@ public class MainGame {
         // 교수님께 질문 -> 라이프 레이어 추가시 FPS 0이되고 화면에 아무것도 안뜸뜸
         life = new Life(Metrics.width/2,Metrics.height/2);
         add(Layer.health, life);
+
+        pausebutton = new Button(Metrics.width/2,Metrics.height/2);
+        add(Layer.pausebutton, pausebutton);
 
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);

@@ -64,8 +64,8 @@ public class Player extends Sprite {
             this.px += Math.abs(xSpeed * elapsedTime) > 5 ? xSpeed*elapsedTime : 0;
             this.py -= Math.abs(ySpeed * elapsedTime) > 5 ? ySpeed*elapsedTime : 0;
 
-            Log.d(TAG, "xSpeed : " + xSpeed);
-            Log.d(TAG, "ySpeed : " + ySpeed);
+//            Log.d(TAG, "xSpeed : " + xSpeed);
+//            Log.d(TAG, "ySpeed : " + ySpeed);
 
         }
 
@@ -90,6 +90,6 @@ public class Player extends Sprite {
         //dstRect.set(px-30,py-30,px+30,py+30);
         dstRect.set(px-radius,py-radius,
                 px+radius,py+radius);
-        Log.d(TAG, "Touch"+dstRect);
+//        Log.d(TAG, "Touch"+dstRect);
     }
 }
