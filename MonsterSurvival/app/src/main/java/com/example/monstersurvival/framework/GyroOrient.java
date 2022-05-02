@@ -21,6 +21,7 @@ public class GyroOrient implements SensorEventListener {
     }
 
     private float[] startOrientation = null;
+
     public float[] getStartOrientation() {
         return startOrientation;
     }
