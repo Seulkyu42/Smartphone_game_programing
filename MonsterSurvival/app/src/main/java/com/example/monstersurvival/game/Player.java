@@ -32,7 +32,8 @@ public class Player extends Sprite {
         coin = 0; // 바뀔건데 dimen에 넣어도 괜찮은가
         speed = R.dimen.player_speed; //dimen에 넣을예정
         health = R.dimen.player_health;
-
+        px = x;
+        py = y;
     }
 
     public void draw(Canvas canvas){
@@ -45,6 +46,9 @@ public class Player extends Sprite {
     public void update(float dx, float dy){
         this.px += dx;
         this.py += dy;
+
+        Log.d(TAG, "x : " + px);
+        Log.d(TAG, "y : " + py);
 
         dstRect.set(px-radius,py-radius,
                 px+radius,py+radius);
