@@ -16,6 +16,7 @@ public class GyroOrient implements SensorEventListener {
     private float[] magOutput;
 
     private float[] orientation = new float[3];
+
     public float[] getOrientation(){
         return orientation;
     }

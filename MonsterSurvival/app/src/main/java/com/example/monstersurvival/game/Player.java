@@ -34,11 +34,16 @@ public class Player extends Sprite {
     // init
     public Player(float x,float y){
         super(x,y,R.dimen.player_radius, R.mipmap.player_image);
-        coin = 0; // 바뀔건데 dimen에 넣어도 괜찮은가
+        //coin = 0; // 바뀔건데 dimen에 넣어도 괜찮은가
         speed = R.dimen.player_speed; //dimen에 넣을예정
         health = R.dimen.player_health;
+
         px = x;
         py = y;
+
+//        orientationData = new GyroOrient();
+//        orientationData.register();
+//        frameTime = System.currentTimeMillis();
     }
 
     public void draw(Canvas canvas){
@@ -64,16 +69,16 @@ public class Player extends Sprite {
         int elapsedTime = (int)(System.currentTimeMillis() - frameTime);
         frameTime = System.currentTimeMillis();
 
-        if(orientationData.getOrientation() != null && orientationData.getStartOrientation() != null) {
-            float pitch = orientationData.getOrientation()[1] - orientationData.getStartOrientation()[1];
-            float roll = orientationData.getOrientation()[2] - orientationData.getStartOrientation()[2];
-
-            float xSpeed = 2 * roll * Constants.SCREEN_WIDTH/1000f;
-            float ySpeed = pitch *  Constants.SCREEN_HEIGHT/1000f;
-
-            this.px += Math.abs(xSpeed * elapsedTime) > 5 ? xSpeed*elapsedTime : 0;
-            this.py -= Math.abs(ySpeed * elapsedTime) > 5 ? ySpeed*elapsedTime : 0;
-        }
+//        if(orientationData.getOrientation() != null && orientationData.getStartOrientation() != null) {
+//            float pitch = orientationData.getOrientation()[1] - orientationData.getStartOrientation()[1];
+//            float roll = orientationData.getOrientation()[2] - orientationData.getStartOrientation()[2];
+//
+//            float xSpeed = 2 * roll * Constants.SCREEN_WIDTH/1000f;
+//            float ySpeed = pitch *  Constants.SCREEN_HEIGHT/1000f;
+//
+//            this.px += Math.abs(xSpeed * elapsedTime) > 5 ? xSpeed*elapsedTime : 0;
+//            this.py -= Math.abs(ySpeed * elapsedTime) > 5 ? ySpeed*elapsedTime : 0;
+//        }
 
         if(this.px < 0)
             this.px = 0;
@@ -83,6 +88,8 @@ public class Player extends Sprite {
             this.py = 0;
         else if(this.py > Constants.SCREEN_HEIGHT)
             this.py = Constants.SCREEN_HEIGHT;
+
+
     }
 
 
