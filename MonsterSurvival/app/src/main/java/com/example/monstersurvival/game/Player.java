@@ -44,10 +44,7 @@ public class Player extends Sprite {
         canvas.drawBitmap(bitmap,null, dstRect,null);
     }
 
-
-    // 교수님께 질문 -> 각 값들을 받고, 변경되는거 까지 확인했는데 dstRect.set이 작동을 안함
     public void update(){
-        //float frameTime = MainGame.getInstance().frameTime;
 
         if(frameTime < Metrics.INIT_TIME)
             frameTime = Metrics.INIT_TIME;
