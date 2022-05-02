@@ -23,6 +23,9 @@ public class Life implements GameObject {
         lifeY= y;
     }
 
+
+    // 체력 부분 실시간으로 갱신되게 게임내에서 확인
+    // 교수님께 질문 -> Dimen으로 뺀 값들을 런타임 중 조정 가능한지
     @Override
     public void update() {
         lifeCount = R.dimen.player_health;

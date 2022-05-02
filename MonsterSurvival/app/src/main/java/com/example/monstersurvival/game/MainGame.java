@@ -43,7 +43,9 @@ public class MainGame {
     public void init(){
         initLayers(Layer.COUNT.ordinal());
 
-        life = new Life(Metrics.width/2,Metrics.height/2);
+
+        // 교수님께 질문 -> 라이프 레이어 추가시 FPS 0이되고 화면에 아무것도 안뜸뜸
+       life = new Life(Metrics.width/2,Metrics.height/2);
         //add(Layer.health, life);
 
         float playerY = Metrics.height/2;

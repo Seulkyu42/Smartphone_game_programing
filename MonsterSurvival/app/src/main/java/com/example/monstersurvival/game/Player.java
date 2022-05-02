@@ -40,6 +40,8 @@ public class Player extends Sprite {
         //Log.d(TAG, "draw "+dstRect);
     }
 
+
+    // 교수님께 질문 -> 각 값들을 받고, 변경되는거 까지 확인했는데 dstRect.set이 작동을 안함
     public void update(float dx, float dy){
         this.px += dx;
         this.py += dy;
