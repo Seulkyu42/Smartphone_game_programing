@@ -1,5 +1,6 @@
 package com.example.monstersurvival.framework;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.util.TypedValue;
 
@@ -8,6 +9,9 @@ import com.example.monstersurvival.framework.GameView;
 public class Metrics {
     public static int width;
     public static int height;
+
+    public static Context CURRENT_CONTEXT;
+    public static long INIT_TIME;
 
     public static float size(int dimenResId) {
         Resources res = GameView.view.getResources();

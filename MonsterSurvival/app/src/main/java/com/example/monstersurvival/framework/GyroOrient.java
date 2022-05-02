@@ -31,7 +31,7 @@ public class GyroOrient implements SensorEventListener {
     }
 
     public GyroOrient(){
-        manager = (SensorManager)Constants.CURRENT_CONTEXT.getSystemService(Context.SENSOR_SERVICE);
+        manager = (SensorManager)Metrics.CURRENT_CONTEXT.getSystemService(Context.SENSOR_SERVICE);
         accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         magnometer = manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
     }

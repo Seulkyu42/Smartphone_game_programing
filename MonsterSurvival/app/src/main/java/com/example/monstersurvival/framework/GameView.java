@@ -32,7 +32,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         view = this;
-        Constants.CURRENT_CONTEXT = context;
+        Metrics.CURRENT_CONTEXT = context;
     }
 
 
@@ -44,7 +44,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
         Metrics.height = h;
 
         if(!isInitialized){
-            Constants.INIT_TIME = System.currentTimeMillis();
+            Metrics.INIT_TIME = System.currentTimeMillis();
             initView();
             isInitialized = true;
             running = true;

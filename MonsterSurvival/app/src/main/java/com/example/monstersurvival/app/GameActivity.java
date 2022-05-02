@@ -49,11 +49,11 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onStart() {
         super.onStart();
-        sensorManager.registerListener((SensorEventListener) this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_GAME);
+        //sensorManager.registerListener((SensorEventListener) this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_GAME);
     }
     @Override
     protected void onStop() {
-        sensorManager.unregisterListener((SensorEventListener) this);
+        //sensorManager.unregisterListener((SensorEventListener) this);
         super.onStop();
     }
 
