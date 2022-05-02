@@ -109,7 +109,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 //        } else if (yPos < 0) {
 //            yPos = 0;
 //        }
-        player.update(xPos,yPos);
+        //player.update(xPos,yPos);
 
     }
 
