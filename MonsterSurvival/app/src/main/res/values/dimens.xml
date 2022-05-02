@@ -5,4 +5,8 @@
     <dimen name="player_health">3</dimen>
     <dimen name="bg_speed_lobby">10dp</dimen>
     <dimen name="bg_speed_stage1">20dp</dimen>
+    <dimen name="score_margin_right">20dp</dimen>
+    <dimen name="score_margin_top">20dp</dimen>
+    <dimen name="score_digit_width">25dp</dimen>
+    <dimen name="textSize">10sp</dimen>
 </resources>

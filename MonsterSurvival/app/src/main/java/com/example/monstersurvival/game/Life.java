@@ -3,22 +3,25 @@ package com.example.monstersurvival.game;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.RectF;
+import android.util.Log;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.BitmapPool;
 import com.example.monstersurvival.framework.GameObject;
+import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.Sprite;
 
-public class Life implements GameObject {
+public class Life extends Sprite {
 
+    private static final String TAG = GameView.class.getSimpleName();
     protected RectF lifeRect = new RectF();
-    protected Bitmap bitmap;
+    //protected Bitmap bitmap;
     int lifeCount = 0;
 
     float lifeY;
 
     public Life(float x, float y) {
-        bitmap = BitmapPool.get(R.mipmap.life);
+        super(x,y,R.dimen.player_radius, R.mipmap.life);
         lifeCount = R.dimen.player_health;
         lifeY= y;
     }
@@ -32,9 +35,10 @@ public class Life implements GameObject {
     }
 
     public void draw(Canvas canvas){
-        for(int i =0; i<lifeCount; ++i) {
-            lifeRect.offset(30 * i + 10, lifeY);
-            canvas.drawBitmap(bitmap, null, lifeRect, null);
+        for(int i =0; i<3; ++i) {
+            float lifeX = radius + radius * i;
+            dstRect.set(lifeX - radius/2,100-radius/2, lifeX+radius/2,100+radius/2);
+            canvas.drawBitmap(bitmap, null, dstRect, null);
         }
     }
 

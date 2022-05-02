@@ -20,10 +20,6 @@ public class VertScrollBackground extends Sprite {
     @Override
     public void update() {
         this.y += speed * MainGame.getInstance().frameTime;
-//        if (y > Metrics.height) {
-//            y = 0;
-//        }
-//        setDstRect(Metrics.width, height);
     }
 
     @Override
