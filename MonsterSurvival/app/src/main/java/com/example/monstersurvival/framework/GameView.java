@@ -44,7 +44,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
         Metrics.height = h;
 
         if(!isInitialized){
-
+            Constants.INIT_TIME = System.currentTimeMillis();
             initView();
             isInitialized = true;
             running = true;

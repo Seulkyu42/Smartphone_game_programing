@@ -41,9 +41,9 @@ public class Player extends Sprite {
         px = x;
         py = y;
 
-//        orientationData = new GyroOrient();
-//        orientationData.register();
-//        frameTime = System.currentTimeMillis();
+        orientationData = new GyroOrient();
+        orientationData.register();
+        frameTime = System.currentTimeMillis();
     }
 
     public void draw(Canvas canvas){
