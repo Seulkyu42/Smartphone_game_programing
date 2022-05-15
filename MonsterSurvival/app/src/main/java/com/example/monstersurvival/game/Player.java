@@ -2,6 +2,7 @@ package com.example.monstersurvival.game;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.Log;
@@ -45,6 +46,8 @@ public class Player extends Sprite implements BoxCollidable {
         frameTime = System.currentTimeMillis();
 
         //
+        rectPaint.setColor(Color.RED);
+        rectPaint.setAlpha(50);
     }
 
     public void draw(Canvas canvas){
@@ -86,7 +89,7 @@ public class Player extends Sprite implements BoxCollidable {
 
         dstRect.set(px-radius,py-radius, px+radius,py+radius);
 
-        boundingBox.set(px-radius,py+radius, px+radius,py+radius);
+        boundingBox.set(px-radius,py-radius, px+radius,py+radius);
     }
 
     @Override
