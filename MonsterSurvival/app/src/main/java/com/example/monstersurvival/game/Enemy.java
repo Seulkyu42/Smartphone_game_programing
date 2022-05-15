@@ -11,9 +11,10 @@ import com.example.monstersurvival.framework.BoxCollidable;
 import com.example.monstersurvival.framework.Metrics;
 import com.example.monstersurvival.framework.Recyclable;
 import com.example.monstersurvival.framework.RecycleBin;
+import com.example.monstersurvival.framework.Sprite;
 
 
-public class Enemy extends AnimSprite implements BoxCollidable, Recyclable {
+public class Enemy extends Sprite implements BoxCollidable, Recyclable {
     public static final float FRAMES_PER_SECOND = 10.0f;
     private static final String TAG = Enemy.class.getSimpleName();
     public static float size;
@@ -46,7 +47,7 @@ public class Enemy extends AnimSprite implements BoxCollidable, Recyclable {
         gauge.setValue(1.0f);
     }
     private Enemy(int level, float x, float speed) {
-        super(x, -size, size, size, bitmap , FRAMES_PER_SECOND, 0);
+        super(x,size,R.dimen.player_radius, R.mipmap.enemy_image);
         this.level = level;
 //        y -= radius;
 //        setDstRectWithRadius();
@@ -57,29 +58,29 @@ public class Enemy extends AnimSprite implements BoxCollidable, Recyclable {
 //                Metrics.size(R.dimen.enemy_gauge_bg_width), R.color.enemy_gauge_bg,
 //                size * 0.9f
 //        );
-        gauge.setValue(1.0f);
+        //gauge.setValue(1.0f);
         Log.d(TAG, "Created: " + this);
     }
 
     @Override
     public void update() {
-//        super.update();
+        //super.update();
 
-//        float frameTime = BaseGame.getInstance().frameTime;
-//        y += dy * frameTime;
-//        setDstRectWithRadius();
-//        boundingBox.set(dstRect);
-//        boundingBox.inset(size/16, size/16);
-//        if (dstRect.top > Metrics.height) {
-//            BaseGame.getInstance().remove(this);
-//            //recycleBin.add(this);
-//        }
+        float frameTime = MainGame.getInstance().frameTime;
+        y += dy * frameTime;
+        setDstRectWithRadius();
+        boundingBox.set(dstRect);
+        boundingBox.inset(size/16, size/16);
+        if (dstRect.top > Metrics.height) {
+            MainGame.getInstance().remove(this);
+            //recycleBin.add(this);
+        }
     }
 
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        gauge.draw(canvas, x, y + size * 0.5f);
+        //gauge.draw(canvas, x, y + size * 0.5f);
     }
 
     @Override

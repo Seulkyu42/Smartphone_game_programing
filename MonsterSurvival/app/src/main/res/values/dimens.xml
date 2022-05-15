@@ -9,4 +9,5 @@
     <dimen name="score_margin_top">20dp</dimen>
     <dimen name="score_digit_width">25dp</dimen>
     <dimen name="textSize">10sp</dimen>
+    <dimen name="enemy_initial_speed">100dp</dimen>
 </resources>
