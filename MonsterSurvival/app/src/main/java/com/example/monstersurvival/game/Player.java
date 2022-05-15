@@ -2,15 +2,18 @@ package com.example.monstersurvival.game;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.util.Log;
 
 import com.example.monstersurvival.R;
+import com.example.monstersurvival.framework.BoxCollidable;
 import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.GyroOrient;
 import com.example.monstersurvival.framework.Metrics;
 import com.example.monstersurvival.framework.Sprite;
 
-public class Player extends Sprite {
+public class Player extends Sprite implements BoxCollidable {
     private static final String TAG = GameView.class.getSimpleName();
     private Bitmap playerBitmap;
 
@@ -25,6 +28,8 @@ public class Player extends Sprite {
     private long frameTime;
     private GyroOrient orientationData;
 
+    protected RectF boundingBox = new RectF();
+    private Paint rectPaint = new Paint();
     // init
     public Player(float x,float y){
         super(x,y,R.dimen.player_radius, R.mipmap.player_image);
@@ -38,10 +43,14 @@ public class Player extends Sprite {
         orientationData = new GyroOrient();
         orientationData.register();
         frameTime = System.currentTimeMillis();
+
+        //
     }
 
     public void draw(Canvas canvas){
+
         canvas.drawBitmap(bitmap,null, dstRect,null);
+        canvas.drawRect(boundingBox, rectPaint);
     }
 
     public void update(){
@@ -77,6 +86,12 @@ public class Player extends Sprite {
 
         dstRect.set(px-radius,py-radius, px+radius,py+radius);
 
+        boundingBox.set(px-radius,py+radius, px+radius,py+radius);
+    }
+
+    @Override
+    public RectF getBoundingRect() {
+        return boundingBox;
     }
 
 
