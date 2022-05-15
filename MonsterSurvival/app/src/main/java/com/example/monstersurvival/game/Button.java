@@ -20,7 +20,7 @@ public class Button extends Sprite {
     public void update() {
         dstRect.set(Metrics.width*0.9f-radius,Metrics.height*0.05f-radius,
                 Metrics.width*0.9f+radius,Metrics.height*0.05f+radius);
-        Log.d(TAG, "dstRect : " + dstRect);
+        //Log.d(TAG, "dstRect : " + dstRect);
     }
 
     public void draw(Canvas canvas){
