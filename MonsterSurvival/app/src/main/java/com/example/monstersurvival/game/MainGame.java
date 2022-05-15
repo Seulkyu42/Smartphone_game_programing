@@ -34,7 +34,7 @@ public class MainGame {
     /////////////////////////// 레이어
     protected ArrayList<ArrayList<GameObject>> layers;
     public enum Layer {
-        bg1, player,score,pausebutton,health,COUNT
+        bg1, player,enemy,score,pausebutton,health,COUNT
     }
 
     public static void clear() {

@@ -2,6 +2,10 @@ package com.example.monstersurvival.game;
 
 import android.graphics.Canvas;
 
+import com.example.monstersurvival.R;
+import com.example.monstersurvival.framework.GameObject;
+import com.example.monstersurvival.framework.Metrics;
+
 import java.util.Random;
 
 import kr.ac.tukorea.ge.sgp02.s12345678.dragonflight.R;
@@ -42,7 +46,7 @@ public class EnemyGenerator implements GameObject {
             if (level < Enemy.MIN_LEVEL) level = Enemy.MIN_LEVEL;
             if (level > Enemy.MAX_LEVEL) level = Enemy.MAX_LEVEL;
             Enemy enemy = Enemy.get(level, tenth * i, fallSpeed);
-            MainGame.get().add(MainGame.Layer.enemy, enemy);
+            MainGame.getInstance().add(MainGame.Layer.enemy, enemy);
         }
     }
 

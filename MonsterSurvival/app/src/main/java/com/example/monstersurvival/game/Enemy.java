@@ -4,14 +4,14 @@ import android.graphics.Canvas;
 import android.graphics.RectF;
 import android.util.Log;
 
-import kr.ac.tukorea.ge.sgp02.s12345678.dragonflight.R;
-import kr.ac.tukorea.ge.sgp02.s12345678.dragonflight.framework.game.BaseGame;
-import kr.ac.tukorea.ge.sgp02.s12345678.dragonflight.framework.game.RecycleBin;
-import kr.ac.tukorea.ge.sgp02.s12345678.dragonflight.framework.interfaces.BoxCollidable;
-import kr.ac.tukorea.ge.sgp02.s12345678.dragonflight.framework.interfaces.Recyclable;
-import kr.ac.tukorea.ge.sgp02.s12345678.dragonflight.framework.objects.AnimSprite;
-import kr.ac.tukorea.ge.sgp02.s12345678.dragonflight.framework.res.BitmapPool;
-import kr.ac.tukorea.ge.sgp02.s12345678.dragonflight.framework.res.Metrics;
+import com.example.monstersurvival.R;
+import com.example.monstersurvival.framework.AnimSprite;
+import com.example.monstersurvival.framework.BitmapPool;
+import com.example.monstersurvival.framework.BoxCollidable;
+import com.example.monstersurvival.framework.Metrics;
+import com.example.monstersurvival.framework.Recyclable;
+import com.example.monstersurvival.framework.RecycleBin;
+
 
 public class Enemy extends AnimSprite implements BoxCollidable, Recyclable {
     public static final float FRAMES_PER_SECOND = 10.0f;
@@ -22,14 +22,8 @@ public class Enemy extends AnimSprite implements BoxCollidable, Recyclable {
     protected Gauge gauge;
     protected float dy;
     protected RectF boundingBox = new RectF();
-    protected static int[] bitmapIds = {
-            R.mipmap.enemy_01,R.mipmap.enemy_02,R.mipmap.enemy_03,R.mipmap.enemy_04,R.mipmap.enemy_05,
-            R.mipmap.enemy_06,R.mipmap.enemy_07,R.mipmap.enemy_08,R.mipmap.enemy_09,R.mipmap.enemy_10,
-            R.mipmap.enemy_11,R.mipmap.enemy_12,R.mipmap.enemy_13,R.mipmap.enemy_14,R.mipmap.enemy_15,
-            R.mipmap.enemy_16,R.mipmap.enemy_17,R.mipmap.enemy_18,R.mipmap.enemy_19,R.mipmap.enemy_20,
-    };
     public static final int MIN_LEVEL = 1;
-    public static final int MAX_LEVEL = bitmapIds.length;
+    public static final int MAX_LEVEL = 1;
 
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
     public static Enemy get(int level, float x, float speed) {
@@ -43,7 +37,7 @@ public class Enemy extends AnimSprite implements BoxCollidable, Recyclable {
     }
 
     private void set(int level, float x, float speed) {
-        bitmap = BitmapPool.get(bitmapIds[level - 1]);
+        bitmap = BitmapPool.get(R.mipmap.enemy_image);
         this.x = x;
         this.y = -size;
         this.dy = speed;
@@ -52,17 +46,17 @@ public class Enemy extends AnimSprite implements BoxCollidable, Recyclable {
         gauge.setValue(1.0f);
     }
     private Enemy(int level, float x, float speed) {
-        super(x, -size, size, size, bitmapIds[level - 1], FRAMES_PER_SECOND, 0);
+        super(x, -size, size, size, bitmap , FRAMES_PER_SECOND, 0);
         this.level = level;
 //        y -= radius;
 //        setDstRectWithRadius();
         dy = speed;
         life = maxLife = level * 10;
-        gauge = new Gauge(
-                Metrics.size(R.dimen.enemy_gauge_fg_width), R.color.enemy_gauge_fg,
-                Metrics.size(R.dimen.enemy_gauge_bg_width), R.color.enemy_gauge_bg,
-                size * 0.9f
-        );
+//        gauge = new Gauge(
+//                Metrics.size(R.dimen.enemy_gauge_fg_width), R.color.enemy_gauge_fg,
+//                Metrics.size(R.dimen.enemy_gauge_bg_width), R.color.enemy_gauge_bg,
+//                size * 0.9f
+//        );
         gauge.setValue(1.0f);
         Log.d(TAG, "Created: " + this);
     }
@@ -71,15 +65,15 @@ public class Enemy extends AnimSprite implements BoxCollidable, Recyclable {
     public void update() {
 //        super.update();
 
-        float frameTime = BaseGame.getInstance().frameTime;
-        y += dy * frameTime;
-        setDstRectWithRadius();
-        boundingBox.set(dstRect);
-        boundingBox.inset(size/16, size/16);
-        if (dstRect.top > Metrics.height) {
-            BaseGame.getInstance().remove(this);
-            //recycleBin.add(this);
-        }
+//        float frameTime = BaseGame.getInstance().frameTime;
+//        y += dy * frameTime;
+//        setDstRectWithRadius();
+//        boundingBox.set(dstRect);
+//        boundingBox.inset(size/16, size/16);
+//        if (dstRect.top > Metrics.height) {
+//            BaseGame.getInstance().remove(this);
+//            //recycleBin.add(this);
+//        }
     }
 
     @Override
