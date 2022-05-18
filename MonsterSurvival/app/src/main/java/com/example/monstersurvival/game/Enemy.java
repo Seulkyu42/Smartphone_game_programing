@@ -42,6 +42,7 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
     private void set(float x, float speed) {
         bitmap = BitmapPool.get(R.mipmap.enemy_image);
         life = 1;
+        speed = 30.0f;
         this.x = x;
         this.y = -size;
         this.dy = speed;
