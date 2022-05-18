@@ -33,16 +33,7 @@ public class EnemyGenerator implements GameObject {
     }
 
     private void spawn() {
-        wave++;
-        Random r = new Random();
-        float tenth = Metrics.width / 10;
-        for (int i = 1; i <= 9; i += 2) {
-            int level = (wave + 15) / 10 - r.nextInt(3);
-            if (level < Enemy.MIN_LEVEL) level = Enemy.MIN_LEVEL;
-            if (level > Enemy.MAX_LEVEL) level = Enemy.MAX_LEVEL;
-            Enemy enemy = Enemy.get(level, tenth * i, fallSpeed);
-            MainGame.getInstance().add(MainGame.Layer.enemy, enemy);
-        }
+
     }
 
     @Override
