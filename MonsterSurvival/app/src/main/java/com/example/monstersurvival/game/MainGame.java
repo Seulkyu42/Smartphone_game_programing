@@ -45,12 +45,11 @@ public class MainGame {
         initLayers(Layer.COUNT.ordinal());
 
         add(Layer.controller, new EnemyGenerator());
+        add(Layer.controller, new CollisionChecker(player));
 
         life = new Life(Metrics.width/2,Metrics.height/2);
         add(Layer.health, life);
 
-        pausebutton = new Button(Metrics.width/2,Metrics.height/2);
-        add(Layer.pausebutton, pausebutton);
 
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);

@@ -1,31 +1,58 @@
 package com.example.monstersurvival.game;
 
-import android.graphics.Canvas;
-import android.service.autofill.OnClickAction;
+import android.graphics.Bitmap;
 import android.util.Log;
+import android.view.MotionEvent;
 
-import com.example.monstersurvival.R;
-import com.example.monstersurvival.framework.GameView;
-import com.example.monstersurvival.framework.Metrics;
+import com.example.monstersurvival.framework.BitmapPool;
 import com.example.monstersurvival.framework.Sprite;
+import com.example.monstersurvival.framework.Touchable;
 
-public class Button extends Sprite {
-    private static final String TAG = GameView.class.getSimpleName();
+public class Button extends Sprite implements Touchable {
+    private static final String TAG = Button.class.getSimpleName();
+    protected final Callback callback;
+    private final Bitmap normalBitmap;
+    private Bitmap pressedBitmap;
+    private boolean pressed;
 
-    public Button(float x, float y) {
-        super(x,y, R.dimen.player_radius, R.mipmap.pause_button);
+    public enum Action {
+        pressed, released,
+    }
+    public interface Callback {
+        public boolean onTouch(Action action);
+    }
+    public Button(float x, float y, float w, float h, int bitmapResId, int pressedResId, Callback callback) {
+        super(x, y, w, h, bitmapResId);
+        normalBitmap = bitmap;
+        if (pressedResId != 0) {
+            pressedBitmap = BitmapPool.get(pressedResId);
+        }
+        this.callback = callback;
     }
 
     @Override
-    public void update() {
-        dstRect.set(Metrics.width*0.9f-radius,Metrics.height*0.05f-radius,
-                Metrics.width*0.9f+radius,Metrics.height*0.05f+radius);
-        //Log.d(TAG, "dstRect : " + dstRect);
+    public boolean onTouchEvent(MotionEvent e) {
+        float x = e.getX();
+        float y = e.getY();
+        if (!pressed && !dstRect.contains(x, y)) {
+            return false;
+        }
+        int action = e.getAction();
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                pressed = true;
+                bitmap = pressedBitmap;
+                Log.d(TAG, "Down: " + pressedBitmap);
+                callback.onTouch(Action.pressed);
+                return true;
+            case MotionEvent.ACTION_UP:
+                pressed = false;
+                bitmap = normalBitmap;
+                Log.d(TAG, "Up: " + normalBitmap);
+                return callback.onTouch(Action.released);
+            case MotionEvent.ACTION_MOVE:
+                return pressed;
+        }
+        return false;
     }
-
-    public void draw(Canvas canvas){
-        canvas.drawBitmap(bitmap,null,dstRect,null);
-    }
-
-
 }
