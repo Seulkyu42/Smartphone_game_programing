@@ -34,7 +34,11 @@ public class MainGame {
     /////////////////////////// 레이어
     protected ArrayList<ArrayList<GameObject>> layers;
     public enum Layer {
-        bg1, player,enemy,score,pausebutton,health,controller,COUNT
+        bg1, player,enemy,score,touchUi,health,controller,COUNT
+    }
+
+    public float size(float unit) {
+        return Metrics.height / 9.5f * unit;
     }
 
     public static void clear() {
@@ -56,6 +60,20 @@ public class MainGame {
         add(Layer.player, player);
 
         add(Layer.bg1, new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
+
+        float btn_x = size(1.5f);
+        float btn_y = size(8.75f);
+        float btn_w = size(8.0f / 3.0f);
+        float btn_h = size(1.0f);
+        add(Layer.touchUi, new Button(
+                btn_x, btn_y, btn_w, btn_h, R.mipmap.pause_button, R.mipmap.pause_button,
+                new Button.Callback() {
+                    @Override
+                    public boolean onTouch(Button.Action action) {
+                        if (action != Button.Action.pressed) return false;
+                        return true;
+                    }
+                }));
 
     }
 
