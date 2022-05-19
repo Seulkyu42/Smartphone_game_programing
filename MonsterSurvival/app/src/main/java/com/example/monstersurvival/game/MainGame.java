@@ -1,10 +1,6 @@
 package com.example.monstersurvival.game;
 
 import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import com.example.monstersurvival.R;
@@ -30,7 +26,7 @@ public class MainGame {
     private static MainGame singleton;
     private Player player;
     private Life life;
-    private Button pausebutton;
+
     /////////////////////////// 레이어
     protected ArrayList<ArrayList<GameObject>> layers;
     public enum Layer {

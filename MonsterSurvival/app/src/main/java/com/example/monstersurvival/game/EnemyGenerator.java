@@ -11,15 +11,11 @@ import java.util.Random;
 public class EnemyGenerator implements GameObject {
     private static final float INITIAL_SPAWN_INTERVAL = 2.0f;
     private final float spawnInterval;
-    private final float fallSpeed;
     private float elapsedTime;
-    private int wave;
 
     public EnemyGenerator() {
         this.spawnInterval = INITIAL_SPAWN_INTERVAL;
-        this.fallSpeed = Metrics.size(R.dimen.enemy_initial_speed);
         Enemy.size = Metrics.width / 5.0f * 0.9f;
-        wave = 0;
     }
 
     @Override
@@ -33,7 +29,8 @@ public class EnemyGenerator implements GameObject {
     }
 
     private void spawn() {
-
+        Enemy enemy = Enemy.get(500,30);
+        MainGame.getInstance().add(MainGame.Layer.enemy, enemy);
     }
 
     @Override
