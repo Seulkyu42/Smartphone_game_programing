@@ -24,12 +24,12 @@ public class CollisionChecker implements GameObject {
         ArrayList<GameObject> enemies = game.objectsAt(MainGame.Layer.enemy);
 
         for(GameObject enemy: enemies){
-//            if(!(enemy instanceof Enemy)){
-//                continue;
-//            }
-//            if(CollisionHelper.collides(player,(BoxCollidable) enemy)){
-//                Log.d(TAG, "Collision: ");
-//            }
+            if(!(enemy instanceof Enemy)){
+                continue;
+            }
+            if(CollisionHelper.collides(player, (BoxCollidable) enemy)){
+                Log.d(TAG, "Collision: ");
+            }
         }
     }
 

@@ -3,7 +3,7 @@ package com.example.monstersurvival.framework;
 import android.graphics.RectF;
 
 public class CollisionHelper {
-    public static boolean collides(com.example.monstersurvival.framework.BoxCollidable o1, com.example.monstersurvival.framework.BoxCollidable o2) {
+    public static boolean collides(BoxCollidable o1, BoxCollidable o2) {
         RectF r1 = o1.getBoundingRect();
         RectF r2 = o2.getBoundingRect();
 
