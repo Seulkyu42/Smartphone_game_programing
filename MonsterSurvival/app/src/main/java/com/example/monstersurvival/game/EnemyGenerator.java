@@ -12,6 +12,7 @@ public class EnemyGenerator implements GameObject {
     private static final float INITIAL_SPAWN_INTERVAL = 2.0f;
     private final float spawnInterval;
     private float elapsedTime;
+    private static Random random = new Random();
 
     public EnemyGenerator() {
         this.spawnInterval = INITIAL_SPAWN_INTERVAL;
@@ -29,8 +30,10 @@ public class EnemyGenerator implements GameObject {
     }
 
     private void spawn() {
-        Enemy enemy = Enemy.get(500,30);
-        MainGame.getInstance().add(MainGame.Layer.enemy, enemy);
+        for(int i =0; i<random.nextInt(10)+3; ++i) {
+            Enemy enemy = Enemy.get(100+(150 * i), 300);
+            MainGame.getInstance().add(MainGame.Layer.enemy, enemy);
+        }
     }
 
     @Override
