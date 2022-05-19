@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.Log;
 
@@ -30,6 +31,8 @@ public class Player extends Sprite implements BoxCollidable {
     private GyroOrient orientationData;
 
     protected RectF boundingBox = new RectF();
+    protected PointF currPosition = new PointF();
+
     private Paint rectPaint = new Paint();
     // init
     public Player(float x,float y){
@@ -88,13 +91,19 @@ public class Player extends Sprite implements BoxCollidable {
             this.py = Metrics.height;
 
         dstRect.set(px-radius,py-radius, px+radius,py+radius);
-
         boundingBox.set(px-radius,py-radius, px+radius,py+radius);
+
+        currPosition.set(px,py);
+        Log.d(TAG, "Locate" + currPosition);
     }
 
     @Override
     public RectF getBoundingRect() {
         return boundingBox;
+    }
+
+    public PointF getCurrPosition(){
+        return currPosition;
     }
 
 

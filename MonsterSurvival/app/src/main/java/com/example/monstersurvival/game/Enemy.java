@@ -46,11 +46,11 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
         this.x = x;
         this.y = -size;
         this.dy = speed;
-        boundingBox.set(x-radius,y-radius, x+radius,y+radius);
     }
 
     private Enemy(float x, float speed) {
         super(x,size,R.dimen.player_radius, R.mipmap.enemy_image);
+        set(x,speed);
         dy = speed;
     }
 
@@ -64,7 +64,8 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
         float frameTime = MainGame.getInstance().frameTime;
         y += dy * frameTime;
         setDstRectWithRadius();
-        //boundingBox.inset(size/16, size/16);
+        boundingBox.set(dstRect);
+        boundingBox.inset(size/16, size/16);
         if (dstRect.top > Metrics.height) {
             MainGame.getInstance().remove(this);
         }
