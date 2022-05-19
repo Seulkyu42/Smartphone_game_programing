@@ -1,6 +1,7 @@
 package com.example.monstersurvival.game;
 
 import android.graphics.Canvas;
+import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.Log;
 
@@ -26,7 +27,7 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
     private float rotate;
     private float speed;
     private Player player;
-
+    private PointF objPosition = new PointF();
 
 
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
@@ -48,6 +49,10 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
         this.dy = speed;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
     private Enemy(float x, float speed) {
         super(x,size,R.dimen.player_radius, R.mipmap.enemy_image);
         set(x,speed);
@@ -56,12 +61,21 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
 
     @Override
     public void update() {
+        objPosition = player.getCurrPosition();
+        float dx = objPosition.x;
+
         if (life <= 0) {
             //MainGame.getInstance().remove(MainGame.Layer.enemy);
             return;
         }
 
         float frameTime = MainGame.getInstance().frameTime;
+        if(dx >= x){
+            x += dx * frameTime;
+        } else{
+            x -= dx * frameTime;
+        }
+
         y += dy * frameTime;
         setDstRectWithRadius();
         boundingBox.set(dstRect);

@@ -30,8 +30,8 @@ public class Player extends Sprite implements BoxCollidable {
     private long frameTime;
     private GyroOrient orientationData;
 
-    protected RectF boundingBox = new RectF();
-    protected PointF currPosition = new PointF();
+    public RectF boundingBox = new RectF();
+    public PointF currPosition = new PointF();
 
     private Paint rectPaint = new Paint();
     // init

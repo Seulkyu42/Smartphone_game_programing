@@ -44,9 +44,6 @@ public class MainGame {
     public void init(){
         initLayers(Layer.COUNT.ordinal());
 
-        add(Layer.controller, new EnemyGenerator());
-        add(Layer.controller, new CollisionChecker(player));
-
         life = new Life(Metrics.width/2,Metrics.height/2);
         add(Layer.health, life);
 
@@ -54,6 +51,9 @@ public class MainGame {
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);
         add(Layer.player, player);
+
+        add(Layer.controller, new EnemyGenerator());
+        add(Layer.controller, new CollisionChecker(player));
 
         add(Layer.bg1, new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
 
@@ -142,5 +142,9 @@ public class MainGame {
             count += gameObjects.size();
         }
         return count;
+    }
+
+    public Player getPlayer(){
+        return player;
     }
 }
