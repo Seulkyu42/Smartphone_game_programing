@@ -70,12 +70,14 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
         }
 
         float frameTime = MainGame.getInstance().frameTime;
-        if(dx >= x){
-            x += 1 + dx * frameTime ;
-        } else{
-            x -= 1 + dx * frameTime;
-        }
 
+        if(y <= Metrics.height / 16) {
+            if (dx >= x) {
+                x += 1 + dx * frameTime;
+            } else {
+                x -= 1 + dx * frameTime;
+            }
+        }
         y += dy * frameTime;
         setDstRectWithRadius();
         boundingBox.set(dstRect);
