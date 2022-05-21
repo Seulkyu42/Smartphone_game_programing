@@ -19,7 +19,6 @@ public class Item1 extends Sprite implements BoxCollidable, Recyclable {
     public static float size;
     protected float dy;
     protected RectF boundingBox = new RectF();
-    public static final int LEVEL = 1;
 
     private int life;
     private float rotate;
@@ -30,18 +29,18 @@ public class Item1 extends Sprite implements BoxCollidable, Recyclable {
 
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
     public static Item1 get(float x, float speed) {
-        Item1 enemy = (Item1) RecycleBin.get(Item1.class);
-        if (enemy != null) {
-            enemy.set(x, speed);
-            return enemy;
+        Item1 item = (Item1) RecycleBin.get(Item1.class);
+        if (item != null) {
+            item.set(x, speed);
+            return item;
         }
         return new Item1(x, speed);
     }
 
     private void set(float x, float speed) {
-        bitmap = BitmapPool.get(R.mipmap.enemy_image);
+        bitmap = BitmapPool.get(R.mipmap.item_1);
         life = 1;
-        speed = 30.0f;
+        this.speed = 30.0f;
         this.x = x;
         this.y = -size;
         this.dy = speed;
@@ -52,7 +51,7 @@ public class Item1 extends Sprite implements BoxCollidable, Recyclable {
     }
 
     private Item1(float x, float speed) {
-        super(x,size,R.dimen.player_radius, R.mipmap.enemy_image);
+        super(x,size,R.dimen.player_radius, R.mipmap.item_1);
         set(x,speed);
         dy = speed;
     }
