@@ -94,7 +94,7 @@ public class Player extends Sprite implements BoxCollidable {
         boundingBox.set(px-radius,py-radius, px+radius,py+radius);
 
         currPosition.set(px,py);
-        Log.d(TAG, "Locate" + currPosition);
+        //Log.d(TAG, "Locate" + currPosition);
     }
 
     public void getHit(){

@@ -54,7 +54,7 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
     }
 
     private Enemy(float x, float speed) {
-        super(x,size,R.dimen.player_radius, R.mipmap.enemy_image);
+        super(x,size,R.dimen.enemy_radius, R.mipmap.enemy_image);
         set(x,speed);
         dy = speed;
     }

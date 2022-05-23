@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="player_radius">30dp</dimen>
+    <dimen name="enemy_radius">15dp</dimen>
+
     <dimen name="player_speed">30dp</dimen>
     <dimen name="player_health">3</dimen>
     <dimen name="bg_speed_lobby">10dp</dimen>
