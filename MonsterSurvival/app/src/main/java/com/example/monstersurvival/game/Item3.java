@@ -38,7 +38,7 @@ public class Item3 extends Sprite implements BoxCollidable, Recyclable {
     }
 
     private void set(float x, float speed) {
-        bitmap = BitmapPool.get(R.mipmap.item_1);
+        bitmap = BitmapPool.get(R.mipmap.item_3);
         life = 1;
         this.speed = 30.0f;
         this.x = x;
@@ -51,7 +51,7 @@ public class Item3 extends Sprite implements BoxCollidable, Recyclable {
     }
 
     private Item3(float x, float speed) {
-        super(x,size,R.dimen.player_radius, R.mipmap.item_1);
+        super(x,size,R.dimen.player_radius, R.mipmap.item_3);
         set(x,speed);
         dy = speed;
     }

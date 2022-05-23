@@ -30,7 +30,7 @@ public class MainGame {
     /////////////////////////// 레이어
     protected ArrayList<ArrayList<GameObject>> layers;
     public enum Layer {
-        bg1, player,enemy,score,touchUi,health,controller,COUNT
+        bg1, player,enemy,item,score,touchUi,health,controller,COUNT
     }
 
     public float size(float unit) {
@@ -53,6 +53,7 @@ public class MainGame {
         add(Layer.player, player);
 
         add(Layer.controller, new EnemyGenerator());
+        add(Layer.controller, new itemGenerator());
         add(Layer.controller, new CollisionChecker(player));
 
         add(Layer.bg1, new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));

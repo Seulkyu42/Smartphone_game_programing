@@ -34,19 +34,22 @@ public class itemGenerator implements GameObject {
         itemNumber = random.nextInt(3)+1;
 
         if(itemNumber == 1){
-            Item1 item1 = Item1.get(600,random.nextInt(500) + 300);
+            Item1 item1 = Item1.get(400,random.nextInt(500) + 300);
+            MainGame.getInstance().add(MainGame.Layer.item, item1);
         }else if(itemNumber == 2){
-
+            Item2 item2 = Item2.get(600,random.nextInt(500) + 300);
+            MainGame.getInstance().add(MainGame.Layer.item, item2);
         }else{
-
+            Item3 item3 = Item3.get(800,random.nextInt(500) + 300);
+            MainGame.getInstance().add(MainGame.Layer.item, item3);
         }
 
-        for(int i =0; i<random.nextInt(10)+3; ++i) {
-            Enemy enemy = Enemy.get(100+(150 * i), random.nextInt(500) + 300);
-            enemy.setPlayer(MainGame.getInstance().getPlayer());
-
-            MainGame.getInstance().add(MainGame.Layer.enemy, enemy);
-        }
+//        for(int i =0; i<random.nextInt(10)+3; ++i) {
+//            Enemy enemy = Enemy.get(100+(150 * i), random.nextInt(500) + 300);
+//            enemy.setPlayer(MainGame.getInstance().getPlayer());
+//
+//            MainGame.getInstance().add(MainGame.Layer.enemy, enemy);
+//        }
     }
 
     @Override
