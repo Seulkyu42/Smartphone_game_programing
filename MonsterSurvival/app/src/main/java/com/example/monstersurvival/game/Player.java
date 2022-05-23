@@ -97,6 +97,13 @@ public class Player extends Sprite implements BoxCollidable {
         Log.d(TAG, "Locate" + currPosition);
     }
 
+    public void getHit(){
+        this.health -= 1;
+        if(this.health <= 0){
+            Log.d(TAG,"GameOverTest");
+        }
+    }
+
     @Override
     public RectF getBoundingRect() {
         return boundingBox;

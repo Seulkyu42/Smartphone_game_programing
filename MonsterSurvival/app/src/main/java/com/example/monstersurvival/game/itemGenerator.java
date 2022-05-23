@@ -12,6 +12,8 @@ public class itemGenerator implements GameObject {
     private final float spawnInterval;
     private float elapsedTime;
     private static Random random = new Random();
+    private int itemNumber;
+
 
     public itemGenerator() {
         this.spawnInterval = INITIAL_SPAWN_INTERVAL;
@@ -29,6 +31,16 @@ public class itemGenerator implements GameObject {
     }
 
     private void spawn() {
+        itemNumber = random.nextInt(3)+1;
+
+        if(itemNumber == 1){
+            Item1 item1 = Item1.get(600,random.nextInt(500) + 300);
+        }else if(itemNumber == 2){
+
+        }else{
+
+        }
+
         for(int i =0; i<random.nextInt(10)+3; ++i) {
             Enemy enemy = Enemy.get(100+(150 * i), random.nextInt(500) + 300);
             enemy.setPlayer(MainGame.getInstance().getPlayer());
