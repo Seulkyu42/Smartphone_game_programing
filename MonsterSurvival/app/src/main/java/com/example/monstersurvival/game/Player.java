@@ -129,6 +129,9 @@ public class Player extends Sprite implements BoxCollidable {
         return currPosition;
     }
 
+    public boolean getIsInvincible(){
+        return isInvincible;
+    }
 
     public void debugTouch(float dx, float dy) {
         this.px = dx;
