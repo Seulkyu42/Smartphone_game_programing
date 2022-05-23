@@ -29,4 +29,12 @@ public class Metrics {
         float value = outValue.getFloat();
         return value;
     }
+
+    public static float getFloat(int dimenResourceId) {
+        Resources res = GameView.view.getResources();
+        TypedValue outValue = new TypedValue();
+        res.getValue(dimenResourceId, outValue, true);
+
+        return outValue.getFloat();
+    }
 }

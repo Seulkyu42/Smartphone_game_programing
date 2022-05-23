@@ -30,7 +30,7 @@ public class CollisionChecker implements GameObject {
             if(player.getBoundingRect()!=null &&
                     ((Enemy) enemy).getBoundingRect() !=null &&
                     CollisionHelper.collides(player, (BoxCollidable) enemy)){
-                Log.d(TAG, "Collision: ");
+                player.getHit();
             }
         }
     }

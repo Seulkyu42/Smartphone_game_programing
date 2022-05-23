@@ -24,7 +24,7 @@ public class Player extends Sprite implements BoxCollidable {
 
     // 플레이어 스텟 및 재화
     private float speed;
-    private int health;
+    private float health;
     private int coin;
 
     private long frameTime;
@@ -34,12 +34,18 @@ public class Player extends Sprite implements BoxCollidable {
     public PointF currPosition = new PointF();
 
     private Paint rectPaint = new Paint();
+
+    ////무적용////
+    private boolean isInvincible;
+    private float isInvincibleTime = 3.0f;
+    private float checkTime;
+
     // init
     public Player(float x,float y){
         super(x,y,R.dimen.player_radius, R.mipmap.player_image);
         //coin = 0; // 바뀔건데 dimen에 넣어도 괜찮은가
         speed = R.dimen.player_speed; //dimen에 넣을예정
-        health = R.dimen.player_health;
+        health = Metrics.getFloat(R.dimen.player_health);
 
         px = x;
         py = y;
@@ -75,10 +81,6 @@ public class Player extends Sprite implements BoxCollidable {
 
             this.px += Math.abs(xSpeed * elapsedTime) > 5 ? xSpeed*elapsedTime : 0;
             this.py -= Math.abs(ySpeed * elapsedTime) > 5 ? ySpeed*elapsedTime : 0;
-
-//            Log.d(TAG, "xSpeed : " + xSpeed);
-//            Log.d(TAG, "ySpeed : " + ySpeed);
-
         }
 
         if(this.px < 0)
@@ -94,12 +96,27 @@ public class Player extends Sprite implements BoxCollidable {
         boundingBox.set(px-radius,py-radius, px+radius,py+radius);
 
         currPosition.set(px,py);
+
+        float newTime = MainGame.getInstance().frameTime;
+
+        if(isInvincible == true){
+            checkTime += newTime;
+            if(checkTime > isInvincibleTime){
+                checkTime -= isInvincibleTime;
+                isInvincible = false;
+                Log.d(TAG,"무적 오프");
+            }
+        }
         //Log.d(TAG, "Locate" + currPosition);
     }
 
     public void getHit(){
-        this.health -= 1;
-        if(this.health <= 0){
+        if(isInvincible == false) {
+            Log.d(TAG,"무적 온" + health);
+            health -= 1;
+            isInvincible = true;
+        }
+        if(health <= 0){
             Log.d(TAG,"GameOverTest");
         }
     }
