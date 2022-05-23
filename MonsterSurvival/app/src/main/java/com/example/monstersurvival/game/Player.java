@@ -107,7 +107,6 @@ public class Player extends Sprite implements BoxCollidable {
                 Log.d(TAG,"무적 오프");
             }
         }
-        //Log.d(TAG, "Locate" + currPosition);
     }
 
     public void getHit(){

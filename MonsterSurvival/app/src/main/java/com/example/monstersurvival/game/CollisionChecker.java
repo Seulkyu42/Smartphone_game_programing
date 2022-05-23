@@ -31,6 +31,8 @@ public class CollisionChecker implements GameObject {
                     ((Enemy) enemy).getBoundingRect() !=null &&
                     CollisionHelper.collides(player, (BoxCollidable) enemy)){
                 player.getHit();
+
+                game.remove(enemy);
             }
         }
     }

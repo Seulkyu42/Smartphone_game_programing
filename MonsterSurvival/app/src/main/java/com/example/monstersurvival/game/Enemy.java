@@ -87,6 +87,8 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
         }
     }
 
+    public void getHit(){
+    }
 
     @Override
     public void draw(Canvas canvas) {
