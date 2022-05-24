@@ -1,14 +1,12 @@
 package com.example.monstersurvival.game;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.RectF;
 
 import com.example.monstersurvival.R;
-import com.example.monstersurvival.framework.BitmapPool;
-import com.example.monstersurvival.framework.GameObject;
-import com.example.monstersurvival.framework.Metrics;
+import com.example.monstersurvival.framework.interfaces.GameObject;
+import com.example.monstersurvival.framework.res.Metrics;
 
 public class Score implements GameObject {
     //private final Bitmap bitmap;

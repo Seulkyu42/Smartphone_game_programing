@@ -4,9 +4,9 @@ package com.example.monstersurvival.game;
 import android.graphics.Canvas;
 import android.util.Log;
 
-import com.example.monstersurvival.framework.BoxCollidable;
+import com.example.monstersurvival.framework.interfaces.BoxCollidable;
 import com.example.monstersurvival.framework.CollisionHelper;
-import com.example.monstersurvival.framework.GameObject;
+import com.example.monstersurvival.framework.interfaces.GameObject;
 
 import java.util.ArrayList;
 

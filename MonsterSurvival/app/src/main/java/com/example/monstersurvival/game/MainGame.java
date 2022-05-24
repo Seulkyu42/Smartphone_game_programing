@@ -4,9 +4,10 @@ import android.graphics.Canvas;
 import android.view.MotionEvent;
 
 import com.example.monstersurvival.R;
-import com.example.monstersurvival.framework.GameObject;
+import com.example.monstersurvival.framework.interfaces.GameObject;
 import com.example.monstersurvival.framework.GameView;
-import com.example.monstersurvival.framework.Metrics;
+import com.example.monstersurvival.framework.res.Metrics;
+import com.example.monstersurvival.framework.objects.VertScrollBackground;
 
 import java.util.ArrayList;
 
@@ -44,10 +45,6 @@ public class MainGame {
     public void init(){
         initLayers(Layer.COUNT.ordinal());
 
-        life = new Life(Metrics.width/2,Metrics.height/2);
-        add(Layer.health, life);
-
-
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);
         add(Layer.player, player);
@@ -56,8 +53,17 @@ public class MainGame {
         add(Layer.controller, new itemGenerator());
         add(Layer.controller, new CollisionChecker(player));
 
+        ////// 배경 //////
         add(Layer.bg1, new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
+        ////// 배경 //////
 
+        ////// 라이프 //////
+        life = new Life(Metrics.width/2,Metrics.height/2);
+        add(Layer.health, life);
+        life.setPlayer(player);
+        ////// 라이프 //////
+
+        ////// 일시정지 버튼 //////
         float btn_x = size(1.5f);
         float btn_y = size(8.75f);
         float btn_w = size(8.0f / 3.0f);
@@ -71,7 +77,7 @@ public class MainGame {
                         return true;
                     }
                 }));
-
+        ////// 일시정지 버튼 //////
     }
 
     private void initLayers(int count) {

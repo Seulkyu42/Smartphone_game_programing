@@ -1,9 +1,9 @@
-package com.example.monstersurvival.game;
+package com.example.monstersurvival.framework.objects;
 
 import android.graphics.Canvas;
 
-import com.example.monstersurvival.framework.Metrics;
-import com.example.monstersurvival.framework.Sprite;
+import com.example.monstersurvival.framework.res.Metrics;
+import com.example.monstersurvival.game.MainGame;
 
 
 public class HorizonScrollBackground extends Sprite {

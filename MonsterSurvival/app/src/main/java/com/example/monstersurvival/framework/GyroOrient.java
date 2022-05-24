@@ -6,6 +6,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
+import com.example.monstersurvival.framework.res.Metrics;
+
 public class GyroOrient implements SensorEventListener {
     private SensorManager manager;
     private Sensor accelerometer;
@@ -30,7 +32,7 @@ public class GyroOrient implements SensorEventListener {
     }
 
     public GyroOrient(){
-        manager = (SensorManager)Metrics.CURRENT_CONTEXT.getSystemService(Context.SENSOR_SERVICE);
+        manager = (SensorManager) Metrics.CURRENT_CONTEXT.getSystemService(Context.SENSOR_SERVICE);
         accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         magnometer = manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
     }

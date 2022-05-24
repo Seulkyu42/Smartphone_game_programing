@@ -4,20 +4,15 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Choreographer;
 import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.example.monstersurvival.R;
+import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.game.MainGame;
-import com.example.monstersurvival.game.Player;
 
 public class GameView extends View implements Choreographer.FrameCallback {
 

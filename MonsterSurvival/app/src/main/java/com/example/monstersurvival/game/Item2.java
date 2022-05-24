@@ -5,12 +5,12 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 
 import com.example.monstersurvival.R;
-import com.example.monstersurvival.framework.BitmapPool;
-import com.example.monstersurvival.framework.BoxCollidable;
-import com.example.monstersurvival.framework.Metrics;
-import com.example.monstersurvival.framework.Recyclable;
+import com.example.monstersurvival.framework.res.BitmapPool;
+import com.example.monstersurvival.framework.interfaces.BoxCollidable;
+import com.example.monstersurvival.framework.res.Metrics;
+import com.example.monstersurvival.framework.interfaces.Recyclable;
 import com.example.monstersurvival.framework.RecycleBin;
-import com.example.monstersurvival.framework.Sprite;
+import com.example.monstersurvival.framework.objects.Sprite;
 
 
 public class Item2 extends Sprite implements BoxCollidable, Recyclable {

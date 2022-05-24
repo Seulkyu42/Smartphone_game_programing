@@ -3,16 +3,14 @@ package com.example.monstersurvival.game;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.RectF;
-import android.util.Log;
 
 import com.example.monstersurvival.R;
-import com.example.monstersurvival.framework.AnimSprite;
-import com.example.monstersurvival.framework.BitmapPool;
-import com.example.monstersurvival.framework.BoxCollidable;
-import com.example.monstersurvival.framework.Metrics;
-import com.example.monstersurvival.framework.Recyclable;
+import com.example.monstersurvival.framework.res.BitmapPool;
+import com.example.monstersurvival.framework.interfaces.BoxCollidable;
+import com.example.monstersurvival.framework.res.Metrics;
+import com.example.monstersurvival.framework.interfaces.Recyclable;
 import com.example.monstersurvival.framework.RecycleBin;
-import com.example.monstersurvival.framework.Sprite;
+import com.example.monstersurvival.framework.objects.Sprite;
 
 
 public class Enemy extends Sprite implements BoxCollidable, Recyclable {

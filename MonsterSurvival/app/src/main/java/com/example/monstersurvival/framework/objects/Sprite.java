@@ -1,8 +1,12 @@
-package com.example.monstersurvival.framework;
+package com.example.monstersurvival.framework.objects;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.RectF;
+
+import com.example.monstersurvival.framework.res.BitmapPool;
+import com.example.monstersurvival.framework.res.Metrics;
+import com.example.monstersurvival.framework.interfaces.GameObject;
 
 public class Sprite implements GameObject {
     protected Bitmap bitmap;

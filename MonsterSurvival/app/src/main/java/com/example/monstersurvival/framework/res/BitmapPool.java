@@ -1,8 +1,10 @@
-package com.example.monstersurvival.framework;
+package com.example.monstersurvival.framework.res;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import com.example.monstersurvival.framework.GameView;
 
 import java.util.HashMap;
 

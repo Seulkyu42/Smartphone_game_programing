@@ -2,8 +2,8 @@ package com.example.monstersurvival.game;
 
 import android.graphics.Canvas;
 
-import com.example.monstersurvival.framework.GameObject;
-import com.example.monstersurvival.framework.Metrics;
+import com.example.monstersurvival.framework.interfaces.GameObject;
+import com.example.monstersurvival.framework.res.Metrics;
 
 import java.util.Random;
 

@@ -9,11 +9,11 @@ import android.graphics.RectF;
 import android.util.Log;
 
 import com.example.monstersurvival.R;
-import com.example.monstersurvival.framework.BoxCollidable;
+import com.example.monstersurvival.framework.interfaces.BoxCollidable;
 import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.GyroOrient;
-import com.example.monstersurvival.framework.Metrics;
-import com.example.monstersurvival.framework.Sprite;
+import com.example.monstersurvival.framework.res.Metrics;
+import com.example.monstersurvival.framework.objects.Sprite;
 
 public class Player extends Sprite implements BoxCollidable {
     private static final String TAG = GameView.class.getSimpleName();
@@ -62,7 +62,9 @@ public class Player extends Sprite implements BoxCollidable {
     public void draw(Canvas canvas){
 
         canvas.drawBitmap(bitmap,null, dstRect,null);
-        canvas.drawRect(boundingBox, rectPaint);
+
+        // 충돌체크 영역 표시
+//        canvas.drawRect(boundingBox, rectPaint);
     }
 
     public void update(){
@@ -132,6 +134,8 @@ public class Player extends Sprite implements BoxCollidable {
     public boolean getIsInvincible(){
         return isInvincible;
     }
+
+    public float getHealth(){ return health; }
 
     public void debugTouch(float dx, float dy) {
         this.px = dx;

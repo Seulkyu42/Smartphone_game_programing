@@ -2,6 +2,8 @@ package com.example.monstersurvival.framework;
 
 import android.graphics.RectF;
 
+import com.example.monstersurvival.framework.interfaces.BoxCollidable;
+
 public class CollisionHelper {
     public static boolean collides(BoxCollidable o1, BoxCollidable o2) {
         RectF r1 = o1.getBoundingRect();

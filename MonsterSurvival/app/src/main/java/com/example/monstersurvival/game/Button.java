@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.MotionEvent;
 
-import com.example.monstersurvival.framework.BitmapPool;
-import com.example.monstersurvival.framework.Sprite;
-import com.example.monstersurvival.framework.Touchable;
+import com.example.monstersurvival.framework.res.BitmapPool;
+import com.example.monstersurvival.framework.objects.Sprite;
+import com.example.monstersurvival.framework.interfaces.Touchable;
 
 public class Button extends Sprite implements Touchable {
     private static final String TAG = Button.class.getSimpleName();

@@ -1,4 +1,4 @@
-package com.example.monstersurvival.framework;
+package com.example.monstersurvival.framework.res;
 
 import android.content.Context;
 import android.content.res.Resources;
