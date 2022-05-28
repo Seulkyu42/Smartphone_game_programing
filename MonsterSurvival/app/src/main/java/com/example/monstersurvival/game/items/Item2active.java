@@ -3,6 +3,7 @@ package com.example.monstersurvival.game.items;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.util.Log;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.RecycleBin;
@@ -18,7 +19,7 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
     public static final float FRAMES_PER_SECOND = 10.0f;
     private static final String TAG = Item2active.class.getSimpleName();
     public static float size;
-    protected float dy;
+    protected float dx,dy;
     protected RectF boundingBox = new RectF();
 
     private float life;
@@ -30,7 +31,7 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
     private float speed = 0.0f;
 
     private Item2active(float x, float itemlife, float speed) {
-        super(x,size,R.dimen.item1_radius, R.mipmap.item_1_active);
+        super(x,size,R.dimen.item2_radius, R.mipmap.item_2_active);
         set(x,itemlife,speed);
     }
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
@@ -43,20 +44,28 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
         return new Item2active(x ,itemlife, speed);
     }
 
-    private void set(float x,float itemlife, float speed) {
-        objPosition = player.getCurrPosition();
-        life = itemlife;
-        this.x = objPosition.x;
-        this.y = objPosition.y;
-        this.speed = speed;
-    }
-
     public void setPlayer(Player player) {
         this.player = player;
     }
 
+    private void set(float x,float itemlife, float speed) {
+        life = itemlife;
+        this.speed = speed;
+    }
+
     @Override
     public void update() {
+        frameTime = MainGame.getInstance().frameTime;
+        if(life == Metrics.getFloat(R.dimen.item1time)){
+            objPosition = player.getCurrPosition();
+            // 처음위치 받아오기
+            this.x = objPosition.x;
+            this.y = objPosition.y;
+
+            // 처음 속도 잡아두기
+            this.dx = speed;
+            this.dy = speed;
+        }
 
         if(rotate >= 360.0f){
             rotate = 0.0f;
@@ -68,10 +77,17 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
             return;
         }
         else {
-            frameTime = MainGame.getInstance().frameTime;
             life -= frameTime;
-//            x =
-//            y =
+
+            x += dx * frameTime;
+            y += dy * frameTime;
+
+            if(x < 0 || x > Metrics.width){
+                dx = -dx;
+            } else if(y < 0 || y > Metrics.height){
+                dy = -dy;
+            }
+
             setDstRectWithRadius();
             boundingBox.set(dstRect);
             boundingBox.inset(size / 16, size / 16);
