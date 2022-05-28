@@ -18,7 +18,7 @@ public class Life extends Sprite {
     private Player player;
 
     public Life(float x, float y) {
-        super(x,y,R.dimen.player_radius, R.mipmap.life);
+        super(x,y,R.dimen.life_radius, R.mipmap.life);
         lifeY= y;
     }
 
