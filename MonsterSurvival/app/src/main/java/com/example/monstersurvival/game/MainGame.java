@@ -8,6 +8,7 @@ import com.example.monstersurvival.framework.interfaces.GameObject;
 import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.framework.objects.VertScrollBackground;
+import com.example.monstersurvival.game.items.itemGenerator;
 
 import java.util.ArrayList;
 

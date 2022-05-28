@@ -1,9 +1,11 @@
-package com.example.monstersurvival.game;
+package com.example.monstersurvival.game.items;
 
 import android.graphics.Canvas;
 
 import com.example.monstersurvival.framework.interfaces.GameObject;
 import com.example.monstersurvival.framework.res.Metrics;
+import com.example.monstersurvival.game.Enemy;
+import com.example.monstersurvival.game.MainGame;
 
 import java.util.Random;
 
@@ -46,13 +48,6 @@ public class itemGenerator implements GameObject {
             item3.setPlayer(MainGame.getInstance().getPlayer());
             MainGame.getInstance().add(MainGame.Layer.item, item3);
         }
-
-//        for(int i =0; i<random.nextInt(10)+3; ++i) {
-//            Enemy enemy = Enemy.get(100+(150 * i), random.nextInt(500) + 300);
-//            enemy.setPlayer(MainGame.getInstance().getPlayer());
-//
-//            MainGame.getInstance().add(MainGame.Layer.enemy, enemy);
-//        }
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.monstersurvival.game;
 
 
+import android.content.ClipData;
 import android.graphics.Canvas;
 import android.util.Log;
 
@@ -22,6 +23,7 @@ public class CollisionChecker implements GameObject {
     public void update() {
         MainGame game = MainGame.getInstance();
         ArrayList<GameObject> enemies = game.objectsAt(MainGame.Layer.enemy);
+        ArrayList<GameObject> items = game.objectsAt(MainGame.Layer.item);
 
         for(GameObject enemy: enemies){
             if(!(enemy instanceof Enemy)){
@@ -36,9 +38,14 @@ public class CollisionChecker implements GameObject {
                     game.remove(enemy);
                 }
                 player.getHit();
-
-
             }
+        }
+
+        for(GameObject item: items){
+            if(CollisionHelper.collides(player,(BoxCollidable) item)){
+                game.remove(item);
+            }
+            player.getItem();
         }
     }
 

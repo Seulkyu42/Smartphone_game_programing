@@ -1,4 +1,4 @@
-package com.example.monstersurvival.game;
+package com.example.monstersurvival.game.items;
 
 import android.graphics.Canvas;
 import android.graphics.PointF;
@@ -11,11 +11,13 @@ import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.framework.interfaces.Recyclable;
 import com.example.monstersurvival.framework.RecycleBin;
 import com.example.monstersurvival.framework.objects.Sprite;
+import com.example.monstersurvival.game.MainGame;
+import com.example.monstersurvival.game.Player;
 
 
-public class Item2 extends Sprite implements BoxCollidable, Recyclable {
+public class Item1 extends Sprite implements BoxCollidable, Recyclable {
     public static final float FRAMES_PER_SECOND = 10.0f;
-    private static final String TAG = Item2.class.getSimpleName();
+    private static final String TAG = Item1.class.getSimpleName();
     public static float size;
     protected float dy;
     protected RectF boundingBox = new RectF();
@@ -28,17 +30,17 @@ public class Item2 extends Sprite implements BoxCollidable, Recyclable {
 
 
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
-    public static Item2 get(float x, float speed) {
-        Item2 item = (Item2) RecycleBin.get(Item2.class);
+    public static Item1 get(float x, float speed) {
+        Item1 item = (Item1) RecycleBin.get(Item1.class);
         if (item != null) {
             item.set(x, speed);
             return item;
         }
-        return new Item2(x, speed);
+        return new Item1(x, speed);
     }
 
     private void set(float x, float speed) {
-        bitmap = BitmapPool.get(R.mipmap.item_2);
+        bitmap = BitmapPool.get(R.mipmap.item_1);
         life = 1;
         this.speed = 30.0f;
         this.x = x;
@@ -50,8 +52,8 @@ public class Item2 extends Sprite implements BoxCollidable, Recyclable {
         this.player = player;
     }
 
-    private Item2(float x, float speed) {
-        super(x,size,R.dimen.player_radius, R.mipmap.item_2);
+    private Item1(float x, float speed) {
+        super(x,size,R.dimen.player_radius, R.mipmap.item_1);
         set(x,speed);
         dy = speed;
     }

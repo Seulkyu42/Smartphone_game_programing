@@ -40,6 +40,7 @@ public class Player extends Sprite implements BoxCollidable {
     private float isInvincibleTime = 3.0f;
     private float checkTime;
 
+
     // init
     public Player(float x,float y){
         super(x,y,R.dimen.player_radius, R.mipmap.player_image);
@@ -57,6 +58,7 @@ public class Player extends Sprite implements BoxCollidable {
         //
         rectPaint.setColor(Color.RED);
         rectPaint.setAlpha(50);
+
     }
 
     public void draw(Canvas canvas){
@@ -145,5 +147,8 @@ public class Player extends Sprite implements BoxCollidable {
         dstRect.set(px-radius,py-radius,
                 px+radius,py+radius);
 //        Log.d(TAG, "Touch"+dstRect);
+    }
+
+    public void getItem() {
     }
 }
