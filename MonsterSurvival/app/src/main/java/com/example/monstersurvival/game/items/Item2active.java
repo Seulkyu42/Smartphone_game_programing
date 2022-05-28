@@ -27,25 +27,28 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
     private PointF objPosition = new PointF();
     private float frameTime = 0.0f;
     private float blink = 0.0f;
+    private float speed = 0.0f;
 
-    private Item2active(float x, float itemlife) {
+    private Item2active(float x, float itemlife, float speed) {
         super(x,size,R.dimen.item1_radius, R.mipmap.item_1_active);
-        set(x,itemlife);
+        set(x,itemlife,speed);
     }
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
-    public static Item2active get(float x, float itemlife) {
+    public static Item2active get(float x, float itemlife, float speed) {
         Item2active item = (Item2active) RecycleBin.get(Item2active.class);
         if (item != null) {
-            item.set(x,itemlife);
+            item.set(x,itemlife, speed);
             return item;
         }
-        return new Item2active(x ,itemlife);
+        return new Item2active(x ,itemlife, speed);
     }
 
-    private void set(float x,float itemlife) {
+    private void set(float x,float itemlife, float speed) {
+        objPosition = player.getCurrPosition();
         life = itemlife;
-        this.x = x;
-        this.y = -size;
+        this.x = objPosition.x;
+        this.y = objPosition.y;
+        this.speed = speed;
     }
 
     public void setPlayer(Player player) {
@@ -54,7 +57,6 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
 
     @Override
     public void update() {
-        objPosition = player.getCurrPosition();
 
         if(rotate >= 360.0f){
             rotate = 0.0f;
@@ -62,16 +64,14 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
 
         if (life <= 0.0f) {
             //MainGame.getInstance().remove(MainGame.Layer.enemy);
-
             MainGame.getInstance().remove(this);
             return;
         }
         else {
             frameTime = MainGame.getInstance().frameTime;
             life -= frameTime;
-
-            x = objPosition.x;
-            y = objPosition.y;
+//            x =
+//            y =
             setDstRectWithRadius();
             boundingBox.set(dstRect);
             boundingBox.inset(size / 16, size / 16);

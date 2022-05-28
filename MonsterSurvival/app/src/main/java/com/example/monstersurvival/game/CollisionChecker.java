@@ -12,6 +12,8 @@ import com.example.monstersurvival.framework.interfaces.GameObject;
 import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.game.items.Item1;
 import com.example.monstersurvival.game.items.Item1active;
+import com.example.monstersurvival.game.items.Item2;
+import com.example.monstersurvival.game.items.Item2active;
 import com.example.monstersurvival.game.items.itemGenerator;
 
 import java.util.ArrayList;
@@ -81,10 +83,17 @@ public class CollisionChecker implements GameObject {
             }
         }
         for(GameObject item2: items2){
+            if(!(item2 instanceof Item2)){
+                continue;
+            }
             if(CollisionHelper.collides(player,(BoxCollidable) item2)){
                 game.remove(item2);
                 player.getItem();
 
+                Item2active item2active = Item2active.get(0, Metrics.getFloat(R.dimen.item1time),
+                        Metrics.getFloat(R.dimen.item2speed));
+                item2active.setPlayer(MainGame.getInstance().getPlayer());
+                MainGame.getInstance().add(MainGame.Layer.activeitem, item2active);
             }
         }
         for(GameObject item3: items3){

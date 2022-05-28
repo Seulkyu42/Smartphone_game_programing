@@ -14,5 +14,6 @@
     <dimen name="enemy_initial_speed">100dp</dimen>
     <dimen name="life_radius">40dp</dimen>
     <dimen name="item1_radius">70dp</dimen>
-    <dimen name="item1time">10.0f</dimen>
+    <dimen name="item1time">5.0f</dimen>
+    <dimen name="item2speed">10.0f</dimen>
 </resources>
