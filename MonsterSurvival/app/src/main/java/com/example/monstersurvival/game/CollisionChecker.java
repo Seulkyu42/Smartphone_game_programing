@@ -9,6 +9,8 @@ import com.example.monstersurvival.framework.interfaces.BoxCollidable;
 import com.example.monstersurvival.framework.CollisionHelper;
 import com.example.monstersurvival.framework.interfaces.GameObject;
 import com.example.monstersurvival.framework.res.Metrics;
+import com.example.monstersurvival.game.items.Item1;
+import com.example.monstersurvival.game.items.Item1active;
 import com.example.monstersurvival.game.items.itemGenerator;
 
 import java.util.ArrayList;
@@ -48,12 +50,17 @@ public class CollisionChecker implements GameObject {
             if(CollisionHelper.collides(player,(BoxCollidable) item1)){
                 game.remove(item1);
                 player.getItem();
+
+                Item1active item1active = Item1active.get(0,10.0f);
+                item1active.setPlayer(MainGame.getInstance().getPlayer());
+                MainGame.getInstance().add(MainGame.Layer.item1, item1active);
             }
         }
         for(GameObject item2: items2){
             if(CollisionHelper.collides(player,(BoxCollidable) item2)){
                 game.remove(item2);
                 player.getItem();
+
             }
         }
         for(GameObject item3: items3){

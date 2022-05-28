@@ -3,6 +3,7 @@ package com.example.monstersurvival.game;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.util.Log;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.res.BitmapPool;
@@ -45,6 +46,7 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
         this.x = x;
         this.y = -size;
         this.dy = speed;
+
     }
 
     public void setPlayer(Player player) {

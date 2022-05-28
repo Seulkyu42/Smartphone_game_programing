@@ -3,6 +3,7 @@ package com.example.monstersurvival.game.items;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.util.Log;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.RecycleBin;
@@ -27,48 +28,52 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
     private Player player;
     private PointF objPosition = new PointF();
 
-
+    private Item1active(float x, float itemlife) {
+        super(x,size,R.dimen.item1_radius, R.mipmap.item_1_active);
+        set(x,itemlife);
+    }
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
-    public static Item1active get(float x, float speed) {
+    public static Item1active get(float x,float itemlife) {
         Item1active item = (Item1active) RecycleBin.get(Item1active.class);
         if (item != null) {
-            item.set(x, speed);
+            item.set(x,itemlife);
             return item;
         }
-        return new Item1active(x, speed);
+        return new Item1active(x ,itemlife);
     }
 
-    private void set(float x, float speed) {
-        life = 10.0f;
+    private void set(float x,float itemlife) {
+        life = 3.0f;
+        this.x = x;
+        this.y = -size;
     }
 
     public void setPlayer(Player player) {
         this.player = player;
     }
 
-    private Item1active(float x, float speed) {
-        super(x,size,R.dimen.player_radius, R.mipmap.item_1_active);
-        set(x,speed);
-        dy = speed;
-    }
-
     @Override
     public void update() {
         objPosition = player.getCurrPosition();
 
-        if (life <= 0) {
+        if (life <= 0.0f) {
             //MainGame.getInstance().remove(MainGame.Layer.enemy);
+            Log.d(TAG,"SET");
+            MainGame.getInstance().remove(this);
             return;
         }
+        else {
+            float frameTime = MainGame.getInstance().frameTime;
+            life -= frameTime;
 
-        float frameTime = MainGame.getInstance().frameTime;
-
-        y += dy * frameTime;
-        setDstRectWithRadius();
-        boundingBox.set(dstRect);
-        boundingBox.inset(size/16, size/16);
-        if (dstRect.top > Metrics.height) {
-            MainGame.getInstance().remove(this);
+            x = objPosition.x;
+            y = objPosition.y;
+            setDstRectWithRadius();
+            boundingBox.set(dstRect);
+            boundingBox.inset(size / 16, size / 16);
+            if (dstRect.top > Metrics.height) {
+                MainGame.getInstance().remove(this);
+            }
         }
     }
 
