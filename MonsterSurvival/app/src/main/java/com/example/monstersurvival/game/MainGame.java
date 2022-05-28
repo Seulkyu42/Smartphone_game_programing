@@ -32,7 +32,7 @@ public class MainGame {
     /////////////////////////// 레이어
     protected ArrayList<ArrayList<GameObject>> layers;
     public enum Layer {
-        bg1, player,enemy,item,score,touchUi,health,controller,COUNT
+        bg1, player,enemy,item1,item2,item3,score,touchUi,health,controller,COUNT
     }
 
     public float size(float unit) {

@@ -8,22 +8,25 @@ import android.util.Log;
 import com.example.monstersurvival.framework.interfaces.BoxCollidable;
 import com.example.monstersurvival.framework.CollisionHelper;
 import com.example.monstersurvival.framework.interfaces.GameObject;
+import com.example.monstersurvival.framework.res.Metrics;
+import com.example.monstersurvival.game.items.itemGenerator;
 
 import java.util.ArrayList;
 
 public class CollisionChecker implements GameObject {
     private static final String TAG = CollisionChecker.class.getSimpleName();
     private final Player player;
-
     public CollisionChecker(Player player) {
         this.player = player;
     }
-
+    public itemGenerator generator;
     @Override
     public void update() {
         MainGame game = MainGame.getInstance();
         ArrayList<GameObject> enemies = game.objectsAt(MainGame.Layer.enemy);
-        ArrayList<GameObject> items = game.objectsAt(MainGame.Layer.item);
+        ArrayList<GameObject> items1 = game.objectsAt(MainGame.Layer.item1);
+        ArrayList<GameObject> items2 = game.objectsAt(MainGame.Layer.item2);
+        ArrayList<GameObject> items3 = game.objectsAt(MainGame.Layer.item3);
 
         for(GameObject enemy: enemies){
             if(!(enemy instanceof Enemy)){
@@ -41,11 +44,23 @@ public class CollisionChecker implements GameObject {
             }
         }
 
-        for(GameObject item: items){
-            if(CollisionHelper.collides(player,(BoxCollidable) item)){
-                game.remove(item);
+        for(GameObject item1: items1){
+            if(CollisionHelper.collides(player,(BoxCollidable) item1)){
+                game.remove(item1);
+                player.getItem();
             }
-            player.getItem();
+        }
+        for(GameObject item2: items2){
+            if(CollisionHelper.collides(player,(BoxCollidable) item2)){
+                game.remove(item2);
+                player.getItem();
+            }
+        }
+        for(GameObject item3: items3){
+            if(CollisionHelper.collides(player,(BoxCollidable) item3)){
+                game.remove(item3);
+                player.getItem();
+            }
         }
     }
 
