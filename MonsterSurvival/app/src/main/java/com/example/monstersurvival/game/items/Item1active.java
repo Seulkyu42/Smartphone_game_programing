@@ -1,5 +1,6 @@
 package com.example.monstersurvival.game.items;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.RectF;
@@ -27,6 +28,8 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
     private float rotate;
     private Player player;
     private PointF objPosition = new PointF();
+    private float frameTime = 0.0f;
+    private float blink = 0.0f;
 
     private Item1active(float x, float itemlife) {
         super(x,size,R.dimen.item1_radius, R.mipmap.item_1_active);
@@ -43,7 +46,7 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
     }
 
     private void set(float x,float itemlife) {
-        life = 3.0f;
+        life = itemlife;
         this.x = x;
         this.y = -size;
     }
@@ -56,14 +59,18 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
     public void update() {
         objPosition = player.getCurrPosition();
 
+        if(rotate >= 360.0f){
+            rotate = 0.0f;
+        }else rotate += 5.0f;
+
         if (life <= 0.0f) {
             //MainGame.getInstance().remove(MainGame.Layer.enemy);
-            Log.d(TAG,"SET");
+
             MainGame.getInstance().remove(this);
             return;
         }
         else {
-            float frameTime = MainGame.getInstance().frameTime;
+            frameTime = MainGame.getInstance().frameTime;
             life -= frameTime;
 
             x = objPosition.x;
@@ -79,7 +86,13 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
 
     @Override
     public void draw(Canvas canvas) {
+        canvas.save();
+        canvas.rotate(rotate,x,y);
+
         super.draw(canvas);
+
+        canvas.restore();
+
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.graphics.Canvas;
 import android.util.Log;
 
+import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.interfaces.BoxCollidable;
 import com.example.monstersurvival.framework.CollisionHelper;
 import com.example.monstersurvival.framework.interfaces.GameObject;
@@ -39,7 +40,6 @@ public class CollisionChecker implements GameObject {
                     CollisionHelper.collides(player, (BoxCollidable) enemy)){
 
                 if(player.getIsInvincible() == false){
-                    Log.d(TAG, "S");
                     game.remove(enemy);
                 }
                 player.getHit();
@@ -47,11 +47,14 @@ public class CollisionChecker implements GameObject {
         }
 
         for(GameObject item1: items1){
+            if(!(item1 instanceof Item1)){
+                continue;
+            }
             if(CollisionHelper.collides(player,(BoxCollidable) item1)){
                 game.remove(item1);
                 player.getItem();
 
-                Item1active item1active = Item1active.get(0,10.0f);
+                Item1active item1active = Item1active.get(0, R.dimen.item1time);
                 item1active.setPlayer(MainGame.getInstance().getPlayer());
                 MainGame.getInstance().add(MainGame.Layer.item1, item1active);
             }

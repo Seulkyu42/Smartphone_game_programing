@@ -65,10 +65,10 @@ public class MainGame {
         ////// 라이프 //////
 
         ////// 일시정지 버튼 //////
-        float btn_x = size(1.5f);
-        float btn_y = size(8.75f);
-        float btn_w = size(8.0f / 3.0f);
-        float btn_h = size(1.0f);
+        float btn_x = size(4.75f);
+        float btn_y = size(0.5f);
+        float btn_w = size(0.75f);
+        float btn_h = size(0.75f);
         add(Layer.touchUi, new Button(
                 btn_x, btn_y, btn_w, btn_h, R.mipmap.pause_button, R.mipmap.pause_button,
                 new Button.Callback() {
