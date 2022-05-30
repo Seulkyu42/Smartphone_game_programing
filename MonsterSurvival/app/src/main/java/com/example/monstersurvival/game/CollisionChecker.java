@@ -1,9 +1,7 @@
 package com.example.monstersurvival.game;
 
 
-import android.content.ClipData;
 import android.graphics.Canvas;
-import android.util.Log;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.interfaces.BoxCollidable;
@@ -14,7 +12,7 @@ import com.example.monstersurvival.game.items.Item1;
 import com.example.monstersurvival.game.items.Item1active;
 import com.example.monstersurvival.game.items.Item2;
 import com.example.monstersurvival.game.items.Item2active;
-import com.example.monstersurvival.game.items.Item3active;
+import com.example.monstersurvival.game.items.Coin1;
 import com.example.monstersurvival.game.items.itemGenerator;
 
 import java.util.ArrayList;
@@ -56,6 +54,9 @@ public class CollisionChecker implements GameObject {
 
             for(GameObject activeitem: activeItems) {
                 if (CollisionHelper.collides((BoxCollidable) enemy, (BoxCollidable) activeitem)){
+                    Coin1 coin1 = Coin1.get(1,R.dimen.item2time,1);
+                    coin1.setEnemy((Enemy) enemy);
+
                     game.remove(enemy);
                 }
             }

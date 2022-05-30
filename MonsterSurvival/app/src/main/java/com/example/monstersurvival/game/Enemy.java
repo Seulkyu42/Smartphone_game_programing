@@ -27,7 +27,7 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
     private float speed;
     private Player player;
     private PointF objPosition = new PointF();
-
+    public PointF currPosition = new PointF();
 
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
     public static Enemy get(float x, float speed) {
@@ -85,6 +85,7 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
         if (dstRect.top > Metrics.height) {
             MainGame.getInstance().remove(this);
         }
+        currPosition.set(x,y);
     }
 
     public void getHit(){
@@ -103,6 +104,10 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
     @Override
     public void finish() {
 
+    }
+
+    public PointF getCurrPosition(){
+        return currPosition;
     }
 
 }

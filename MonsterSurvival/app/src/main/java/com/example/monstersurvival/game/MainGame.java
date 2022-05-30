@@ -27,6 +27,7 @@ public class MainGame {
 
     private static MainGame singleton;
     private Player player;
+    private Enemy enemy;
     private Life life;
 
     /////////////////////////// 레이어
@@ -155,4 +156,5 @@ public class MainGame {
     public Player getPlayer(){
         return player;
     }
+    public Enemy getEnemy() { return enemy;}
 }
