@@ -14,6 +14,7 @@ import com.example.monstersurvival.game.items.Item1;
 import com.example.monstersurvival.game.items.Item1active;
 import com.example.monstersurvival.game.items.Item2;
 import com.example.monstersurvival.game.items.Item2active;
+import com.example.monstersurvival.game.items.Item3active;
 import com.example.monstersurvival.game.items.itemGenerator;
 
 import java.util.ArrayList;
@@ -53,18 +54,6 @@ public class CollisionChecker implements GameObject {
                 player.getHit();
             }
 
-//            for(GameObject activeItem: activeItems){
-//                if(!(activeItem instanceof Item1active)){
-//                    continue;
-//                }
-//                if(CollisionHelper.collides(activeItem, (BoxCollidable) enemy)){
-//
-//                    if(player.getIsInvincible() == false){
-//                        game.remove(enemy);
-//                    }
-//                    player.getHit();
-//                }
-//            }
         }
 
 
@@ -89,7 +78,8 @@ public class CollisionChecker implements GameObject {
             if(CollisionHelper.collides(player,(BoxCollidable) item2)){
                 game.remove(item2);
                 player.getItem();
-                Item2active item2active = Item2active.get(0, Metrics.getFloat(R.dimen.item1time),
+
+                Item2active item2active = Item2active.get(0, Metrics.getFloat(R.dimen.item2time),
                         Metrics.getFloat(R.dimen.item2speed));
                 item2active.setPlayer(MainGame.getInstance().getPlayer());
                 MainGame.getInstance().add(MainGame.Layer.activeitem, item2active);
@@ -99,6 +89,11 @@ public class CollisionChecker implements GameObject {
             if(CollisionHelper.collides(player,(BoxCollidable) item3)){
                 game.remove(item3);
                 player.getItem();
+
+                Item3active item3active = Item3active.get(0, Metrics.getFloat(R.dimen.item3time),
+                        Metrics.getFloat(R.dimen.item3speed));
+                item3active.setPlayer(MainGame.getInstance().getPlayer());
+                MainGame.getInstance().add(MainGame.Layer.activeitem, item3active);
             }
         }
     }

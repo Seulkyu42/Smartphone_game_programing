@@ -17,4 +17,7 @@
     <dimen name="item1time">5.0f</dimen>
     <dimen name="item2speed">1000.0f</dimen>
     <dimen name="item2_radius">15dp</dimen>
+    <dimen name="item2time">10.0f</dimen>
+    <dimen name="item3time">10.0f</dimen>
+    <dimen name="item3speed">10dp</dimen>
 </resources>
