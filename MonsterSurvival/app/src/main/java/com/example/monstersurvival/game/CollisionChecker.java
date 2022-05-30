@@ -54,6 +54,11 @@ public class CollisionChecker implements GameObject {
                 player.getHit();
             }
 
+            for(GameObject activeitem: activeItems) {
+                if (CollisionHelper.collides((BoxCollidable) enemy, (BoxCollidable) activeitem)){
+                    game.remove(enemy);
+                }
+            }
         }
 
 
