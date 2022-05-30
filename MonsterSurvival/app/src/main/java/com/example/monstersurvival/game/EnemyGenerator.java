@@ -29,7 +29,7 @@ public class EnemyGenerator implements GameObject {
     }
 
     private void spawn() {
-        for(int i =0; i<random.nextInt(10)+3; ++i) {
+        for(int i =0; i<random.nextInt(20)+5; ++i) {
             Enemy enemy = Enemy.get(100+(150 * i), random.nextInt(500) + 300);
             enemy.setPlayer(MainGame.getInstance().getPlayer());
 

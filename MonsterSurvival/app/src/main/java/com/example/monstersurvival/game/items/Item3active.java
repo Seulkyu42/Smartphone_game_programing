@@ -30,7 +30,7 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
     private float speed = 0.0f;
 
     private Item3active(float x, float itemlife, float speed) {
-        super(x,size,R.dimen.item2_radius, R.mipmap.item_2_active);
+        super(x,size,R.dimen.item2_radius, R.mipmap.item_3);
         set(x,itemlife,speed);
     }
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
@@ -76,16 +76,8 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
             return;
         }
         else {
-            life -= frameTime;
 
-            x += dx * frameTime;
             y += dy * frameTime;
-
-            if(x < 0 || x > Metrics.width){
-                dx = -dx;
-            } else if(y < 0 || y > Metrics.height){
-                dy = -dy;
-            }
 
             setDstRectWithRadius();
             boundingBox.set(dstRect);

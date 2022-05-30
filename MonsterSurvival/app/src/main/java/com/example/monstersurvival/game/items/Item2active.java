@@ -55,12 +55,15 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
 
     @Override
     public void update() {
+
         frameTime = MainGame.getInstance().frameTime;
-        if(life == Metrics.getFloat(R.dimen.item1time)){
+        if(life == Metrics.getFloat(R.dimen.item2time)){
             objPosition = player.getCurrPosition();
             // 처음위치 받아오기
             this.x = objPosition.x;
             this.y = objPosition.y;
+
+            Log.d(TAG, "좌표"+x+y+objPosition.x+objPosition+y);
 
             // 처음 속도 잡아두기
             this.dx = speed;
@@ -87,6 +90,7 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
             } else if(y < 0 || y > Metrics.height){
                 dy = -dy;
             }
+
 
             setDstRectWithRadius();
             boundingBox.set(dstRect);
