@@ -24,7 +24,8 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
     protected float dy;
     protected RectF boundingBox = new RectF();
 
-    static float life = 5.0f;
+    static float setlife = 5.0f;
+    private float life = 0.0f;
     private float rotate;
     private Player player;
     private PointF objPosition = new PointF();
@@ -32,6 +33,7 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
 
     private Item1active() {
         super(10,size,R.dimen.item1_radius, R.mipmap.item_1_active);
+        set();
     }
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
     public static Item1active get() {
@@ -40,6 +42,10 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
             return item;
         }
         return new Item1active();
+    }
+
+    public void set(){
+        this.life = setlife;
     }
 
     public void setPlayer(Player player) {
@@ -87,12 +93,11 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
     }
 
     public void statUp(float life, float add){
-        this.life = life + add;
-        Log.d(TAG,"Life Set" + this.life+"life"+ life+"add" + add);
+        this.setlife = life + add;
+        Log.d(TAG,"Life Set" + this.setlife+"life"+ life+"add" + add);
     }
     public float getLife(){
-        Log.d(TAG,"Life Set" + this.life);
-        return this.life;
+        return this.setlife;
     }
 
     @Override
