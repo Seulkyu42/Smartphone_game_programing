@@ -3,6 +3,7 @@ package com.example.monstersurvival.game.items;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.util.Log;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.RecycleBin;
@@ -30,7 +31,7 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
     private float speed = 0.0f;
 
     private Item3active(float x, float itemlife, float speed) {
-        super(x,size,R.dimen.item2_radius, R.mipmap.item_3);
+        super(x,size,R.dimen.item3_radius, R.mipmap.item_3);
         set(x,itemlife,speed);
     }
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
@@ -55,7 +56,7 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
     @Override
     public void update() {
         frameTime = MainGame.getInstance().frameTime;
-        if(life == Metrics.getFloat(R.dimen.item1time)){
+        if(life == Metrics.getFloat(R.dimen.item3time)){
             objPosition = player.getCurrPosition();
             // 처음위치 받아오기
             this.x = objPosition.x;
@@ -66,10 +67,6 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
             this.dy = speed;
         }
 
-        if(rotate >= 360.0f){
-            rotate = 0.0f;
-        }else rotate += 5.0f;
-
         if (life <= 0.0f) {
             //MainGame.getInstance().remove(MainGame.Layer.enemy);
             MainGame.getInstance().remove(this);
@@ -77,7 +74,10 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
         }
         else {
 
-            y += dy * frameTime;
+            life -= frameTime;
+
+            Log.d(TAG,"Y" + y +"dy" + dy);
+            y -= dy * frameTime;
 
             setDstRectWithRadius();
             boundingBox.set(dstRect);

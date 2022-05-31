@@ -14,6 +14,8 @@ import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.game.MainGame;
 import com.example.monstersurvival.game.Player;
 
+import java.util.Random;
+
 
 public class Item2active extends Sprite implements BoxCollidable, Recyclable {
     public static final float FRAMES_PER_SECOND = 10.0f;
@@ -22,6 +24,7 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
     protected float dx,dy;
     protected RectF boundingBox = new RectF();
 
+    private static Random random = new Random();
     private float life;
     private float rotate;
     private Player player;
@@ -66,8 +69,13 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
             Log.d(TAG, "좌표"+x+y+objPosition.x+objPosition+y);
 
             // 처음 속도 잡아두기
-            this.dx = speed;
-            this.dy = speed;
+
+            if(random.nextInt(2)+1 == 1) {
+                this.dx = -speed;
+            }else this.dx = speed;
+            if(random.nextInt(2)+1 == 1) {
+                this.dy = speed;
+            }else this.dy = -speed;
         }
 
         if(rotate >= 360.0f){

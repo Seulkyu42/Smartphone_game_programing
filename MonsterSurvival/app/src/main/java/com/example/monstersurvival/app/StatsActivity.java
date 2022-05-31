@@ -40,13 +40,22 @@ public class StatsActivity extends AppCompatActivity{
         setText();
     }
 
+    public void onStat2Clicked(View view) {
+//        Item2active item2active = Item2active.get();
+//        float tempLife = item2active.getLife();
+//        item2active.statUp(tempLife,1.0f);
+
+        setText();
+    }
+
     public void setText(){
 
-        Player player = new Player(0,0);
-        int coin = player.setCoin();
+//        player = MainGame.getInstance().getPlayer();
+//        int coin = player.setCoin();
+//
+//        TextView textView = (TextView) findViewById(R.id.playergold);
+//        textView.setText("Coin : " + coin);
 
-        TextView textView = (TextView) findViewById(R.id.playergold);
-        textView.setText("Coin : " + coin);
     }
 
 }

@@ -13,9 +13,11 @@ import com.example.monstersurvival.game.items.Item1active;
 import com.example.monstersurvival.game.items.Item2;
 import com.example.monstersurvival.game.items.Item2active;
 import com.example.monstersurvival.game.items.Coin1;
+import com.example.monstersurvival.game.items.Item3active;
 import com.example.monstersurvival.game.items.itemGenerator;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class CollisionChecker implements GameObject {
     private static final String TAG = CollisionChecker.class.getSimpleName();
@@ -26,6 +28,7 @@ public class CollisionChecker implements GameObject {
     }
     public itemGenerator generator;
 
+    private static Random random = new Random();
     private Item1active item1active;
 
     @Override
@@ -94,10 +97,13 @@ public class CollisionChecker implements GameObject {
                 game.remove(item2);
                 player.getItem();
 
-                Item2active item2active = Item2active.get(0, Metrics.getFloat(R.dimen.item2time),
-                        Metrics.getFloat(R.dimen.item2speed));
-                item2active.setPlayer(MainGame.getInstance().getPlayer());
-                MainGame.getInstance().add(MainGame.Layer.activeitem, item2active);
+                for(int i =0; i < 1; ++i) {
+                    Item2active item2active = Item2active.get(0, Metrics.getFloat(R.dimen.item2time),
+                            Metrics.getFloat(R.dimen.item2speed) -
+                                    random.nextInt(500)+100);
+                    item2active.setPlayer(MainGame.getInstance().getPlayer());
+                    MainGame.getInstance().add(MainGame.Layer.activeitem, item2active);
+                }
             }
         }
         for(GameObject item3: items3){
@@ -105,10 +111,10 @@ public class CollisionChecker implements GameObject {
                 game.remove(item3);
                 player.getItem();
 
-//                Item3active item3active = Item3active.get(0, Metrics.getFloat(R.dimen.item3time),
-//                        Metrics.getFloat(R.dimen.item3speed));
-//                item3active.setPlayer(MainGame.getInstance().getPlayer());
-//                MainGame.getInstance().add(MainGame.Layer.activeitem, item3active);
+                Item3active item3active = Item3active.get(0, Metrics.getFloat(R.dimen.item3time),
+                        Metrics.getFloat(R.dimen.item3speed));
+                item3active.setPlayer(MainGame.getInstance().getPlayer());
+                MainGame.getInstance().add(MainGame.Layer.activeitem, item3active);
             }
         }
     }
