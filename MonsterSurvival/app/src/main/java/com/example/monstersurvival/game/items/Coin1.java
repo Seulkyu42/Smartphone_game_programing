@@ -78,6 +78,8 @@ public class Coin1 extends Sprite implements BoxCollidable, Recyclable {
         else {
             life -= frameTime;
 
+            y += 80.0 * frameTime;
+
             setDstRectWithRadius();
             boundingBox.set(dstRect);
             boundingBox.inset(size / 16, size / 16);
