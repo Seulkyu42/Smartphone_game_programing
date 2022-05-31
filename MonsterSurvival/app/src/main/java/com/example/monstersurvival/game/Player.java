@@ -60,6 +60,7 @@ public class Player extends Sprite implements BoxCollidable {
 
     }
 
+
     public void draw(Canvas canvas){
 
         canvas.drawBitmap(bitmap,null, dstRect,null);
@@ -146,6 +147,10 @@ public class Player extends Sprite implements BoxCollidable {
     }
 
     public void getItem() {
+    }
+
+    public int setCoin() {
+        return this.coin;
     }
 
     public void getCoin(){

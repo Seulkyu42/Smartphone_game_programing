@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 
 import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.game.MainGame;
+import com.example.monstersurvival.game.Player;
 
 public class GameView extends View implements Choreographer.FrameCallback {
 
@@ -43,6 +44,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
             initView();
             isInitialized = true;
             running = true;
+            Player player = new Player(0,0);
             Choreographer.getInstance().postFrameCallback(this);
         }
     }

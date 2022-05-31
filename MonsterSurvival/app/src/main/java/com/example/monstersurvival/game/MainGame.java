@@ -1,9 +1,11 @@
 package com.example.monstersurvival.game;
 
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.example.monstersurvival.R;
+import com.example.monstersurvival.app.StatsActivity;
 import com.example.monstersurvival.framework.interfaces.GameObject;
 import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.res.Metrics;
@@ -46,16 +48,15 @@ public class MainGame {
     }
 
     public void init(){
+        Log.d(TAG,"INITIATING");
         initLayers(Layer.COUNT.ordinal());
 
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);
         add(Layer.player, player);
-
         add(Layer.controller, new EnemyGenerator());
         add(Layer.controller, new itemGenerator());
         add(Layer.controller, new CollisionChecker(player));
-
         ////// 배경 //////
         add(Layer.bg1, new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
         ////// 배경 //////
@@ -154,8 +155,10 @@ public class MainGame {
         return count;
     }
 
+
     public Player getPlayer(){
         return player;
     }
     public Enemy getEnemy() { return enemy;}
+
 }

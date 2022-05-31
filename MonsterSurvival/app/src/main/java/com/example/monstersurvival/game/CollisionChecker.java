@@ -21,7 +21,6 @@ public class CollisionChecker implements GameObject {
     private static final String TAG = CollisionChecker.class.getSimpleName();
     private final Player player;
 
-
     public CollisionChecker(Player player) {
         this.player = player;
     }

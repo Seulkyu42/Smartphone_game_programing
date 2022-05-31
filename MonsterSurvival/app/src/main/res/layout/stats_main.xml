@@ -21,11 +21,11 @@
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="30dp"
-        android:background="@mipmap/background_high"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@mipmap/background_dark"
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="-65dp">
 
@@ -42,10 +42,21 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="1">
+
+            <TextView
+                android:id="@+id/playergold"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:text="TextView"
+                android:layout_weight="0.3">
+            </TextView>
+
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="200dp"
-                android:layout_weight="0.6">
+                android:layout_weight="0.2">
             </TextView>
 
             <ImageButton
