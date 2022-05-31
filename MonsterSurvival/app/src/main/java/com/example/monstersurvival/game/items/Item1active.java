@@ -24,31 +24,22 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
     protected float dy;
     protected RectF boundingBox = new RectF();
 
-    private float life;
+    static float life = 5.0f;
     private float rotate;
     private Player player;
     private PointF objPosition = new PointF();
     private float frameTime = 0.0f;
-    private float blink = 0.0f;
 
-    private Item1active(float x, float itemlife) {
-        super(x,size,R.dimen.item1_radius, R.mipmap.item_1_active);
-        set(x,itemlife);
+    private Item1active() {
+        super(10,size,R.dimen.item1_radius, R.mipmap.item_1_active);
     }
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
-    public static Item1active get(float x,float itemlife) {
+    public static Item1active get() {
         Item1active item = (Item1active) RecycleBin.get(Item1active.class);
         if (item != null) {
-            item.set(x,itemlife);
             return item;
         }
-        return new Item1active(x ,itemlife);
-    }
-
-    private void set(float x,float itemlife) {
-        life = itemlife;
-        this.x = x;
-        this.y = -size;
+        return new Item1active();
     }
 
     public void setPlayer(Player player) {
@@ -64,8 +55,6 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
         }else rotate += 5.0f;
 
         if (life <= 0.0f) {
-            //MainGame.getInstance().remove(MainGame.Layer.enemy);
-
             MainGame.getInstance().remove(this);
             return;
         }
@@ -88,11 +77,8 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
     public void draw(Canvas canvas) {
         canvas.save();
         canvas.rotate(rotate,x,y);
-
         super.draw(canvas);
-
         canvas.restore();
-
     }
 
     @Override
@@ -100,9 +86,19 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
         return boundingBox;
     }
 
+    public void statUp(float life, float add){
+        this.life = life + add;
+        Log.d(TAG,"Life Set" + this.life+"life"+ life+"add" + add);
+    }
+    public float getLife(){
+        Log.d(TAG,"Life Set" + this.life);
+        return this.life;
+    }
+
     @Override
     public void finish() {
 
     }
+
 
 }
