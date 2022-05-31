@@ -20,4 +20,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }
+    public void onStageSelect(View view) {
+        Intent intent = new Intent(getApplicationContext(), StatsActivity.class);
+        startActivity(intent);
+    }
+
+    public void onStats(View view) {
+    }
 }

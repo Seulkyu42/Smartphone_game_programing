@@ -37,6 +37,7 @@ public class CollisionChecker implements GameObject {
         ArrayList<GameObject> items2 = game.objectsAt(MainGame.Layer.item2);
         ArrayList<GameObject> items3 = game.objectsAt(MainGame.Layer.item3);
         ArrayList<GameObject> activeItems = game.objectsAt(MainGame.Layer.activeitem);
+        ArrayList<GameObject> coins = game.objectsAt(MainGame.Layer.coin);
 
         for(GameObject enemy: enemies){
             if(!(enemy instanceof Enemy)){
@@ -57,12 +58,20 @@ public class CollisionChecker implements GameObject {
                     Coin1 coin1 = Coin1.get(500,Metrics.getFloat(R.dimen.item2time),1);
                     coin1.setEnemy((Enemy) enemy);
                     MainGame.getInstance().add(MainGame.Layer.coin, coin1);
-
                     game.remove(enemy);
                 }
             }
         }
 
+        for(GameObject coin: coins){
+            if(!(coin instanceof Coin1)){
+                continue;
+            }
+            if(CollisionHelper.collides(player, (BoxCollidable) coin)){
+                game.remove(coin);
+                player.getCoin();
+            }
+        }
 
 
         for(GameObject item1: items1){

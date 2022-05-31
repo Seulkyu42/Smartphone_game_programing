@@ -44,7 +44,6 @@ public class Player extends Sprite implements BoxCollidable {
     // init
     public Player(float x,float y){
         super(x,y,R.dimen.player_radius, R.mipmap.player_image);
-        //coin = 0; // 바뀔건데 dimen에 넣어도 괜찮은가
         speed = R.dimen.player_speed; //dimen에 넣을예정
         health = Metrics.getFloat(R.dimen.player_health);
 
@@ -64,9 +63,6 @@ public class Player extends Sprite implements BoxCollidable {
     public void draw(Canvas canvas){
 
         canvas.drawBitmap(bitmap,null, dstRect,null);
-
-        // 충돌체크 영역 표시
-//        canvas.drawRect(boundingBox, rectPaint);
     }
 
     public void update(){
@@ -150,5 +146,9 @@ public class Player extends Sprite implements BoxCollidable {
     }
 
     public void getItem() {
+    }
+
+    public void getCoin(){
+        this.coin += 1;
     }
 }
