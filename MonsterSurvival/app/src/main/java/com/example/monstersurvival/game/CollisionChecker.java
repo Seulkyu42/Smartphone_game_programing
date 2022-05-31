@@ -54,8 +54,9 @@ public class CollisionChecker implements GameObject {
 
             for(GameObject activeitem: activeItems) {
                 if (CollisionHelper.collides((BoxCollidable) enemy, (BoxCollidable) activeitem)){
-                    Coin1 coin1 = Coin1.get(1,R.dimen.item2time,1);
+                    Coin1 coin1 = Coin1.get(500,Metrics.getFloat(R.dimen.item2time),1);
                     coin1.setEnemy((Enemy) enemy);
+                    MainGame.getInstance().add(MainGame.Layer.coin, coin1);
 
                     game.remove(enemy);
                 }

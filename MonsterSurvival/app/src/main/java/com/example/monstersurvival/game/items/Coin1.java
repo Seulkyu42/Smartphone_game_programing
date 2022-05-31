@@ -3,6 +3,7 @@ package com.example.monstersurvival.game.items;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.util.Log;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.RecycleBin;
@@ -44,6 +45,7 @@ public class Coin1 extends Sprite implements BoxCollidable, Recyclable {
             return item;
         }
         return new Coin1(x ,itemlife, speed);
+
     }
 
     public void setPlayer(Player player) {
@@ -58,15 +60,23 @@ public class Coin1 extends Sprite implements BoxCollidable, Recyclable {
 
     @Override
     public void update() {
-
         frameTime = MainGame.getInstance().frameTime;
         if(life == Metrics.getFloat(R.dimen.item2time)){
+
             objPosition = enemy.getCurrPosition();
             this.x = objPosition.x;
             this.y = objPosition.y;
+
+
         }
 
+        if (life <= 0.0f) {
+            //MainGame.getInstance().remove(MainGame.Layer.enemy);
+            MainGame.getInstance().remove(this);
+            return;
+        }
         else {
+            life -= frameTime;
 
             setDstRectWithRadius();
             boundingBox.set(dstRect);
