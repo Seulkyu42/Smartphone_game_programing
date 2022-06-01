@@ -1,6 +1,7 @@
 package com.example.monstersurvival.game;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.RectF;
 
 import com.example.monstersurvival.R;
@@ -21,22 +22,20 @@ public class ProgressBar implements GameObject {
         this.player = player;
     }
 
-    private ProgressBar(){
-        gauge = new Gauge(
-                Metrics.size(R.dimen.enemy_gauge_fg_width), R.color.enemy_gauge_fg,
-                Metrics.size(R.dimen.enemy_gauge_bg_width), R.color.enemy_gauge_bg,
-                size * 0.9f
-        );
-        gauge.setValue(1.0f);
+    public ProgressBar(){
+        gauge = new Gauge(70,R.color.map_gauge_fg,100,
+                R.color.map_gauge_bg,Metrics.width/1.1f);
+        gauge.setValue(0.0f);
     }
 
     @Override
     public void update() {
-
+        float frametime = MainGame.getInstance().frameTime;
+        
     }
 
     public void draw(Canvas canvas){
-        gauge.draw(canvas, 50, 50 + size * 0.5f);
+        gauge.draw(canvas, Metrics.width/2, 80);
     }
 
 

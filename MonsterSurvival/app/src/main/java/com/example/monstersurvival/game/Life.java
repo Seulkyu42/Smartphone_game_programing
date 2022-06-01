@@ -34,8 +34,9 @@ public class Life extends Sprite {
 
     public void draw(Canvas canvas){
         for(int i =0; i< (int) lifeCount; ++i) {
-            float lifeX = radius + radius * i;
-            dstRect.set(lifeX - radius/2,100-radius/2, lifeX+radius/2,100+radius/2);
+            float lifeX = radius/2 + radius * i;
+            dstRect.set(lifeX - radius/2,radius*1.5f-radius/2,
+                    lifeX+radius/2,radius*1.5f+radius/2);
             canvas.drawBitmap(bitmap, null, dstRect, null);
         }
     }

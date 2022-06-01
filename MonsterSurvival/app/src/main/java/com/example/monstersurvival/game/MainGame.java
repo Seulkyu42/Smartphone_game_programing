@@ -31,12 +31,16 @@ public class MainGame {
     private Player player;
     private Enemy enemy;
     private Life life;
+    private ProgressBar bar;
 
     /////////////////////////// 레이어
     protected ArrayList<ArrayList<GameObject>> layers;
     public enum Layer {
-        bg1,coin,enemy,item1,item2,item3,
-        activeitem,player, touchUi,health,controller,COUNT
+        bg1,
+        coin,enemy,item1,item2,item3,
+        activeitem,player,
+        touchUi,Ui,health,
+        controller,COUNT
     }
 
     public float size(float unit) {
@@ -67,9 +71,14 @@ public class MainGame {
         life.setPlayer(player);
         ////// 라이프 //////
 
+        ////// 진행바 //////
+        bar = new ProgressBar();
+        add(Layer.Ui, bar);
+        ////// 진행바 //////
+
         ////// 일시정지 버튼 //////
         float btn_x = size(4.75f);
-        float btn_y = size(0.5f);
+        float btn_y = size(1.0f);
         float btn_w = size(0.75f);
         float btn_h = size(0.75f);
         add(Layer.touchUi, new Button(
