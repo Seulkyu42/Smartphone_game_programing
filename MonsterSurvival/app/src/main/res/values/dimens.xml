@@ -21,4 +21,5 @@
     <dimen name="item3time">60.0f</dimen>
     <dimen name="item3speed">300.0f</dimen>
     <dimen name="item3_radius">50dp</dimen>
+    <dimen name="game_time">60</dimen>
 </resources>

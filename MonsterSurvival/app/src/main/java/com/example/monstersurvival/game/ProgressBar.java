@@ -21,17 +21,28 @@ public class ProgressBar implements GameObject {
     public void setPlayer(Player player) {
         this.player = player;
     }
+    private float checkTime;
+    private float value;
+
 
     public ProgressBar(){
         gauge = new Gauge(70,R.color.map_gauge_fg,100,
                 R.color.map_gauge_bg,Metrics.width/1.1f);
+        value = 0f;
         gauge.setValue(0.0f);
     }
 
     @Override
     public void update() {
         float frametime = MainGame.getInstance().frameTime;
-        
+
+        checkTime+=frametime;
+        if(checkTime >= 1.0f){
+            value += 1.0f;
+            gauge.setValue(value / Metrics.getFloat(R.dimen.game_time));
+            checkTime = 0.0f;
+        }
+
     }
 
     public void draw(Canvas canvas){
