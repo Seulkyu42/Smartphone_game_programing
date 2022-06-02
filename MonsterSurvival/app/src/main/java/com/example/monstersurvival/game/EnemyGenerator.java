@@ -19,8 +19,8 @@ public class EnemyGenerator implements GameObject {
     }
 
     @Override
-    public void update() {
-        float frameTime = MainGame.getInstance().frameTime;
+    public void update(float frameTime) {
+
         elapsedTime += frameTime;
         if (elapsedTime > spawnInterval) {
             spawn();
@@ -33,7 +33,7 @@ public class EnemyGenerator implements GameObject {
             Enemy enemy = Enemy.get(100+(150 * i), random.nextInt(500) + 300);
             enemy.setPlayer(MainGame.getInstance().getPlayer());
 
-            MainGame.getInstance().add(MainGame.Layer.enemy, enemy);
+            MainGame.getInstance().add(MainGame.Layer.enemy.ordinal(), enemy);
         }
     }
 

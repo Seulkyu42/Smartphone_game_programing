@@ -28,7 +28,7 @@ public class Life extends Sprite {
 
 
     @Override
-    public void update() {
+    public void update(float frameTime) {
         lifeCount = player.getHealth();
     }
 

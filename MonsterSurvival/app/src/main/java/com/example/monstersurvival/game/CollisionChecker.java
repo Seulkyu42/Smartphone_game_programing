@@ -32,23 +32,21 @@ public class CollisionChecker implements GameObject {
     private Item1active item1active;
 
     @Override
-    public void update() {
+    public void update(float frameTime) {
+
         MainGame game = MainGame.getInstance();
-        ArrayList<GameObject> enemies = game.objectsAt(MainGame.Layer.enemy);
-        ArrayList<GameObject> items1 = game.objectsAt(MainGame.Layer.item1);
-        ArrayList<GameObject> items2 = game.objectsAt(MainGame.Layer.item2);
-        ArrayList<GameObject> items3 = game.objectsAt(MainGame.Layer.item3);
-        ArrayList<GameObject> activeItems = game.objectsAt(MainGame.Layer.activeitem);
-        ArrayList<GameObject> coins = game.objectsAt(MainGame.Layer.coin);
+        ArrayList<GameObject> enemies = game.objectsAt(MainGame.Layer.enemy.ordinal());
+        ArrayList<GameObject> items1 = game.objectsAt(MainGame.Layer.item1.ordinal());
+        ArrayList<GameObject> items2 = game.objectsAt(MainGame.Layer.item2.ordinal());
+        ArrayList<GameObject> items3 = game.objectsAt(MainGame.Layer.item3.ordinal());
+        ArrayList<GameObject> activeItems = game.objectsAt(MainGame.Layer.activeitem.ordinal());
+        ArrayList<GameObject> coins = game.objectsAt(MainGame.Layer.coin.ordinal());
 
         for(GameObject enemy: enemies){
-            if(!(enemy instanceof Enemy)){
+            if(!(enemy instanceof BoxCollidable)){
                 continue;
             }
-            if(player.getBoundingRect()!=null &&
-                    ((Enemy) enemy).getBoundingRect() !=null &&
-                    CollisionHelper.collides(player, (BoxCollidable) enemy)){
-
+            if(CollisionHelper.collides(player, (BoxCollidable) enemy)){
                 if(player.getIsInvincible() == false){
                     game.remove(enemy);
                 }
@@ -59,7 +57,7 @@ public class CollisionChecker implements GameObject {
                 if (CollisionHelper.collides((BoxCollidable) enemy, (BoxCollidable) activeitem)){
                     Coin1 coin1 = Coin1.get(500,Metrics.getFloat(R.dimen.item2time),1);
                     coin1.setEnemy((Enemy) enemy);
-                    MainGame.getInstance().add(MainGame.Layer.coin, coin1);
+                    MainGame.getInstance().add(MainGame.Layer.coin.ordinal(), coin1);
                     game.remove(enemy);
                 }
             }
@@ -86,7 +84,7 @@ public class CollisionChecker implements GameObject {
 
                 Item1active item1active = Item1active.get();
                 item1active.setPlayer(MainGame.getInstance().getPlayer());
-                MainGame.getInstance().add(MainGame.Layer.activeitem, item1active);
+                MainGame.getInstance().add(MainGame.Layer.activeitem.ordinal(), item1active);
             }
         }
         for(GameObject item2: items2){
@@ -102,7 +100,7 @@ public class CollisionChecker implements GameObject {
                             Metrics.getFloat(R.dimen.item2speed) -
                                     random.nextInt(500)+100);
                     item2active.setPlayer(MainGame.getInstance().getPlayer());
-                    MainGame.getInstance().add(MainGame.Layer.activeitem, item2active);
+                    MainGame.getInstance().add(MainGame.Layer.activeitem.ordinal(), item2active);
                 }
             }
         }
@@ -114,7 +112,7 @@ public class CollisionChecker implements GameObject {
                 Item3active item3active = Item3active.get(0, Metrics.getFloat(R.dimen.item3time),
                         Metrics.getFloat(R.dimen.item3speed));
                 item3active.setPlayer(MainGame.getInstance().getPlayer());
-                MainGame.getInstance().add(MainGame.Layer.activeitem, item3active);
+                MainGame.getInstance().add(MainGame.Layer.activeitem.ordinal(), item3active);
             }
         }
     }

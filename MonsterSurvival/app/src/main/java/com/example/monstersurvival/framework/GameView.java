@@ -1,6 +1,8 @@
 package com.example.monstersurvival.framework;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -61,7 +63,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
         if (elapsed != 0) {
             framesPerSecond = 1_000_000_000 / elapsed;
             lastTimeNanos = now;
-            MainGame game = MainGame.getInstance();
+            Scene game = Scene.getTopScene();
             game.update(elapsed);
             invalidate();
         }
@@ -69,7 +71,7 @@ public class GameView extends View implements Choreographer.FrameCallback {
     }
 
     private void initView() {
-        MainGame.getInstance().init();
+        Scene.getTopScene().init();
         fpsPaint.setColor(Color.BLUE);
         fpsPaint.setTextSize(50);
     }
@@ -78,12 +80,12 @@ public class GameView extends View implements Choreographer.FrameCallback {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return MainGame.getInstance().onTouchEvent(event);
+        return Scene.getTopScene().onTouchEvent(event);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        MainGame.getInstance().draw(canvas);
+        Scene.getTopScene().draw(canvas);
 
         canvas.drawText("FPS:" + framesPerSecond, framesPerSecond * 10, 100, fpsPaint);
     }
@@ -98,5 +100,20 @@ public class GameView extends View implements Choreographer.FrameCallback {
             lastTimeNanos = 0;
             Choreographer.getInstance().postFrameCallback(this);
         }
+    }
+
+    public Activity getActivity() {
+        Context context = getContext();
+        while (context instanceof ContextWrapper) {
+            if (context instanceof Activity) {
+                return (Activity)context;
+            }
+            context = ((ContextWrapper)context).getBaseContext();
+        }
+        return null;
+    }
+
+    public boolean onBackPressed() {
+        return Scene.getTopScene().handleBackKey();
     }
 }

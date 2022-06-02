@@ -53,7 +53,8 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
     }
 
     @Override
-    public void update() {
+    public void update(float frameTime) {
+        super.update(frameTime);
         objPosition = player.getCurrPosition();
 
         if(rotate >= 360.0f){
@@ -65,7 +66,6 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
             return;
         }
         else {
-            frameTime = MainGame.getInstance().frameTime;
             life -= frameTime;
 
             x = objPosition.x;

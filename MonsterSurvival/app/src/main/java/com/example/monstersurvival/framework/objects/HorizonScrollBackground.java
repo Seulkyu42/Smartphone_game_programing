@@ -18,7 +18,7 @@ public class HorizonScrollBackground extends Sprite {
     }
 
     @Override
-    public void update() {
+    public void update(float frameTime) {
         this.x += speed * MainGame.getInstance().frameTime;
     }
 

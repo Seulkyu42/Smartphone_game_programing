@@ -6,15 +6,21 @@ import android.view.MotionEvent;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.app.StatsActivity;
+import com.example.monstersurvival.framework.Scene;
+import com.example.monstersurvival.framework.Sound;
 import com.example.monstersurvival.framework.interfaces.GameObject;
 import com.example.monstersurvival.framework.GameView;
+import com.example.monstersurvival.framework.interfaces.Touchable;
 import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.framework.objects.VertScrollBackground;
 import com.example.monstersurvival.game.items.itemGenerator;
 
 import java.util.ArrayList;
 
-public class MainGame {
+public class MainGame extends Scene {
+
+    public static final String PARAM_STAGE_INDEX = "stage_index";
+    private static MainGame singleton;
     public static MainGame getInstance() {
         if (singleton == null) {
             singleton = new MainGame();
@@ -24,17 +30,15 @@ public class MainGame {
 
     public float frameTime;
 
-    private ArrayList<GameObject> objects = new ArrayList<>();
     private static final String TAG = GameView.class.getSimpleName();
 
-    private static MainGame singleton;
+
     private Player player;
     private Enemy enemy;
     private Life life;
     private ProgressBar bar;
 
     /////////////////////////// 레이어
-    protected ArrayList<ArrayList<GameObject>> layers;
     public enum Layer {
         bg1,
         coin,enemy,item1,item2,item3,
@@ -47,33 +51,38 @@ public class MainGame {
         return Metrics.height / 9.5f * unit;
     }
 
-    public static void clear() {
-        singleton = null;
+    public void setMapIndex(int mapIndex) {
+        this.mapIndex = mapIndex;
     }
 
+    protected int mapIndex;
+
+
     public void init(){
+        super.init();
+
         Log.d(TAG,"INITIATING");
         initLayers(Layer.COUNT.ordinal());
 
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);
-        add(Layer.player, player);
-        add(Layer.controller, new EnemyGenerator());
-        add(Layer.controller, new itemGenerator());
-        add(Layer.controller, new CollisionChecker(player));
+        add(Layer.player.ordinal(), player);
+        add(Layer.controller.ordinal(), new EnemyGenerator());
+        add(Layer.controller.ordinal(), new itemGenerator());
+        add(Layer.controller.ordinal(), new CollisionChecker(player));
         ////// 배경 //////
-        add(Layer.bg1, new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
+        add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
         ////// 배경 //////
 
         ////// 라이프 //////
         life = new Life(Metrics.width/2,Metrics.height/2);
-        add(Layer.health, life);
+        add(Layer.health.ordinal(), life);
         life.setPlayer(player);
         ////// 라이프 //////
 
         ////// 진행바 //////
         bar = new ProgressBar();
-        add(Layer.Ui, bar);
+        add(Layer.Ui.ordinal(), bar);
         ////// 진행바 //////
 
         ////// 일시정지 버튼 //////
@@ -81,23 +90,18 @@ public class MainGame {
         float btn_y = size(1.0f);
         float btn_w = size(0.75f);
         float btn_h = size(0.75f);
-        add(Layer.touchUi, new Button(
-                btn_x, btn_y, btn_w, btn_h, R.mipmap.pause_button, R.mipmap.pause_button,
+
+        add(Layer.touchUi.ordinal(), new Button(
+                btn_x, btn_y, btn_w, btn_h, R.mipmap.pause_button, R.mipmap.pause_button_on,
                 new Button.Callback() {
                     @Override
                     public boolean onTouch(Button.Action action) {
+                        Log.d(TAG,"pause button on");
                         if (action != Button.Action.pressed) return false;
                         return true;
                     }
                 }));
         ////// 일시정지 버튼 //////
-    }
-
-    private void initLayers(int count) {
-        layers = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            layers.add(new ArrayList<>());
-        }
     }
 
     public boolean onTouchEvent(MotionEvent event) {
@@ -114,56 +118,30 @@ public class MainGame {
         return false;
     }
 
-    public void draw(Canvas canvas) {
-        for (ArrayList<GameObject> gameObjects : layers) {
-            for (GameObject gobj : gameObjects) { gobj.draw(canvas); }
-        }
-    }
-    public void update(int elapsedNanos) {
-        frameTime = (float) (elapsedNanos / 1_000_000_000f);
-        for (ArrayList<GameObject> gameObjects : layers) {
-            for (GameObject gobj : gameObjects) { gobj.update(); }
-        }
+    @Override
+    protected int getTouchLayerIndex() {
+        return Layer.touchUi.ordinal();
     }
 
-    public ArrayList<GameObject> objectsAt(Layer layer) {
-        return layers.get(layer.ordinal());
+    @Override
+    public void start() {
+        //Sound.playMusic();
     }
 
-    public void add(Layer layer, GameObject gameObject) {
-        GameView.view.post(new Runnable() {
-            @Override
-            public void run() {
-                ArrayList<GameObject> gameObjects = layers.get(layer.ordinal());
-                gameObjects.add(gameObject);
-            }
-        });
+    @Override
+    public void pause() {
+        Sound.pauseMusic();
     }
 
-    public void remove(GameObject gameObject) {
-        GameView.view.post(new Runnable() {
-            @Override
-            public void run() {
-                for (ArrayList<GameObject> gameObjects : layers) {
-                    boolean removed = gameObjects.remove(gameObject);
-                    if (!removed) continue;
-//                    if (gameObject instanceof Recyclable) {
-//                        RecycleBin.add((Recyclable) gameObject);
-//                    }
-                    break;
-                }
-            }
-        });
+    @Override
+    public void resume() {
+        Sound.resumeMusic();
     }
 
-    public int objectCount() {
-        int count = 0;
-        for (ArrayList<GameObject> gameObjects : layers) {
-            count += gameObjects.size();
-        }
-        return count;
+    @Override
+    public void end() {
+        Sound.stopMusic();
     }
-
 
     public Player getPlayer(){
         return player;

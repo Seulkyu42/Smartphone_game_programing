@@ -8,7 +8,7 @@ import com.example.monstersurvival.framework.res.BitmapPool;
 import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.framework.interfaces.GameObject;
 
-public class Sprite implements GameObject {
+public abstract class Sprite implements GameObject {
     protected Bitmap bitmap;
     protected RectF dstRect = new RectF();
     protected float x, y, radius;
@@ -37,7 +37,7 @@ public class Sprite implements GameObject {
     }
 
     @Override
-    public void update() {
+    public void update(float frameTime) {
     }
 
     @Override

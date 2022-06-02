@@ -66,7 +66,8 @@ public class Player extends Sprite implements BoxCollidable {
         canvas.drawBitmap(bitmap,null, dstRect,null);
     }
 
-    public void update(){
+    @Override
+    public void update(float frametime){
 
         if(frameTime < Metrics.INIT_TIME)
             frameTime = Metrics.INIT_TIME;
@@ -98,10 +99,8 @@ public class Player extends Sprite implements BoxCollidable {
 
         currPosition.set(px,py);
 
-        float newTime = MainGame.getInstance().frameTime;
-
         if(isInvincible == true){
-            checkTime += newTime;
+            checkTime += frametime;
             if(checkTime > isInvincibleTime){
                 checkTime -= isInvincibleTime;
                 isInvincible = false;

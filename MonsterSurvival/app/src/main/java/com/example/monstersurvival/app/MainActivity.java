@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.monstersurvival.R;
+import com.example.monstersurvival.game.MainGame;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onBtnStart(View view) {
         Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra(MainGame.PARAM_STAGE_INDEX, 0);
         startActivity(intent);
     }
     public void onStageSelect(View view) {

@@ -54,8 +54,8 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
     }
 
     @Override
-    public void update() {
-        frameTime = MainGame.getInstance().frameTime;
+    public void update(float frameTime) {
+        super.update(frameTime);
         if(life == Metrics.getFloat(R.dimen.item3time)){
             objPosition = player.getCurrPosition();
             // 처음위치 받아오기
@@ -75,8 +75,6 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
         else {
 
             life -= frameTime;
-
-            Log.d(TAG,"Y" + y +"dy" + dy);
             y -= dy * frameTime;
 
             setDstRectWithRadius();

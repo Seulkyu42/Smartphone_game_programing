@@ -27,8 +27,7 @@ public class itemGenerator implements GameObject {
     }
 
     @Override
-    public void update() {
-        float frameTime = MainGame.getInstance().frameTime;
+    public void update(float frameTime) {
         elapsedTime += frameTime;
         if (elapsedTime > spawnInterval) {
             spawn();
@@ -42,17 +41,17 @@ public class itemGenerator implements GameObject {
         if(itemNumber == 1){
             Item1 item1 = Item1.get(random.nextInt(Metrics.width),random.nextInt(500) + 300);
             item1.setPlayer(MainGame.getInstance().getPlayer());
-            MainGame.getInstance().add(MainGame.Layer.item1, item1);
+            MainGame.getInstance().add(MainGame.Layer.item1.ordinal(), item1);
 
         }else if(itemNumber == 2){
                 Item2 item2 = Item2.get(random.nextInt(Metrics.width),random.nextInt(500) + 300);
                 item2.setPlayer(MainGame.getInstance().getPlayer());
-                MainGame.getInstance().add(MainGame.Layer.item2, item2);
+                MainGame.getInstance().add(MainGame.Layer.item2.ordinal(), item2);
 
         }else if(itemNumber == 3){
             Item3 item3 = Item3.get(random.nextInt(Metrics.width),random.nextInt(500) + 300);
             item3.setPlayer(MainGame.getInstance().getPlayer());
-            MainGame.getInstance().add(MainGame.Layer.item3, item3);
+            MainGame.getInstance().add(MainGame.Layer.item3.ordinal(), item3);
         }
     }
 

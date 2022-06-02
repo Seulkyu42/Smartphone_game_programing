@@ -57,9 +57,8 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
     }
 
     @Override
-    public void update() {
-
-        frameTime = MainGame.getInstance().frameTime;
+    public void update(float frameTime) {
+        super.update(frameTime);
         if(life == Metrics.getFloat(R.dimen.item2time)){
             objPosition = player.getCurrPosition();
             // 처음위치 받아오기

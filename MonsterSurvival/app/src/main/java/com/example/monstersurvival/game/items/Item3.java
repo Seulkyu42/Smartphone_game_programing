@@ -59,15 +59,14 @@ public class Item3 extends Sprite implements BoxCollidable, Recyclable {
     }
 
     @Override
-    public void update() {
+    public void update(float frameTime) {
+        super.update(frameTime);
         objPosition = player.getCurrPosition();
 
         if (life <= 0) {
             //MainGame.getInstance().remove(MainGame.Layer.enemy);
             return;
         }
-
-        float frameTime = MainGame.getInstance().frameTime;
 
         y += dy * frameTime;
         setDstRectWithRadius();

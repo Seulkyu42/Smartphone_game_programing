@@ -59,8 +59,8 @@ public class Coin1 extends Sprite implements BoxCollidable, Recyclable {
     }
 
     @Override
-    public void update() {
-        frameTime = MainGame.getInstance().frameTime;
+    public void update(float frameTime) {
+        super.update(frameTime);
         if(life == Metrics.getFloat(R.dimen.item2time)){
 
             objPosition = enemy.getCurrPosition();

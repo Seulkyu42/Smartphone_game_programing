@@ -60,7 +60,7 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
     }
 
     @Override
-    public void update() {
+    public void update(float frameTime) {
         objPosition = player.getCurrPosition();
         float dx = objPosition.x;
 
@@ -68,8 +68,6 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
             //MainGame.getInstance().remove(MainGame.Layer.enemy);
             return;
         }
-
-        float frameTime = MainGame.getInstance().frameTime;
 
         if(y <= Metrics.height / 32) {
             if (dx >= x) {
@@ -88,8 +86,6 @@ public class Enemy extends Sprite implements BoxCollidable, Recyclable {
         currPosition.set(x,y);
     }
 
-    public void getHit(){
-    }
 
     @Override
     public void draw(Canvas canvas) {

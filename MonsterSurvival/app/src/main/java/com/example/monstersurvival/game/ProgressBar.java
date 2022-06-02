@@ -33,10 +33,9 @@ public class ProgressBar implements GameObject {
     }
 
     @Override
-    public void update() {
-        float frametime = MainGame.getInstance().frameTime;
+    public void update(float frameTime) {
 
-        checkTime+=frametime;
+        checkTime+=frameTime;
         if(checkTime >= 1.0f){
             value += 1.0f;
             gauge.setValue(value / Metrics.getFloat(R.dimen.game_time));
