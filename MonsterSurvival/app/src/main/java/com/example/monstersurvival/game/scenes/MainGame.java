@@ -18,7 +18,7 @@ import com.example.monstersurvival.game.object.Enemy;
 import com.example.monstersurvival.game.object.EnemyGenerator;
 
 public class MainGame extends Scene {
-
+    private static final String TAG = GameView.class.getSimpleName();
     public static final String PARAM_STAGE_INDEX = "stage_index";
     private static MainGame singleton;
     public static MainGame getInstance() {
@@ -27,19 +27,14 @@ public class MainGame extends Scene {
         }
         return singleton;
     }
-
     public float frameTime;
-
-    private static final String TAG = GameView.class.getSimpleName();
-
-
     private Player player;
     private Enemy enemy;
     private Life life;
     private ProgressBar bar;
 
     public float gameTime;
-
+    public int stageIndex = 1;
 
     /////////////////////////// 레이어
     public enum Layer {
@@ -63,10 +58,6 @@ public class MainGame extends Scene {
 
     public void init(){
         super.init();
-
-        gameTime = 5.0f;
-
-
         Log.d(TAG,"INITIATING");
         initLayers(Layer.COUNT.ordinal());
 
@@ -77,8 +68,15 @@ public class MainGame extends Scene {
         add(Layer.controller.ordinal(), new itemGenerator());
         add(Layer.controller.ordinal(), new CollisionChecker(player));
         ////// 배경 //////
-        if(mapIndex == 1) {
+        if(stageIndex == 1) {
             add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
+            gameTime = 60.0f;
+        } else if(stageIndex == 2) {
+            add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.stage2img, Metrics.size(R.dimen.bg_speed_stage1)));
+            gameTime = 120.0f;
+        } else {
+            add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.stageinfinite, Metrics.size(R.dimen.bg_speed_stage1)));
+            gameTime = 9999.0f;
         }
         ////// 배경 //////
 
