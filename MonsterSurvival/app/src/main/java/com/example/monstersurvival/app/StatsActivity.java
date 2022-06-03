@@ -64,8 +64,8 @@ public class StatsActivity extends AppCompatActivity{
     public void setText(){
         int coin = MainGame.getInstance().getCoin();
 
-        TextView textView = (TextView) findViewById(R.id.playergold);
-        textView.setText("Coin : " + coin);
+//        TextView textView = (TextView) findViewById(R.id.playergold);
+//        textView.setText("Coin : " + coin);
 
     }
 
