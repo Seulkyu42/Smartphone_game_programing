@@ -54,6 +54,8 @@
                 android:onClick="onStage1Select"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
+                android:layout_marginBottom="20dp"
+                android:background="@mipmap/stage1img"
                 android:layout_weight="0.5" />
 
             <ImageButton
@@ -63,6 +65,8 @@
                 android:onClick="onStage2Select"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@mipmap/stage2img"
                 android:layout_weight="0.5" />
 
             <ImageButton
@@ -72,6 +76,8 @@
                 android:onClick="onStage3Select"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@mipmap/stageinfinite"
                 android:layout_weight="0.5" />
 
         </LinearLayout>
