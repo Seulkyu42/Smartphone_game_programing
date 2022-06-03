@@ -29,7 +29,12 @@ public class Life extends Sprite {
 
     @Override
     public void update(float frameTime) {
+
         lifeCount = player.getHealth();
+
+        if(lifeCount <= 0){
+            MainGame.getInstance().push(GameOverScene.get());
+        }
     }
 
     public void draw(Canvas canvas){
