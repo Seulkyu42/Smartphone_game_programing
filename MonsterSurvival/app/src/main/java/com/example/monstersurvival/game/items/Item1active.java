@@ -92,7 +92,6 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
 
     public void statUp(float life, float add){
         this.setlife = life + add;
-        Log.d(TAG,"Life Set" + this.setlife+"life"+ life+"add" + add);
     }
     public float getLife(){
         return this.setlife;
