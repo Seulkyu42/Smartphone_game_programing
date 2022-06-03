@@ -1,6 +1,7 @@
 package com.example.monstersurvival.game.scenes;
 
 import android.util.Log;
+import android.view.MotionEvent;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.Scene;
@@ -33,8 +34,10 @@ public class MainGame extends Scene {
     private Life life;
     private ProgressBar bar;
 
+
     public float gameTime;
     public int stageIndex = 1;
+    public int coin;
 
     /////////////////////////// 레이어
     public enum Layer {
@@ -111,19 +114,19 @@ public class MainGame extends Scene {
         ////// 일시정지 버튼 //////
     }
 
-//    public boolean onTouchEvent(MotionEvent event) {
-//        int action = event.getAction();
-//        switch (action) {
-//            case MotionEvent.ACTION_DOWN:
-//            case MotionEvent.ACTION_MOVE:
-//                float x = event.getX();
-//                float y = event.getY();
-//
-//                player.debugTouch(x,y);
-//                return true;
-//        }
-//        return false;
-//    }
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+                float x = event.getX();
+                float y = event.getY();
+
+                player.debugTouch(x,y);
+                return true;
+        }
+        return false;
+    }
 
     @Override
     public boolean handleBackKey() {
@@ -161,10 +164,13 @@ public class MainGame extends Scene {
     }
     public Enemy getEnemy() { return enemy;}
 
+    public void setCoin(){
+        coin += 1;
+    }
+    public int getCoin(){
+        return coin;
+    }
 }
 
-
-//        스테이지 선택
 //        스텟 2개 성장
-//        스텟상점이랑 코인이랑 연동
 //        소리 넣기

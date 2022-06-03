@@ -70,7 +70,7 @@ public class CollisionChecker implements GameObject {
             }
             if(CollisionHelper.collides(player, (BoxCollidable) coin)){
                 game.remove(coin);
-                player.getCoin();
+                game.setCoin();
             }
         }
 

@@ -25,7 +25,6 @@ public class Player extends Sprite implements BoxCollidable {
     // 플레이어 스텟 및 재화
     private float speed;
     private float health;
-    private int coin;
 
     private long frameTime;
     private GyroOrient orientationData;
@@ -146,13 +145,5 @@ public class Player extends Sprite implements BoxCollidable {
     }
 
     public void getItem() {
-    }
-
-    public int setCoin() {
-        return this.coin;
-    }
-
-    public void getCoin(){
-        this.coin += 1;
     }
 }

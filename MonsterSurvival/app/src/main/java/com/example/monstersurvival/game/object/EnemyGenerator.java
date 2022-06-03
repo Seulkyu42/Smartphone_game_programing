@@ -30,8 +30,18 @@ public class EnemyGenerator implements GameObject {
     }
 
     private void spawn() {
-        for(int i =0; i<random.nextInt(20)+5; ++i) {
-            Enemy enemy = Enemy.get(100+(150 * i), random.nextInt(500) + 300);
+        int enemyNums = 0;
+
+        if (MainGame.getInstance().stageIndex == 1) {
+            enemyNums = random.nextInt(10) + 5;
+        } else if (MainGame.getInstance().stageIndex == 2) {
+            enemyNums = random.nextInt(20) + 5;
+        } else {
+            enemyNums = random.nextInt(20) + 5;
+        }
+
+        for (int i = 0; i < enemyNums; ++i) {
+            Enemy enemy = Enemy.get(100 + (150 * i), random.nextInt(500) + 300);
             enemy.setPlayer(MainGame.getInstance().getPlayer());
 
             MainGame.getInstance().add(MainGame.Layer.enemy.ordinal(), enemy);
