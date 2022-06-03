@@ -25,18 +25,18 @@ public class GameClearScene extends Scene {
         super.init();
         initLayers(Layer.COUNT.ordinal());
 
-        add(Layer.ui.ordinal(), new Sprite(
+        add(PausedScene.Layer.ui.ordinal(), new Sprite(
                 Metrics.width / 2, Metrics.height / 2,
-                Metrics.width / 2, Metrics.height * 4 / 5,
+                Metrics.width / 1.5f, Metrics.height / 2,
                 R.mipmap.trans_50p));
 
-        add(Layer.ui.ordinal(), new Sprite(
-                Metrics.width / 2, Metrics.height / 4,
-                Metrics.width / 3, Metrics.width / 3 * 230 / 440,
-                R.mipmap.game_paused));
+        add(PausedScene.Layer.ui.ordinal(), new Sprite(
+                Metrics.width / 2, Metrics.height / 2.5f,
+                Metrics.width / 2, Metrics.width / 2 * 512  / 726,
+                R.mipmap.game_clear));
 
         float btn_width = Metrics.width / 4;
-        float btn_height = btn_width * 192 / 512;
+        float btn_height = btn_width * 256 / 512;
         float btn_x = Metrics.width / 2;
         float btn_y = Metrics.height / 2 + btn_height / 2;
 
