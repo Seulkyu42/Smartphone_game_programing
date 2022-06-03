@@ -1,14 +1,15 @@
-package com.example.monstersurvival.game;
+package com.example.monstersurvival.game.object;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.RectF;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.interfaces.GameObject;
-import com.example.monstersurvival.framework.objects.Sprite;
+import com.example.monstersurvival.framework.objects.Gauge;
 import com.example.monstersurvival.framework.res.Metrics;
+import com.example.monstersurvival.game.scenes.GameClearScene;
+import com.example.monstersurvival.game.scenes.MainGame;
 
 public class ProgressBar implements GameObject {
 
@@ -38,8 +39,11 @@ public class ProgressBar implements GameObject {
         checkTime+=frameTime;
         if(checkTime >= 1.0f){
             value += 1.0f;
-            gauge.setValue(value / Metrics.getFloat(R.dimen.game_time));
+            gauge.setValue(value / MainGame.getInstance().gameTime);
             checkTime = 0.0f;
+        }
+        if(value >= MainGame.getInstance().gameTime){
+            MainGame.getInstance().push(GameClearScene.get());
         }
 
     }

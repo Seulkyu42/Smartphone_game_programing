@@ -1,4 +1,4 @@
-package com.example.monstersurvival.game;
+package com.example.monstersurvival.game.object;
 
 
 import android.graphics.Canvas;
@@ -8,6 +8,7 @@ import com.example.monstersurvival.framework.interfaces.BoxCollidable;
 import com.example.monstersurvival.framework.CollisionHelper;
 import com.example.monstersurvival.framework.interfaces.GameObject;
 import com.example.monstersurvival.framework.res.Metrics;
+import com.example.monstersurvival.game.scenes.MainGame;
 import com.example.monstersurvival.game.items.Item1;
 import com.example.monstersurvival.game.items.Item1active;
 import com.example.monstersurvival.game.items.Item2;

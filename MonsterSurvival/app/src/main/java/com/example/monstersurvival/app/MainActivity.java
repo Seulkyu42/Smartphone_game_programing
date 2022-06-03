@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.monstersurvival.R;
-import com.example.monstersurvival.game.MainGame;
+import com.example.monstersurvival.game.scenes.MainGame;
 
 public class MainActivity extends AppCompatActivity {
 

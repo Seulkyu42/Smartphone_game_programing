@@ -1,21 +1,21 @@
-package com.example.monstersurvival.game;
+package com.example.monstersurvival.game.scenes;
 
-import android.graphics.Canvas;
 import android.util.Log;
-import android.view.MotionEvent;
 
 import com.example.monstersurvival.R;
-import com.example.monstersurvival.app.StatsActivity;
 import com.example.monstersurvival.framework.Scene;
 import com.example.monstersurvival.framework.Sound;
-import com.example.monstersurvival.framework.interfaces.GameObject;
 import com.example.monstersurvival.framework.GameView;
-import com.example.monstersurvival.framework.interfaces.Touchable;
 import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.framework.objects.VertScrollBackground;
+import com.example.monstersurvival.game.object.Button;
+import com.example.monstersurvival.game.object.Life;
+import com.example.monstersurvival.game.object.Player;
+import com.example.monstersurvival.game.object.ProgressBar;
 import com.example.monstersurvival.game.items.itemGenerator;
-
-import java.util.ArrayList;
+import com.example.monstersurvival.game.object.CollisionChecker;
+import com.example.monstersurvival.game.object.Enemy;
+import com.example.monstersurvival.game.object.EnemyGenerator;
 
 public class MainGame extends Scene {
 
@@ -37,6 +37,9 @@ public class MainGame extends Scene {
     private Enemy enemy;
     private Life life;
     private ProgressBar bar;
+
+    public float gameTime;
+
 
     /////////////////////////// 레이어
     public enum Layer {
@@ -60,6 +63,9 @@ public class MainGame extends Scene {
 
     public void init(){
         super.init();
+
+        gameTime = 5.0f;
+
 
         Log.d(TAG,"INITIATING");
         initLayers(Layer.COUNT.ordinal());
@@ -163,5 +169,3 @@ public class MainGame extends Scene {
 //        스텟상점이랑 코인이랑 연동
 //        소리 넣기
 //        스테이지 클리어
-//        플레이어 게임 오버
-//        스테이지 진행정도 바

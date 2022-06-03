@@ -1,4 +1,4 @@
-package com.example.monstersurvival.game;
+package com.example.monstersurvival.game.object;
 
 import android.graphics.Bitmap;
 import android.util.Log;

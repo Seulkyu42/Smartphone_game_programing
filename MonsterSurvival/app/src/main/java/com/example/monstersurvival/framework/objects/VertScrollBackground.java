@@ -3,7 +3,6 @@ package com.example.monstersurvival.framework.objects;
 import android.graphics.Canvas;
 
 import com.example.monstersurvival.framework.res.Metrics;
-import com.example.monstersurvival.game.MainGame;
 
 
 public class VertScrollBackground extends Sprite {

@@ -1,4 +1,4 @@
-package com.example.monstersurvival.game;
+package com.example.monstersurvival.game.object;
 
 import android.graphics.Canvas;
 import android.graphics.RectF;
@@ -6,6 +6,8 @@ import android.graphics.RectF;
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.objects.Sprite;
+import com.example.monstersurvival.game.scenes.GameOverScene;
+import com.example.monstersurvival.game.scenes.MainGame;
 
 public class Life extends Sprite {
 

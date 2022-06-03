@@ -2,17 +2,12 @@ package com.example.monstersurvival.app;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.GameView;
-import com.example.monstersurvival.framework.res.Metrics;
-import com.example.monstersurvival.game.MainGame;
-import com.example.monstersurvival.game.Player;
-import com.example.monstersurvival.game.items.Item1;
+import com.example.monstersurvival.game.object.Player;
 import com.example.monstersurvival.game.items.Item1active;
 
 public class StatsActivity extends AppCompatActivity{

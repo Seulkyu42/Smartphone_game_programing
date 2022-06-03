@@ -1,4 +1,4 @@
-package com.example.monstersurvival.game;
+package com.example.monstersurvival.framework.objects;
 
 import android.content.Context;
 import android.graphics.Canvas;

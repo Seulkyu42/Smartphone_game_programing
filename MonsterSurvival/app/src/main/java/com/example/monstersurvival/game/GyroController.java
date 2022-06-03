@@ -1,10 +1,10 @@
 package com.example.monstersurvival.game;
 
-import android.content.pm.ActivityInfo;
 import android.hardware.SensorManager;
-import android.os.Bundle;
 
-public class GyroController extends Player{
+import com.example.monstersurvival.game.object.Player;
+
+public class GyroController extends Player {
 
     public GyroController(float x, float y){
         super(x,y);

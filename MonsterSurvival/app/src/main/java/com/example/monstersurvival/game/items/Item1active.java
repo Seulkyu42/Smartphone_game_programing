@@ -1,6 +1,5 @@
 package com.example.monstersurvival.game.items;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.RectF;
@@ -11,10 +10,9 @@ import com.example.monstersurvival.framework.RecycleBin;
 import com.example.monstersurvival.framework.interfaces.BoxCollidable;
 import com.example.monstersurvival.framework.interfaces.Recyclable;
 import com.example.monstersurvival.framework.objects.Sprite;
-import com.example.monstersurvival.framework.res.BitmapPool;
 import com.example.monstersurvival.framework.res.Metrics;
-import com.example.monstersurvival.game.MainGame;
-import com.example.monstersurvival.game.Player;
+import com.example.monstersurvival.game.scenes.MainGame;
+import com.example.monstersurvival.game.object.Player;
 
 
 public class Item1active extends Sprite implements BoxCollidable, Recyclable {

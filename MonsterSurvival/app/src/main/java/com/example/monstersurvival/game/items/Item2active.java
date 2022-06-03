@@ -11,8 +11,8 @@ import com.example.monstersurvival.framework.interfaces.BoxCollidable;
 import com.example.monstersurvival.framework.interfaces.Recyclable;
 import com.example.monstersurvival.framework.objects.Sprite;
 import com.example.monstersurvival.framework.res.Metrics;
-import com.example.monstersurvival.game.MainGame;
-import com.example.monstersurvival.game.Player;
+import com.example.monstersurvival.game.scenes.MainGame;
+import com.example.monstersurvival.game.object.Player;
 
 import java.util.Random;
 

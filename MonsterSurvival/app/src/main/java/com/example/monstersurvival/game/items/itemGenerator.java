@@ -1,13 +1,12 @@
 package com.example.monstersurvival.game.items;
 
 import android.graphics.Canvas;
-import android.util.Log;
 
 import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.interfaces.GameObject;
 import com.example.monstersurvival.framework.res.Metrics;
-import com.example.monstersurvival.game.Enemy;
-import com.example.monstersurvival.game.MainGame;
+import com.example.monstersurvival.game.object.Enemy;
+import com.example.monstersurvival.game.scenes.MainGame;
 
 import java.util.Random;
 
