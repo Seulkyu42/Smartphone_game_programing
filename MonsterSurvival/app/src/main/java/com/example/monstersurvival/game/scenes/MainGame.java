@@ -77,7 +77,9 @@ public class MainGame extends Scene {
         add(Layer.controller.ordinal(), new itemGenerator());
         add(Layer.controller.ordinal(), new CollisionChecker(player));
         ////// 배경 //////
-        add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
+        if(mapIndex == 1) {
+            add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
+        }
         ////// 배경 //////
 
         ////// 라이프 //////
@@ -168,4 +170,3 @@ public class MainGame extends Scene {
 //        스텟 2개 성장
 //        스텟상점이랑 코인이랑 연동
 //        소리 넣기
-//        스테이지 클리어

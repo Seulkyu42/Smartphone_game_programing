@@ -27,7 +27,10 @@
             android:name=".app.StatsActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
-
+        <activity
+            android:name=".app.StageSelectActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
     </application>
 
 </manifest>

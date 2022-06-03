@@ -23,10 +23,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onStageSelect(View view) {
-        Intent intent = new Intent(getApplicationContext(), StatsActivity.class);
+        Intent intent = new Intent(getApplicationContext(), StageSelectActivity.class);
         startActivity(intent);
     }
 
     public void onStats(View view) {
+        Intent intent = new Intent(getApplicationContext(), StatsActivity.class);
+        startActivity(intent);
     }
 }
