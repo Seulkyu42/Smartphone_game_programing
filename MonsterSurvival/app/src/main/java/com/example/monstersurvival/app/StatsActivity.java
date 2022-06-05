@@ -32,7 +32,11 @@ public class StatsActivity extends AppCompatActivity{
     public void onStat1Clicked(View view) {
         Item1active item1active = Item1active.get();
         float tempLife = item1active.getLife();
-        item1active.statUp(tempLife,1.0f);
+
+        if(MainGame.getInstance().coin >= 100) {
+            item1active.statUp(tempLife, 1.0f);
+            MainGame.getInstance().coin -= 100;
+        }
 
         setText();
     }
@@ -40,7 +44,11 @@ public class StatsActivity extends AppCompatActivity{
     public void onStat2Clicked(View view) {
         Item1active item1active = Item1active.get();
         float tempLife = item1active.getLife();
-        item1active.statUp(tempLife,1.0f);
+
+        if(MainGame.getInstance().coin >= 100) {
+            item1active.statUp(tempLife, 1.0f);
+            MainGame.getInstance().coin -= 100;
+        }
 
         setText();
     }
@@ -50,13 +58,22 @@ public class StatsActivity extends AppCompatActivity{
         float tempLife = item1active.getLife();
         item1active.statUp(tempLife,1.0f);
 
+        if(MainGame.getInstance().coin >= 100) {
+            item1active.statUp(tempLife, 1.0f);
+            MainGame.getInstance().coin -= 100;
+        }
+
         setText();
     }
 
     public void onStat4Clicked(View view) {
         Item1active item1active = Item1active.get();
         float tempLife = item1active.getLife();
-        item1active.statUp(tempLife,1.0f);
+        
+        if(MainGame.getInstance().coin >= 100) {
+            item1active.statUp(tempLife, 1.0f);
+            MainGame.getInstance().coin -= 100;
+        }
 
         setText();
     }
@@ -64,8 +81,8 @@ public class StatsActivity extends AppCompatActivity{
     public void setText(){
         int coin = MainGame.getInstance().getCoin();
 
-//        TextView textView = (TextView) findViewById(R.id.playergold);
-//        textView.setText("Coin : " + coin);
+        TextView textView = (TextView) findViewById(R.id.playergold);
+        textView.setText("Coin : " + coin);
 
     }
 

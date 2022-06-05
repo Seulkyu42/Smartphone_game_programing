@@ -40,8 +40,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.28">
-
+            android:layout_weight="0.15">
+            <TextView
+                android:id="@+id/playergold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:fontFamily="@font/dungguenmo"
+                android:textSize="50dp"
+                android:textColor="@color/white"
+                android:text="Coin : 0">
+            </TextView>
 
         </LinearLayout>
 

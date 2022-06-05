@@ -114,19 +114,19 @@ public class MainGame extends Scene {
         ////// 일시정지 버튼 //////
     }
 
-//    public boolean onTouchEvent(MotionEvent event) {
-//        int action = event.getAction();
-//        switch (action) {
-//            case MotionEvent.ACTION_DOWN:
-//            case MotionEvent.ACTION_MOVE:
-//                float x = event.getX();
-//                float y = event.getY();
-//
-//                player.debugTouch(x,y);
-//                return true;
-//        }
-//        return false;
-//    }
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+                float x = event.getX();
+                float y = event.getY();
+
+                player.debugTouch(x,y);
+                return true;
+        }
+        return false;
+    }
 
     @Override
     public boolean handleBackKey() {
