@@ -1,5 +1,6 @@
 package com.example.monstersurvival.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -31,18 +32,30 @@ public class StageSelectActivity extends AppCompatActivity{
     public void onStage1Select(View view) {
         MainGame.getInstance().stageIndex = 1;
         Toast.makeText(getApplicationContext(), "Stage 1 Selected", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra(MainGame.PARAM_STAGE_INDEX, 0);
+        startActivity(intent);
         finish();
     }
 
     public void onStage2Select(View view) {
         MainGame.getInstance().stageIndex = 2;
         Toast.makeText(getApplicationContext(), "Stage 2 Selected", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra(MainGame.PARAM_STAGE_INDEX, 0);
+        startActivity(intent);
         finish();
     }
 
     public void onStage3Select(View view) {
         MainGame.getInstance().stageIndex = 3;
         Toast.makeText(getApplicationContext(), "Infinite Selected", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra(MainGame.PARAM_STAGE_INDEX, 0);
+        startActivity(intent);
         finish();
     }
 }
