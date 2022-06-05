@@ -38,7 +38,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="#B3FFFFFF"
             android:fontFamily="@font/dungguenmo"
+            android:layout_marginBottom="15dp"
             android:text="StageSelect"
             android:onClick="onStageSelect"
             android:textSize="60sp" />
@@ -47,7 +49,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="#B3FFFFFF"
             android:fontFamily="@font/dungguenmo"
+            android:layout_marginBottom="15dp"
             android:text="Stats"
             android:onClick="onStats"
             android:textSize="60sp" />
@@ -56,7 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="#B3FFFFFF"
             android:fontFamily="@font/dungguenmo"
+            android:layout_marginBottom="15dp"
             android:text="Language"
             android:textSize="60sp" />
         <!--        소리 설정 버튼-->
