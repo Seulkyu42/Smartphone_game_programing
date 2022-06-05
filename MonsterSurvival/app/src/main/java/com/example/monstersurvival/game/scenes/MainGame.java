@@ -75,10 +75,10 @@ public class MainGame extends Scene {
             add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
             gameTime = 60.0f;
         } else if(stageIndex == 2) {
-            add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.stage2img, Metrics.size(R.dimen.bg_speed_stage1)));
+            add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.background_2, Metrics.size(R.dimen.bg_speed_stage1)));
             gameTime = 120.0f;
         } else {
-            add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.stageinfinite, Metrics.size(R.dimen.bg_speed_stage1)));
+            add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.background_i, Metrics.size(R.dimen.bg_speed_stage1)));
             gameTime = 9999.0f;
         }
         ////// 배경 //////
@@ -95,13 +95,13 @@ public class MainGame extends Scene {
         ////// 진행바 //////
 
         ////// 일시정지 버튼 //////
-        float btn_x = size(4.75f);
+        float btn_x = size(1.5f);
         float btn_y = size(1.0f);
         float btn_w = size(0.75f);
         float btn_h = size(0.75f);
 
         add(Layer.touchUi.ordinal(), new Button(
-                btn_x, btn_y, btn_w, btn_h, R.mipmap.pause_button, R.mipmap.pause_button_on,
+                Metrics.width - btn_w, btn_y, btn_w, btn_h, R.mipmap.pause_button, R.mipmap.pause_button_on,
                 new Button.Callback() {
                     @Override
                     public boolean onTouch(Button.Action action) {
