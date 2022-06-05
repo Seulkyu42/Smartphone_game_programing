@@ -37,25 +37,28 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="center"
+            android:fontFamily="@font/dungguenmo"
             android:text="StageSelect"
             android:onClick="onStageSelect"
-            android:textSize="30sp" />
+            android:textSize="60sp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="center"
+            android:fontFamily="@font/dungguenmo"
             android:text="Stats"
             android:onClick="onStats"
-            android:textSize="30sp" />
+            android:textSize="60sp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="center"
+            android:fontFamily="@font/dungguenmo"
             android:text="Language"
-            android:textSize="30sp" />
+            android:textSize="60sp" />
         <!--        소리 설정 버튼-->
         <!--        <ImageButton-->
         <!--            android:layout_width="wrap_content"-->

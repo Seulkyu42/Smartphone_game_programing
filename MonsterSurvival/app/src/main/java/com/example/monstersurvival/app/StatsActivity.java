@@ -69,7 +69,7 @@ public class StatsActivity extends AppCompatActivity{
     public void onStat4Clicked(View view) {
         Item1active item1active = Item1active.get();
         float tempLife = item1active.getLife();
-        
+
         if(MainGame.getInstance().coin >= 100) {
             item1active.statUp(tempLife, 1.0f);
             MainGame.getInstance().coin -= 100;

@@ -48,7 +48,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:fontFamily="@font/dungguenmo"
-                android:textSize="50dp"
+                android:textSize="50sp"
                 android:textColor="@color/white"
                 android:text="Coin : 0">
             </TextView>
