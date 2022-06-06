@@ -37,7 +37,7 @@
         android:weightSum="2"
         tools:ignore="MissingConstraints">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.15">
@@ -53,12 +53,14 @@
                 android:text="Coin : 0">
             </TextView>
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!--        1번 아이템      -->
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:layout_weight="0.43">
 
             <ImageButton
@@ -66,16 +68,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onClick="onStat1Clicked"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
                 android:layout_weight="0.5" />
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="-300 Coin"
+                android:textSize="50sp"
+                android:gravity="right|bottom"
+                android:fontFamily="@font/dungguenmo"
+                >
+            </TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!--        2번 아이템      -->
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:layout_weight="0.43">
 
             <ImageButton
@@ -83,15 +95,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onClick="onStat1Clicked"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
                 android:layout_weight="0.5" />
-        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="-100 Coin"
+                android:textSize="50sp"
+                android:gravity="right|bottom"
+                android:fontFamily="@font/dungguenmo"
+                >
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout
+>
 
         <!--        3번 아이템      -->
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:layout_weight="0.43">
 
             <ImageButton
@@ -99,15 +121,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onClick="onStat1Clicked"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
                 android:layout_weight="0.5" />
-        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="-100 Coin"
+                android:textSize="50sp"
+                android:gravity="right|bottom"
+                android:fontFamily="@font/dungguenmo"
+                >
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!--        4번 아이템      -->
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:layout_weight="0.43">
 
             <ImageButton
@@ -115,10 +146,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onClick="onStat1Clicked"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
                 android:layout_weight="0.5" />
-        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="-100 Coin"
+                android:textSize="50sp"
+                android:gravity="right|bottom"
+                android:fontFamily="@font/dungguenmo"
+                >
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
