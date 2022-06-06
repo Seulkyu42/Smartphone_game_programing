@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.GameView;
+import com.example.monstersurvival.game.items.Item2active;
 import com.example.monstersurvival.game.object.Player;
 import com.example.monstersurvival.game.items.Item1active;
 import com.example.monstersurvival.game.scenes.MainGame;
@@ -42,11 +43,11 @@ public class StatsActivity extends AppCompatActivity{
     }
 
     public void onStat2Clicked(View view) {
-        Item1active item1active = Item1active.get();
-        float tempLife = item1active.getLife();
+        Item2active item2active = Item2active.get();
+        //float tempLife = item2active.getLife();
 
         if(MainGame.getInstance().coin >= 100) {
-            item1active.statUp(tempLife, 1.0f);
+            //item2active.statUp(tempLife, 1.0f);
             MainGame.getInstance().coin -= 100;
         }
 

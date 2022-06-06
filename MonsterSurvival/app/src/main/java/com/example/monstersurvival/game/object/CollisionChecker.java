@@ -95,11 +95,8 @@ public class CollisionChecker implements GameObject {
             if(CollisionHelper.collides(player,(BoxCollidable) item2)){
                 game.remove(item2);
                 player.getItem();
-
                 for(int i =0; i < 1; ++i) {
-                    Item2active item2active = Item2active.get(0, Metrics.getFloat(R.dimen.item2time),
-                            Metrics.getFloat(R.dimen.item2speed) -
-                                    random.nextInt(500)+100);
+                    Item2active item2active = Item2active.get();
                     item2active.setPlayer(MainGame.getInstance().getPlayer());
                     MainGame.getInstance().add(MainGame.Layer.activeitem.ordinal(), item2active);
                 }

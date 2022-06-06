@@ -29,31 +29,29 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
     private float rotate;
     private Player player;
     private PointF objPosition = new PointF();
-    private float frameTime = 0.0f;
-    private float blink = 0.0f;
     private float speed = 0.0f;
+    static int count = 1;
 
-    private Item2active(float x, float itemlife, float speed) {
-        super(x,size,R.dimen.item2_radius, R.mipmap.item_2_active);
-        set(x,itemlife,speed);
+    private Item2active() {
+        super(10,size,R.dimen.item2_radius, R.mipmap.item_2_active);
+        set();
     }
-//    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
-    public static Item2active get(float x, float itemlife, float speed) {
+    //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
+    public static Item2active get() {
         Item2active item = (Item2active) RecycleBin.get(Item2active.class);
         if (item != null) {
-            item.set(x,itemlife, speed);
             return item;
         }
-        return new Item2active(x ,itemlife, speed);
+        return new Item2active();
+    }
+
+    public void set(){
+        this.life = Metrics.getFloat(R.dimen.item2time);
+        this.speed = 1000.0f;
     }
 
     public void setPlayer(Player player) {
         this.player = player;
-    }
-
-    private void set(float x,float itemlife, float speed) {
-        life = itemlife;
-        this.speed = speed;
     }
 
     @Override
@@ -118,6 +116,14 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
         canvas.restore();
 
     }
+
+    public void statUp(int add){
+        this.count += add;
+    }
+    public int getCount(){
+        return this.count;
+    }
+
 
     @Override
     public RectF getBoundingRect() {
