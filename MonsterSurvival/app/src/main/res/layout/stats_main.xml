@@ -71,6 +71,17 @@
                 android:layout_weight="0.5" />
 
             <TextView
+                android:id="@+id/stat1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="□□□"
+                android:textSize="35sp"
+                android:gravity="right|center"
+                android:fontFamily="@font/dungguenmo"
+                >
+            </TextView>
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="-300 Coin"
@@ -94,8 +105,18 @@
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="onStat1Clicked"
+                android:onClick="onStat2Clicked"
                 android:layout_weight="0.5" />
+            <TextView
+                android:id="@+id/stat2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="□□□□□"
+                android:textSize="35sp"
+                android:gravity="right|center"
+                android:fontFamily="@font/dungguenmo"
+                >
+            </TextView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -120,8 +141,18 @@
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="onStat1Clicked"
+                android:onClick="onStat3Clicked"
                 android:layout_weight="0.5" />
+            <TextView
+                android:id="@+id/stat3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="□□□□□"
+                android:textSize="35sp"
+                android:gravity="right|center"
+                android:fontFamily="@font/dungguenmo"
+                >
+            </TextView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -145,8 +176,18 @@
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="onStat1Clicked"
+                android:onClick="onStat4Clicked"
                 android:layout_weight="0.5" />
+            <TextView
+                android:id="@+id/stat4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="□□□□□"
+                android:textSize="35sp"
+                android:gravity="right|center"
+                android:fontFamily="@font/dungguenmo"
+                >
+            </TextView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

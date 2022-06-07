@@ -1,6 +1,7 @@
 package com.example.monstersurvival.app;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,6 +31,9 @@ public class StatsActivity extends AppCompatActivity{
         finish();
     }
 
+    //////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+    private int stat1Level = 1;
     public void onStat1Clicked(View view) {
         Item1active item1active = Item1active.get();
         float tempLife = item1active.getLife();
@@ -39,8 +43,21 @@ public class StatsActivity extends AppCompatActivity{
             MainGame.getInstance().coin -= 300;
         }
 
+        String saveText = "";
+        for(int i =0; i<3; ++i){
+            if(i<= 5 - stat1Level){
+                saveText += "□";
+            } else{
+                saveText += "■";
+            }
+        }
+        Log.d(TAG,"Text"+saveText);
+        TextView textView = (TextView) findViewById(R.id.stat1);
+        textView.setText(saveText);
     }
-
+    //////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+    private int stat2Level = 1;
     public void onStat2Clicked(View view) {
         setText();
         Item1active item1active = Item1active.get();
@@ -53,8 +70,22 @@ public class StatsActivity extends AppCompatActivity{
 
         setText();
 
+        String saveText = "";
+        for(int i =0; i<5; ++i){
+            if(i<= 5 - stat2Level){
+                saveText += "□";
+            } else{
+                saveText += "■";
+            }
+        }
+        Log.d(TAG,"Text"+saveText);
+        TextView textView = (TextView) findViewById(R.id.stat2);
+        textView.setText(saveText);
     }
 
+    //////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+    private int stat3Level = 1;
     public void onStat3Clicked(View view) {
         Item2active item2active = Item2active.get();
         //float tempLife = item2active.getLife();
@@ -63,8 +94,22 @@ public class StatsActivity extends AppCompatActivity{
             //item2active.statUp(tempLife, 1.0f);
             MainGame.getInstance().coin -= 100;
         }
-    }
 
+        String saveText = "";
+        for(int i =0; i<5; ++i){
+            if(i<= 5 - stat3Level){
+                saveText += "□";
+            } else{
+                saveText += "■";
+            }
+        }
+        Log.d(TAG,"Text"+saveText);
+        TextView textView = (TextView) findViewById(R.id.stat3);
+        textView.setText(saveText);
+    }
+    //////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+    private int stat4Level = 1;
     public void onStat4Clicked(View view) {
         setText();
         Item1active item1active = Item1active.get();
@@ -74,9 +119,21 @@ public class StatsActivity extends AppCompatActivity{
         if(MainGame.getInstance().coin >= 100) {
             item1active.statUp(tempLife, 1.0f);
             MainGame.getInstance().coin -= 100;
+            stat4Level += 1;
         }
 
         setText();
+        String saveText = "";
+        for(int i =0; i<5; ++i){
+            if(i<= 5 - stat4Level){
+                saveText += "□";
+            } else{
+                saveText += "■";
+            }
+        }
+        Log.d(TAG,"Text"+saveText);
+        TextView textView = (TextView) findViewById(R.id.stat4);
+        textView.setText(saveText);
     }
 
     public void setText(){
@@ -86,5 +143,7 @@ public class StatsActivity extends AppCompatActivity{
         textView.setText("Coin : " + coin);
 
     }
+    //////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
 
 }
