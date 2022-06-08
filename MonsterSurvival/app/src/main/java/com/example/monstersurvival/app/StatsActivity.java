@@ -35,13 +35,12 @@ public class StatsActivity extends AppCompatActivity{
     //////////////////////////////////////////////////////////////////////////
     private int stat1Level = 1;
     public void onStat1Clicked(View view) {
-        Item1active item1active = Item1active.get();
-        float tempLife = item1active.getLife();
 
         if(MainGame.getInstance().coin >= 300) {
-            item1active.statUp(tempLife, 1.0f);
+            MainGame.getInstance().setHealth();
             MainGame.getInstance().coin -= 300;
             stat1Level += 1;
+            setText();
         }
 
         String saveText = "";
@@ -52,7 +51,6 @@ public class StatsActivity extends AppCompatActivity{
                 saveText += "■";
             }
         }
-        Log.d(TAG,"Text"+saveText);
         TextView textView = (TextView) findViewById(R.id.stat1);
         textView.setText(saveText);
     }

@@ -32,6 +32,7 @@ public class MainGame extends Scene {
     private Player player;
     private Enemy enemy;
     private Life life;
+    public int health = 3;
     private ProgressBar bar;
 
 
@@ -170,6 +171,9 @@ public class MainGame extends Scene {
     public int getCoin(){
         return coin;
     }
+
+    public void setHealth() {health += 1;}
+    public int getHealth() { return health; }
 }
 
 //        스텟 2개 성장

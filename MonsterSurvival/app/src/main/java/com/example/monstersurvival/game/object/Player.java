@@ -14,6 +14,7 @@ import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.GyroOrient;
 import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.framework.objects.Sprite;
+import com.example.monstersurvival.game.scenes.MainGame;
 
 public class Player extends Sprite implements BoxCollidable {
     private static final String TAG = GameView.class.getSimpleName();
@@ -44,7 +45,7 @@ public class Player extends Sprite implements BoxCollidable {
     public Player(float x,float y){
         super(x,y,R.dimen.player_radius, R.mipmap.player_image);
         speed = R.dimen.player_speed; //dimen에 넣을예정
-        health = Metrics.getFloat(R.dimen.player_health);
+        health = MainGame.getInstance().getHealth();
 
         px = x;
         py = y;

@@ -124,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onClick="onStat2Clicked"
-                android:background="#CC5533"
+                android:background="#E9C6CF"
                 android:layout_marginBottom="8dp"
                 android:src="@mipmap/stat2img"
                 android:scaleType="fitCenter"
