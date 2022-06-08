@@ -22,6 +22,8 @@ public class MainGame extends Scene {
     private static final String TAG = GameView.class.getSimpleName();
     public static final String PARAM_STAGE_INDEX = "stage_index";
     private static MainGame singleton;
+    private Button pauseButton;
+
     public static MainGame getInstance() {
         if (singleton == null) {
             singleton = new MainGame();
@@ -101,17 +103,19 @@ public class MainGame extends Scene {
         float btn_w = size(0.75f);
         float btn_h = size(0.75f);
 
-        add(Layer.touchUi.ordinal(), new Button(
+        pauseButton = new Button(
                 Metrics.width - btn_w, btn_y, btn_w, btn_h, R.mipmap.pause_button, R.mipmap.pause_button_on,
                 new Button.Callback() {
                     @Override
                     public boolean onTouch(Button.Action action) {
-                        Log.d(TAG,"pause button on");
+                        Log.d(TAG, "pause pauseButton on");
                         if (action != Button.Action.pressed) return false;
+
                         push(PausedScene.get());
                         return true;
                     }
-                }));
+                });
+        add(Layer.touchUi.ordinal(), pauseButton);
         ////// 일시정지 버튼 //////
     }
 
@@ -152,6 +156,7 @@ public class MainGame extends Scene {
 
     @Override
     public void resume() {
+        pauseButton.reset();
         Sound.resumeMusic();
     }
 

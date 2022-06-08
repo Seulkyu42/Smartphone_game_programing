@@ -29,6 +29,10 @@ public class Button extends Sprite implements Touchable {
         }
         this.callback = callback;
     }
+    public void reset() {
+        pressed = false;
+        bitmap = normalBitmap;
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
