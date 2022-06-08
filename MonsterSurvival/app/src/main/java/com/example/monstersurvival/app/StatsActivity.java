@@ -38,16 +38,23 @@ public class StatsActivity extends AppCompatActivity{
         pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
         editor = pref.edit();
 
-        stat1Level = pref.getInt("stat1Key",1);
-        stat2Level = pref.getInt("stat2Key",1);
-        stat3Level = pref.getInt("stat3Key",1);
-        stat4Level = pref.getInt("stat4Key",1);
-        Log.d(TAG,"Level" + stat1Level);
+        { // SharedReference 초기 세팅 //
+            stat1Level = pref.getInt("stat1Key", 0);
+            stat2Level = pref.getInt("stat2Key", 0);
+            stat3Level = pref.getInt("stat3Key", 0);
+            stat4Level = pref.getInt("stat4Key", 0);
+            stat1SetText();
+            stat2SetText();
+            stat3SetText();
+            stat4SetText();
+        }
 
-        stat1SetText();
-        stat2SetText();
-        stat3SetText();
-        stat4SetText();
+        Log.d(TAG,"1Level : " + stat1Level);
+        Log.d(TAG,"2Level : " + stat2Level);
+        Log.d(TAG,"3Level : " + stat3Level);
+        Log.d(TAG,"4Level : " + stat4Level);
+
+
         setText();
     }
 
@@ -65,9 +72,6 @@ public class StatsActivity extends AppCompatActivity{
                 MainGame.getInstance().setHealth();
                 MainGame.getInstance().coin -= 300;
                 stat1Level += 1;
-
-                editor.putInt("stat1Level",stat1Level);
-                editor.apply();
                 setText();
             }
 
@@ -88,6 +92,7 @@ public class StatsActivity extends AppCompatActivity{
         }
         TextView textView = (TextView) findViewById(R.id.stat1);
         textView.setText(saveText);
+
     }
     //////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////
@@ -112,7 +117,6 @@ public class StatsActivity extends AppCompatActivity{
             Toast.makeText(getApplicationContext(), "Stat2 Max Level", Toast.LENGTH_SHORT).show();
         }
     }
-
     private void stat2SetText() {
         String saveText = "";
         for (int i = 0; i < 5; ++i) {
@@ -147,7 +151,6 @@ public class StatsActivity extends AppCompatActivity{
             Toast.makeText(getApplicationContext(), "Stat3 Max Level", Toast.LENGTH_SHORT).show();
         }
     }
-
     private void stat3SetText() {
         String saveText = "";
         for (int i = 0; i < 5; ++i) {
@@ -183,7 +186,6 @@ public class StatsActivity extends AppCompatActivity{
             Toast.makeText(getApplicationContext(), "Stat4 Max Level", Toast.LENGTH_SHORT).show();
         }
     }
-
     private void stat4SetText() {
         String saveText = "";
         for(int i =0; i<5; ++i){
