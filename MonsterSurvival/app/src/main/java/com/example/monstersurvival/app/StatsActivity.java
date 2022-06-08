@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,83 +37,98 @@ public class StatsActivity extends AppCompatActivity{
     private int stat1Level = 1;
     public void onStat1Clicked(View view) {
 
-        if(MainGame.getInstance().coin >= 300) {
-            MainGame.getInstance().setHealth();
-            MainGame.getInstance().coin -= 300;
-            stat1Level += 1;
-            setText();
-        }
-
-        String saveText = "";
-        for(int i =0; i<3; ++i){
-            if(i<= 3 - stat1Level){
-                saveText += "□";
-            } else{
-                saveText += "■";
+        if(stat1Level <= 3) {
+            if (MainGame.getInstance().coin >= 300) {
+                MainGame.getInstance().setHealth();
+                MainGame.getInstance().coin -= 300;
+                stat1Level += 1;
+                setText();
             }
+
+            String saveText = "";
+            for (int i = 0; i < 3; ++i) {
+                if (i <= 3 - stat1Level) {
+                    saveText += "□";
+                } else {
+                    saveText += "■";
+                }
+            }
+            TextView textView = (TextView) findViewById(R.id.stat1);
+            textView.setText(saveText);
+        } else
+        {
+            Toast.makeText(getApplicationContext(), "Stat1 Max Level", Toast.LENGTH_SHORT).show();
         }
-        TextView textView = (TextView) findViewById(R.id.stat1);
-        textView.setText(saveText);
     }
     //////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////
     private int stat2Level = 1;
     public void onStat2Clicked(View view) {
-        setText();
-        Item1active item1active = Item1active.get();
-        float tempLife = item1active.getLife();
 
-        if(MainGame.getInstance().coin >= 100) {
-            item1active.statUp(tempLife, 1.0f);
-            MainGame.getInstance().coin -= 100;
-            stat2Level += 1;
-        }
+        if(stat2Level <= 5) {
+            Item1active item1active = Item1active.get();
+            float tempLife = item1active.getLife();
 
-        setText();
-
-        String saveText = "";
-        for(int i =0; i<5; ++i){
-            if(i<= 5 - stat2Level){
-                saveText += "□";
-            } else{
-                saveText += "■";
+            if (MainGame.getInstance().coin >= 100) {
+                item1active.statUp(tempLife, 1.0f);
+                MainGame.getInstance().coin -= 100;
+                stat2Level += 1;
+                setText();
             }
+
+            String saveText = "";
+            for (int i = 0; i < 5; ++i) {
+                if (i <= 5 - stat2Level) {
+                    saveText += "□";
+                } else {
+                    saveText += "■";
+                }
+            }
+            Log.d(TAG, "Text" + saveText);
+            TextView textView = (TextView) findViewById(R.id.stat2);
+            textView.setText(saveText);
+        } else
+        {
+            Toast.makeText(getApplicationContext(), "Stat2 Max Level", Toast.LENGTH_SHORT).show();
         }
-        Log.d(TAG,"Text"+saveText);
-        TextView textView = (TextView) findViewById(R.id.stat2);
-        textView.setText(saveText);
     }
 
     //////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////
     private int stat3Level = 1;
     public void onStat3Clicked(View view) {
-        Item2active item2active = Item2active.get();
-        //float tempLife = item2active.getLife();
+        if(stat3Level <= 5) {
+            Item2active item2active = Item2active.get();
+            //float tempLife = item2active.getLife();
 
-        if(MainGame.getInstance().coin >= 100) {
-            //item2active.statUp(tempLife, 1.0f);
-            MainGame.getInstance().coin -= 100;
-            stat3Level += 1;
-        }
-
-        String saveText = "";
-        for(int i =0; i<5; ++i){
-            if(i<= 5 - stat3Level){
-                saveText += "□";
-            } else{
-                saveText += "■";
+            if (MainGame.getInstance().coin >= 100) {
+                //item2active.statUp(tempLife, 1.0f);
+                MainGame.getInstance().coin -= 100;
+                stat3Level += 1;
+                setText();
             }
+
+            String saveText = "";
+            for (int i = 0; i < 5; ++i) {
+                if (i <= 5 - stat3Level) {
+                    saveText += "□";
+                } else {
+                    saveText += "■";
+                }
+            }
+            Log.d(TAG, "Text" + saveText);
+            TextView textView = (TextView) findViewById(R.id.stat3);
+            textView.setText(saveText);
+        } else {
+            Toast.makeText(getApplicationContext(), "Stat3 Max Level", Toast.LENGTH_SHORT).show();
         }
-        Log.d(TAG,"Text"+saveText);
-        TextView textView = (TextView) findViewById(R.id.stat3);
-        textView.setText(saveText);
     }
     //////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////
     private int stat4Level = 1;
     public void onStat4Clicked(View view) {
-        setText();
+
+        if(stat4Level <= 5){
         Item1active item1active = Item1active.get();
         float tempLife = item1active.getLife();
         item1active.statUp(tempLife,1.0f);
@@ -121,9 +137,10 @@ public class StatsActivity extends AppCompatActivity{
             item1active.statUp(tempLife, 1.0f);
             MainGame.getInstance().coin -= 100;
             stat4Level += 1;
+
+            setText();
         }
 
-        setText();
         String saveText = "";
         for(int i =0; i<5; ++i){
             if(i<= 5 - stat4Level){
@@ -135,6 +152,9 @@ public class StatsActivity extends AppCompatActivity{
         Log.d(TAG,"Text"+saveText);
         TextView textView = (TextView) findViewById(R.id.stat4);
         textView.setText(saveText);
+        } else {
+            Toast.makeText(getApplicationContext(), "Stat4 Max Level", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void setText(){
