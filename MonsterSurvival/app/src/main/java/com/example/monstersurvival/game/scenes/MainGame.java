@@ -37,7 +37,7 @@ public class MainGame extends Scene {
 
     public float gameTime;
     public int stageIndex = 1;
-    public int coin;
+    public int coin = 10000;
 
     /////////////////////////// 레이어
     public enum Layer {

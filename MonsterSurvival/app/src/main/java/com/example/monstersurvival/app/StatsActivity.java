@@ -41,11 +41,12 @@ public class StatsActivity extends AppCompatActivity{
         if(MainGame.getInstance().coin >= 300) {
             item1active.statUp(tempLife, 1.0f);
             MainGame.getInstance().coin -= 300;
+            stat1Level += 1;
         }
 
         String saveText = "";
         for(int i =0; i<3; ++i){
-            if(i<= 5 - stat1Level){
+            if(i<= 3 - stat1Level){
                 saveText += "□";
             } else{
                 saveText += "■";
@@ -66,6 +67,7 @@ public class StatsActivity extends AppCompatActivity{
         if(MainGame.getInstance().coin >= 100) {
             item1active.statUp(tempLife, 1.0f);
             MainGame.getInstance().coin -= 100;
+            stat2Level += 1;
         }
 
         setText();
@@ -93,6 +95,7 @@ public class StatsActivity extends AppCompatActivity{
         if(MainGame.getInstance().coin >= 100) {
             //item2active.statUp(tempLife, 1.0f);
             MainGame.getInstance().coin -= 100;
+            stat3Level += 1;
         }
 
         String saveText = "";
