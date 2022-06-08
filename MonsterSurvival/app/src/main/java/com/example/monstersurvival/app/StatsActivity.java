@@ -25,10 +25,10 @@ public class StatsActivity extends AppCompatActivity{
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
-    private int stat1Level = 1;
-    private int stat2Level = 1;
-    private int stat3Level = 1;
-    private int stat4Level = 1;
+    private int stat1Level = 0;
+    private int stat2Level = 0;
+    private int stat3Level = 0;
+    private int stat4Level = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,14 @@ public class StatsActivity extends AppCompatActivity{
 
 
         setText();
+    }
+
+    public void statInit(){
+        if(stat1Level >= 1 && MainGame.getInstance().getHealth() < 6){
+            for(int i =1; i < stat1Level; ++i){
+                MainGame.getInstance().setHealth();
+            }
+        }
     }
 
     public void onBackButtonClicked(View view){

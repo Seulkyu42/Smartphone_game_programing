@@ -7,6 +7,7 @@ import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.Scene;
 import com.example.monstersurvival.framework.Sound;
 import com.example.monstersurvival.framework.GameView;
+import com.example.monstersurvival.framework.interfaces.ResetData;
 import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.framework.objects.VertScrollBackground;
 import com.example.monstersurvival.game.object.Button;
@@ -66,6 +67,9 @@ public class MainGame extends Scene {
         super.init();
         Log.d(TAG,"INITIATING");
         initLayers(Layer.COUNT.ordinal());
+
+        ResetData resetData = new ResetData();
+        resetData.init();
 
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);
