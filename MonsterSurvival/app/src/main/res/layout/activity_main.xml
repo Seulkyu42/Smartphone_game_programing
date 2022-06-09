@@ -41,7 +41,7 @@
             android:background="#B3FFFFFF"
             android:fontFamily="@font/dungguenmo"
             android:layout_marginBottom="15dp"
-            android:text="StageSelect"
+            android:text="@string/stageButton1"
             android:onClick="onStageSelect"
             android:textSize="60sp" />
 
@@ -52,7 +52,7 @@
             android:background="#B3FFFFFF"
             android:fontFamily="@font/dungguenmo"
             android:layout_marginBottom="15dp"
-            android:text="Stats"
+            android:text="@string/stageButton2"
             android:onClick="onStats"
             android:textSize="60sp" />
 
@@ -63,7 +63,7 @@
             android:background="#B3FFFFFF"
             android:fontFamily="@font/dungguenmo"
             android:layout_marginBottom="15dp"
-            android:text="Language"
+            android:text="@string/stageButton3"
             android:textSize="60sp" />
         <!--        소리 설정 버튼-->
         <!--        <ImageButton-->
