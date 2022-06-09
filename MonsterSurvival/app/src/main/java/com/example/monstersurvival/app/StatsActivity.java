@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.game.items.Item2active;
+import com.example.monstersurvival.game.items.Item3active;
 import com.example.monstersurvival.game.object.Player;
 import com.example.monstersurvival.game.items.Item1active;
 import com.example.monstersurvival.game.scenes.MainGame;
@@ -181,11 +182,9 @@ public class StatsActivity extends AppCompatActivity{
     public void onStat4Clicked(View view) {
 
         if(stat4Level <= 5){
-        Item1active item1active = Item1active.get();
-        float tempLife = item1active.getLife();
-
+            Item3active item3active = Item3active.get();
         if(MainGame.getInstance().coin >= 100) {
-            item1active.statUp(tempLife, 1.0f);
+            item3active.statUp(1);
             MainGame.getInstance().coin -= 100;
             stat4Level += 1;
 

@@ -104,11 +104,15 @@ public class GameView extends View implements Choreographer.FrameCallback {
         Context context = getContext();
         while (context instanceof ContextWrapper) {
             if (context instanceof Activity) {
-                return (Activity)context;
+                return (Activity) context;
             }
-            context = ((ContextWrapper)context).getBaseContext();
+            context = ((ContextWrapper) context).getBaseContext();
         }
         return null;
+    }
+
+    public Context returnContext(){
+        return getContext();
     }
 
     public boolean onBackPressed() {

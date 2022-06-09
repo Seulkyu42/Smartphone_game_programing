@@ -107,8 +107,7 @@ public class CollisionChecker implements GameObject {
                 game.remove(item3);
                 player.getItem();
 
-                Item3active item3active = Item3active.get(0, Metrics.getFloat(R.dimen.item3time),
-                        Metrics.getFloat(R.dimen.item3speed));
+                Item3active item3active = Item3active.get();
                 item3active.setPlayer(MainGame.getInstance().getPlayer());
                 MainGame.getInstance().add(MainGame.Layer.activeitem.ordinal(), item3active);
             }

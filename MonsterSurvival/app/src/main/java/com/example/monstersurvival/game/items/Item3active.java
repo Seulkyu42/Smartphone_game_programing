@@ -1,10 +1,15 @@
 package com.example.monstersurvival.game.items;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.util.DisplayMetrics;
+import android.util.Log;
 
 import com.example.monstersurvival.R;
+import com.example.monstersurvival.framework.GameView;
 import com.example.monstersurvival.framework.RecycleBin;
 import com.example.monstersurvival.framework.interfaces.BoxCollidable;
 import com.example.monstersurvival.framework.interfaces.Recyclable;
@@ -17,7 +22,8 @@ import com.example.monstersurvival.game.object.Player;
 public class Item3active extends Sprite implements BoxCollidable, Recyclable {
     public static final float FRAMES_PER_SECOND = 10.0f;
     private static final String TAG = Item3active.class.getSimpleName();
-    public static float size;
+    public static int size;
+    static int multiply = 0;
     protected float dx,dy;
     protected RectF boundingBox = new RectF();
 
@@ -29,27 +35,28 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
     private float blink = 0.0f;
     private float speed = 0.0f;
 
-    private Item3active(float x, float itemlife, float speed) {
-        super(x,size,R.dimen.item3_radius, R.mipmap.item_3);
-        set(x,itemlife,speed);
+    private Item3active() {
+        super(0,size,R.dimen.item3_radius, R.mipmap.item_3);
+        set();
+
     }
 //    protected static ArrayList<Enemy> recycleBin = new ArrayList<>();
-    public static Item3active get(float x, float itemlife, float speed) {
+    public static Item3active get() {
         Item3active item = (Item3active) RecycleBin.get(Item3active.class);
         if (item != null) {
-            item.set(x,itemlife, speed);
+            item.set();
             return item;
         }
-        return new Item3active(x ,itemlife, speed);
+        return new Item3active();
     }
 
     public void setPlayer(Player player) {
         this.player = player;
     }
 
-    private void set(float x,float itemlife, float speed) {
-        life = itemlife;
-        this.speed = speed;
+    private void set() {
+        life = Metrics.getFloat(R.dimen.item3time);
+        this.speed = Metrics.getFloat(R.dimen.item3speed);
     }
 
     @Override
@@ -77,6 +84,7 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
             y -= dy * frameTime;
 
             setDstRectWithRadius();
+            dstRect.set(x - radius, y - radius, x + radius, y + radius);
             boundingBox.set(dstRect);
             boundingBox.inset(size / 16, size / 16);
             if (dstRect.top > Metrics.height) {
@@ -100,6 +108,18 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
     public RectF getBoundingRect() {
         return boundingBox;
     }
+
+    public void statUp(int add){
+        this.multiply += add;
+        Log.d(TAG,"mult"+multiply);
+    }
+    public void addSize(int value) {
+        this.multiply = value;
+    }
+    public int getSize(){
+        return this.multiply;
+    }
+
 
     @Override
     public void finish() {
