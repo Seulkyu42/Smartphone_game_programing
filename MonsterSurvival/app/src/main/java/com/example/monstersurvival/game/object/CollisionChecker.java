@@ -4,6 +4,8 @@ package com.example.monstersurvival.game.object;
 import android.graphics.Canvas;
 
 import com.example.monstersurvival.R;
+import com.example.monstersurvival.framework.GameView;
+import com.example.monstersurvival.framework.Sound;
 import com.example.monstersurvival.framework.interfaces.BoxCollidable;
 import com.example.monstersurvival.framework.CollisionHelper;
 import com.example.monstersurvival.framework.interfaces.GameObject;
@@ -49,6 +51,7 @@ public class CollisionChecker implements GameObject {
             }
             if(CollisionHelper.collides(player, (BoxCollidable) enemy)){
                 if(player.getIsInvincible() == false){
+                    Sound.playEffect(GameView.view.getContext(),R.raw.dmg_wind_e);
                     game.remove(enemy);
                 }
                 player.getHit();
@@ -56,6 +59,7 @@ public class CollisionChecker implements GameObject {
 
             for(GameObject activeitem: activeItems) {
                 if (CollisionHelper.collides((BoxCollidable) enemy, (BoxCollidable) activeitem)){
+                    Sound.playEffect(GameView.view.getContext(),R.raw.etc_item1);
                     Coin1 coin1 = Coin1.get(500,Metrics.getFloat(R.dimen.item2time),1);
                     coin1.setEnemy((Enemy) enemy);
                     MainGame.getInstance().add(MainGame.Layer.coin.ordinal(), coin1);
@@ -69,6 +73,7 @@ public class CollisionChecker implements GameObject {
                 continue;
             }
             if(CollisionHelper.collides(player, (BoxCollidable) coin)){
+                Sound.playEffect(GameView.view.getContext(),R.raw.gelderdrop2);
                 game.remove(coin);
                 game.setCoin();
             }
@@ -82,7 +87,7 @@ public class CollisionChecker implements GameObject {
             if(CollisionHelper.collides(player,(BoxCollidable) item1)){
                 game.remove(item1);
                 player.getItem();
-
+                Sound.playEffect(GameView.view.getContext(),R.raw.snd_skl_p_109_sbg);
                 Item1active item1active = Item1active.get();
                 item1active.setPlayer(MainGame.getInstance().getPlayer());
                 MainGame.getInstance().add(MainGame.Layer.activeitem.ordinal(), item1active);
@@ -95,6 +100,7 @@ public class CollisionChecker implements GameObject {
             if(CollisionHelper.collides(player,(BoxCollidable) item2)){
                 game.remove(item2);
                 player.getItem();
+                Sound.playEffect(GameView.view.getContext(),R.raw.snd_skl_m_108_sed);
                 for(int i =0; i < 1; ++i) {
                     Item2active item2active = Item2active.get();
                     item2active.setPlayer(MainGame.getInstance().getPlayer());
@@ -106,6 +112,7 @@ public class CollisionChecker implements GameObject {
             if(CollisionHelper.collides(player,(BoxCollidable) item3)){
                 game.remove(item3);
                 player.getItem();
+                Sound.playEffect(GameView.view.getContext(),R.raw.snd_c_reg_fire);
 
                 Item3active item3active = Item3active.get();
                 item3active.setPlayer(MainGame.getInstance().getPlayer());

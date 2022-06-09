@@ -62,9 +62,5 @@ public class StageSelectActivity extends AppCompatActivity{
         startActivity(intent);
         finish();
     }
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Sound.playEffect(this, R.raw.ui_user_close);
-    }
+
 }
