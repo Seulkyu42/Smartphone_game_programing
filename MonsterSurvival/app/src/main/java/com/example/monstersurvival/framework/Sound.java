@@ -1,5 +1,6 @@
 package com.example.monstersurvival.framework;
 
+import android.content.Context;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
@@ -33,13 +34,13 @@ public class Sound {
     }
 
     private static HashMap<Integer, Integer> soundIdMap = new HashMap<>();
-    public static void playEffect(int resId) {
+    public static void playEffect(Context context, int resId) {
         SoundPool pool = getSoundPool();
         int soundId;
         if (soundIdMap.containsKey(resId)) {
             soundId = soundIdMap.get(resId);
         } else {
-            soundId = pool.load(GameView.view.getContext(), resId, 1);
+            soundId = pool.load(context, resId, 1);
             soundIdMap.put(resId, soundId);
         }
         // int streamId =
