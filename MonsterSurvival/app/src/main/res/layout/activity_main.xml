@@ -64,6 +64,7 @@
             android:fontFamily="@font/dungguenmo"
             android:layout_marginBottom="15dp"
             android:text="@string/stageButton3"
+            android:onClick="onBtnLanguage"
             android:textSize="60sp" />
         <!--        소리 설정 버튼-->
         <!--        <ImageButton-->

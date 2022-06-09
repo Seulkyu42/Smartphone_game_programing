@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MonsterSurvival</string>
+    <string name="stageButton1">스테이지선택</string>
+    <string name="stageButton2">스텟</string>
+    <string name="stageButton3">언어</string>
+    <string name="stat4">+1 크기</string>
+    <string name="stat3">+10 속도</string>
+    <string name="stat2">+1 지속시간</string>
+    <string name="stat1">+1 생명</string>
+    <string name="coin3">-300 코인</string>
+    <string name="coin1">-100 코인</string>
+    <string name="stage1">스테이지 1</string>
+    <string name="stage2">스테이지 2</string>
+    <string name="stagei">"무한 "</string>
+</resources>

@@ -18,6 +18,7 @@ import com.example.monstersurvival.game.items.itemGenerator;
 import com.example.monstersurvival.game.object.CollisionChecker;
 import com.example.monstersurvival.game.object.Enemy;
 import com.example.monstersurvival.game.object.EnemyGenerator;
+import com.example.monstersurvival.game.object.Score;
 
 public class MainGame extends Scene {
     private static final String TAG = GameView.class.getSimpleName();
@@ -37,11 +38,13 @@ public class MainGame extends Scene {
     private Life life;
     public int health = 3;
     private ProgressBar bar;
-
+    private Score score;
 
     public float gameTime;
     public int stageIndex = 1;
     public int coin = 10000;
+
+    public int resultCoin;
 
     /////////////////////////// 레이어
     public enum Layer {
@@ -70,6 +73,8 @@ public class MainGame extends Scene {
 
         ResetData resetData = new ResetData();
         resetData.init();
+
+        resultCoin = 0;
 
         float playerY = Metrics.height/2;
         player = new Player(Metrics.width/2, playerY);
@@ -100,6 +105,11 @@ public class MainGame extends Scene {
         bar = new ProgressBar();
         add(Layer.Ui.ordinal(), bar);
         ////// 진행바 //////
+
+        ////// 점수 ///////
+        score = new Score(0, 700);
+        add(Layer.Ui.ordinal(), score);
+        ////// 점수 ///////
 
         ////// 일시정지 버튼 //////
         float btn_x = size(1.5f);
@@ -135,6 +145,13 @@ public class MainGame extends Scene {
 //                return true;
 //        }
 //        return false;
+//    }
+
+
+//    @Override
+//    public void update(int elapsedNanos) {
+//        super.update(elapsedNanos);
+//
 //    }
 
     @Override
@@ -176,9 +193,13 @@ public class MainGame extends Scene {
 
     public void setCoin(){
         coin += 1;
+        resultCoin += 1;
     }
     public int getCoin(){
         return coin;
+    }
+    public int getResultCoin(){
+        return resultCoin;
     }
 
     public void setHealth() {health += 1;}
