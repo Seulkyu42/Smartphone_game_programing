@@ -5,6 +5,7 @@ import com.example.monstersurvival.framework.Scene;
 import com.example.monstersurvival.framework.objects.Sprite;
 import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.game.object.Button;
+import com.example.monstersurvival.game.object.Score;
 
 public class GameOverScene extends Scene {
     private static GameOverScene singleton;
@@ -52,7 +53,8 @@ public class GameOverScene extends Scene {
             }
         }));
 
-
+        Score score = new Score(btn_x * 0.7f, btn_y * 0.9f);
+        add(Layer.touchUi.ordinal(), score);
     }
 
     @Override

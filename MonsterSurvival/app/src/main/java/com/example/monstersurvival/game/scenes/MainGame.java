@@ -106,11 +106,6 @@ public class MainGame extends Scene {
         add(Layer.Ui.ordinal(), bar);
         ////// 진행바 //////
 
-        ////// 점수 ///////
-        score = new Score(0, 700);
-        add(Layer.Ui.ordinal(), score);
-        ////// 점수 ///////
-
         ////// 일시정지 버튼 //////
         float btn_x = size(1.5f);
         float btn_y = size(1.0f);
@@ -131,21 +126,27 @@ public class MainGame extends Scene {
                 });
         add(Layer.touchUi.ordinal(), pauseButton);
         ////// 일시정지 버튼 //////
+
+
+        ////// 점수 ///////
+        score = new Score(0, btn_y*1.5f);
+        add(Layer.Ui.ordinal(), score);
+        ////// 점수 ///////
     }
 
-//    public boolean onTouchEvent(MotionEvent event) {
-//        int action = event.getAction();
-//        switch (action) {
-//            case MotionEvent.ACTION_DOWN:
-//            case MotionEvent.ACTION_MOVE:
-//                float x = event.getX();
-//                float y = event.getY();
-//
-//                player.debugTouch(x,y);
-//                return true;
-//        }
-//        return false;
-//    }
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+                float x = event.getX();
+                float y = event.getY();
+
+                player.debugTouch(x,y);
+                return true;
+        }
+        return false;
+    }
 
 
 //    @Override
