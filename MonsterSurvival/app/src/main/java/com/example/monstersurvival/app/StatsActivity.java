@@ -39,10 +39,10 @@ public class StatsActivity extends AppCompatActivity{
         editor = pref.edit();
 
         { // SharedReference 초기 세팅 //
-            stat1Level = pref.getInt("stat1Key", 0);
-            stat2Level = pref.getInt("stat2Key", 0);
-            stat3Level = pref.getInt("stat3Key", 0);
-            stat4Level = pref.getInt("stat4Key", 0);
+            stat1Level = pref.getInt("stat1Key", 1);
+            stat2Level = pref.getInt("stat2Key", 1);
+            stat3Level = pref.getInt("stat3Key", 1);
+            stat4Level = pref.getInt("stat4Key", 1);
             stat1SetText();
             stat2SetText();
             stat3SetText();
@@ -210,6 +210,14 @@ public class StatsActivity extends AppCompatActivity{
         TextView textView = (TextView) findViewById(R.id.playergold);
         textView.setText("Coin : " + coin);
 
+    }
+
+    public void resetData(){
+        editor.putInt("stat1Key", 1);
+        editor.putInt("stat2Key", 1);
+        editor.putInt("stat3Key", 1);
+        editor.putInt("stat4Key", 1);
+        editor.apply();
     }
     //////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////

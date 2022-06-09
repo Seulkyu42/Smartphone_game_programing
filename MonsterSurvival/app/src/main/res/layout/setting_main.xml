@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".app.MainActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/background_high">
+
+    </ImageView>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@mipmap/logo"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="50dp"
+        android:background="@mipmap/background_dark"
+
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="-65dp">
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+        </TextView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#B3FFFFFF"
+            android:fontFamily="@font/dungguenmo"
+            android:layout_marginBottom="30dp"
+            android:text="@string/settingButton1"
+            android:onClick="onDataReset"
+            android:textSize="60sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#B3FFFFFF"
+            android:fontFamily="@font/dungguenmo"
+            android:layout_marginBottom="30dp"
+            android:text="@string/settingButton2"
+            android:onClick="onSound"
+            android:textSize="50sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#B3FFFFFF"
+            android:fontFamily="@font/dungguenmo"
+            android:text="@string/settingButton3"
+            android:onClick="onBackButtonClicked"
+            android:textSize="55sp" />
+        <!--        소리 설정 버튼-->
+        <!--        <ImageButton-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background=""-->
+        <!--            android:text="Highscore"-->
+        <!--            android:textSize="30sp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            />-->
+    </LinearLayout>
+
+
+</RelativeLayout>

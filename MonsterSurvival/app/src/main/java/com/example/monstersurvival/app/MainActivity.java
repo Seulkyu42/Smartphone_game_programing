@@ -61,4 +61,14 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+
+    public void onDataReset(View view) {
+    }
+
+    public void onSound(View view) {
+    }
+
+    public void onBackButtonClicked(View view) {
+        finish();
+    }
 }

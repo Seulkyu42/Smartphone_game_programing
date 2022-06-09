@@ -2,7 +2,7 @@
     <string name="app_name">MonsterSurvival</string>
     <string name="stageButton1">STAGESELECT</string>
     <string name="stageButton2">STATS</string>
-    <string name="stageButton3">LANGUAGE</string>
+    <string name="stageButton3">Setting</string>
     <string name="stat4">+1 Size</string>
     <string name="stat3">+10 Speed</string>
     <string name="stat2">+1 Sec</string>
@@ -12,4 +12,7 @@
     <string name="stage1">Stage 1</string>
     <string name="stage2">Stage 2</string>
     <string name="stagei">Infinite</string>
+    <string name="settingButton3">return_Back</string>
+    <string name="settingButton2">Sound_On/Off</string>
+    <string name="settingButton1">Data_Reset</string>
 </resources>
