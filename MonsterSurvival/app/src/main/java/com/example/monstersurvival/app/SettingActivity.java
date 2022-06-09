@@ -1,5 +1,7 @@
 package com.example.monstersurvival.app;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,14 +16,24 @@ import com.example.monstersurvival.game.scenes.MainGame;
 public class SettingActivity extends AppCompatActivity {
 
     private static final String TAG = CollisionChecker.class.getSimpleName();
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_main);
+        pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+        editor = pref.edit();
     }
 
     public void onDataReset(View view) {
+        editor.putInt("stat1Key", 0);
+        editor.putInt("stat2Key", 0);
+        editor.putInt("stat3Key", 0);
+        editor.putInt("stat4Key", 0);
+        MainGame.getInstance().addHealth(0);
+        editor.apply();
     }
 
     public void onSound(View view) {

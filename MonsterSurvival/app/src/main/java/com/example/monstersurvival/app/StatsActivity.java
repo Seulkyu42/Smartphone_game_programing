@@ -1,6 +1,7 @@
 package com.example.monstersurvival.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,8 @@ public class StatsActivity extends AppCompatActivity{
     private int stat3Level = 0;
     private int stat4Level = 0;
 
+    private static StatsActivity instance;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,25 +40,26 @@ public class StatsActivity extends AppCompatActivity{
         setContentView(R.layout.stats_main);
         pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
         editor = pref.edit();
+        instance = this;
 
         { // SharedReference 초기 세팅 //
-            stat1Level = pref.getInt("stat1Key", 1);
-            stat2Level = pref.getInt("stat2Key", 1);
-            stat3Level = pref.getInt("stat3Key", 1);
-            stat4Level = pref.getInt("stat4Key", 1);
+            stat1Level = pref.getInt("stat1Key", 0);
+            stat2Level = pref.getInt("stat2Key", 0);
+            stat3Level = pref.getInt("stat3Key", 0);
+            stat4Level = pref.getInt("stat4Key", 0);
             stat1SetText();
             stat2SetText();
             stat3SetText();
             stat4SetText();
         }
-
-        Log.d(TAG,"1Level : " + stat1Level);
-        Log.d(TAG,"2Level : " + stat2Level);
-        Log.d(TAG,"3Level : " + stat3Level);
-        Log.d(TAG,"4Level : " + stat4Level);
+        Log.d(TAG,"stat" + stat1Level);
         statInit();
 
         setText();
+    }
+
+    public static StatsActivity getInstance() {
+        return instance;
     }
 
     public void statInit(){
@@ -73,9 +77,10 @@ public class StatsActivity extends AppCompatActivity{
 
         if(stat1Level <= 3) {
             if (MainGame.getInstance().coin >= 300) {
-                MainGame.getInstance().setHealth();
                 MainGame.getInstance().coin -= 300;
                 stat1Level += 1;
+                MainGame.getInstance().setHealth();
+                Log.d(TAG,"stat" + stat1Level);
                 setText();
             }
 
@@ -88,7 +93,7 @@ public class StatsActivity extends AppCompatActivity{
     private void stat1SetText() {
         String saveText = "";
         for (int i = 0; i < 3; ++i) {
-            if (i <= 3 - stat1Level) {
+            if (i <= 2 - stat1Level) {
                 saveText += "□";
             } else {
                 saveText += "■";
@@ -124,7 +129,7 @@ public class StatsActivity extends AppCompatActivity{
     private void stat2SetText() {
         String saveText = "";
         for (int i = 0; i < 5; ++i) {
-            if (i <= 5 - stat2Level) {
+            if (i <= 4 - stat2Level) {
                 saveText += "□";
             } else {
                 saveText += "■";
@@ -158,7 +163,7 @@ public class StatsActivity extends AppCompatActivity{
     private void stat3SetText() {
         String saveText = "";
         for (int i = 0; i < 5; ++i) {
-            if (i <= 5 - stat3Level) {
+            if (i <= 4 - stat3Level) {
                 saveText += "□";
             } else {
                 saveText += "■";
@@ -193,7 +198,7 @@ public class StatsActivity extends AppCompatActivity{
     private void stat4SetText() {
         String saveText = "";
         for(int i =0; i<5; ++i){
-            if(i<= 5 - stat4Level){
+            if(i<= 4 - stat4Level){
                 saveText += "□";
             } else{
                 saveText += "■";
@@ -212,19 +217,13 @@ public class StatsActivity extends AppCompatActivity{
 
     }
 
-    public void resetData(){
-        editor.putInt("stat1Key", 1);
-        editor.putInt("stat2Key", 1);
-        editor.putInt("stat3Key", 1);
-        editor.putInt("stat4Key", 1);
-        editor.apply();
-    }
     //////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////
 
 
     @Override
     protected void onPause() {
+        Log.d(TAG,"stat" + stat1Level);
         editor.putInt("stat1Key", stat1Level);
         editor.putInt("stat2Key", stat2Level);
         editor.putInt("stat3Key", stat3Level);
