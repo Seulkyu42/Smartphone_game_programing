@@ -5,6 +5,7 @@ import com.example.monstersurvival.framework.Scene;
 import com.example.monstersurvival.framework.objects.Sprite;
 import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.game.object.Button;
+import com.example.monstersurvival.game.object.Score;
 
 public class GameClearScene extends Scene {
     private static GameClearScene singleton;
@@ -51,6 +52,9 @@ public class GameClearScene extends Scene {
                 return true;
             }
         }));
+
+        Score score = new Score(btn_x * 0.7f, btn_y * 0.9f);
+        add(GameOverScene.Layer.touchUi.ordinal(), score);
     }
 
     @Override

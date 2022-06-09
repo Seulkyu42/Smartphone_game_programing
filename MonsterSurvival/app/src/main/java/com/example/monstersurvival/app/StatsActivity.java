@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.GameView;
-import com.example.monstersurvival.framework.interfaces.ResetData;
 import com.example.monstersurvival.game.items.Item2active;
 import com.example.monstersurvival.game.object.Player;
 import com.example.monstersurvival.game.items.Item1active;
@@ -29,6 +28,7 @@ public class StatsActivity extends AppCompatActivity{
     private int stat2Level = 0;
     private int stat3Level = 0;
     private int stat4Level = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +53,13 @@ public class StatsActivity extends AppCompatActivity{
         Log.d(TAG,"2Level : " + stat2Level);
         Log.d(TAG,"3Level : " + stat3Level);
         Log.d(TAG,"4Level : " + stat4Level);
-
+        statInit();
 
         setText();
     }
 
     public void statInit(){
-        if(stat1Level >= 1 && MainGame.getInstance().getHealth() < 6){
-            for(int i =1; i < stat1Level; ++i){
-                MainGame.getInstance().setHealth();
-            }
-        }
+        MainGame.getInstance().addHealth(stat1Level);
     }
 
     public void onBackButtonClicked(View view){
@@ -226,6 +222,7 @@ public class StatsActivity extends AppCompatActivity{
         editor.putInt("stat3Key", stat3Level);
         editor.putInt("stat4Key", stat4Level);
         editor.apply();
+
         super.onPause();
 
     }

@@ -7,7 +7,6 @@ import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.Scene;
 import com.example.monstersurvival.framework.Sound;
 import com.example.monstersurvival.framework.GameView;
-import com.example.monstersurvival.framework.interfaces.ResetData;
 import com.example.monstersurvival.framework.res.Metrics;
 import com.example.monstersurvival.framework.objects.VertScrollBackground;
 import com.example.monstersurvival.game.object.Button;
@@ -70,9 +69,6 @@ public class MainGame extends Scene {
         super.init();
         Log.d(TAG,"INITIATING");
         initLayers(Layer.COUNT.ordinal());
-
-        ResetData resetData = new ResetData();
-        resetData.init();
 
         resultCoin = 0;
 
@@ -204,6 +200,7 @@ public class MainGame extends Scene {
     }
 
     public void setHealth() {health += 1;}
+    public void addHealth(int value) {health = 3 + value;}
     public int getHealth() { return health; }
 }
 

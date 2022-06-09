@@ -2,6 +2,7 @@ package com.example.monstersurvival.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -43,15 +44,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtnLanguage(View view) {
-        Locale locale = new Locale("en");
-        Locale.setDefault(locale);
 
         Log.d(TAG, "Locale"+ Locale.getDefault());
 
-        //Configuration configuration = new Configuration();
-        //configuration.locale = locale;
+        String languageToLoad  = "en_US";
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
 
-
-
+        //MainActivity.this.recreate();
+//        context.getResources().updateConfiguration(config,context.getResources().getDisplayMetrics());
+//
+//        Intent intent = new Intent(XYZ.this, XYZ.class);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }
