@@ -29,7 +29,7 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
     private PointF objPosition = new PointF();
     private float frameTime = 0.0f;
 
-    private Item1active() {
+    public Item1active() {
         super(10,size,R.dimen.item1_radius, R.mipmap.item_1_active);
         set();
     }
@@ -52,6 +52,7 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
 
     @Override
     public void update(float frameTime) {
+        Log.d(TAG, "Item1 Life : "+ life);
         super.update(frameTime);
         objPosition = player.getCurrPosition();
 
@@ -92,6 +93,9 @@ public class Item1active extends Sprite implements BoxCollidable, Recyclable {
 
     public void statUp(float life, float add){
         this.setlife = life + add;
+    }
+    public void addLife(float value) {
+        this.setlife = 5.0f + value;
     }
     public float getLife(){
         return this.setlife;

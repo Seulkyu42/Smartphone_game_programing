@@ -64,6 +64,8 @@ public class StatsActivity extends AppCompatActivity{
 
     public void statInit(){
         MainGame.getInstance().addHealth(stat1Level);
+        Item1active item1 = new Item1active();
+        item1.addLife(stat2Level);
     }
 
     public void onBackButtonClicked(View view){
@@ -146,10 +148,10 @@ public class StatsActivity extends AppCompatActivity{
     public void onStat3Clicked(View view) {
         if(stat3Level <= 5) {
             Item2active item2active = Item2active.get();
-            //float tempLife = item2active.getLife();
+            float tempSpeed = item2active.getSpeed();
 
             if (MainGame.getInstance().coin >= 100) {
-                //item2active.statUp(tempLife, 1.0f);
+                item2active.statUp(tempSpeed, 100.0f);
                 MainGame.getInstance().coin -= 100;
                 stat3Level += 1;
                 setText();

@@ -29,6 +29,7 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
     private float rotate;
     private Player player;
     private PointF objPosition = new PointF();
+    static float setSpeed = 1000.0f;
     private float speed = 0.0f;
     static int count = 1;
 
@@ -47,7 +48,7 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
 
     public void set(){
         this.life = Metrics.getFloat(R.dimen.item2time);
-        this.speed = 1000.0f;
+        this.speed = setSpeed;
     }
 
     public void setPlayer(Player player) {
@@ -128,6 +129,16 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
     @Override
     public RectF getBoundingRect() {
         return boundingBox;
+    }
+
+    public void statUp(float life, float add){
+        this.setSpeed = life + add;
+    }
+    public void addSpeed(float value) {
+        this.setSpeed = 1000.0f + value;
+    }
+    public float getSpeed(){
+        return this.setSpeed;
     }
 
     @Override
