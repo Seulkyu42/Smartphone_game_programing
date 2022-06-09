@@ -56,6 +56,7 @@
             android:layout_marginBottom="30dp"
             android:text="@string/settingButton1"
             android:onClick="onDataReset"
+            android:soundEffectsEnabled="false"
             android:textSize="60sp" />
 
         <Button
@@ -67,6 +68,7 @@
             android:layout_marginBottom="30dp"
             android:text="@string/settingButton2"
             android:onClick="onSound"
+            android:soundEffectsEnabled="false"
             android:textSize="50sp" />
 
         <Button
@@ -77,6 +79,7 @@
             android:fontFamily="@font/dungguenmo"
             android:text="@string/settingButton3"
             android:onClick="onBackButtonClicked"
+            android:soundEffectsEnabled="false"
             android:textSize="55sp" />
         <!--        소리 설정 버튼-->
         <!--        <ImageButton-->

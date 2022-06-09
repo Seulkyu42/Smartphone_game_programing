@@ -42,6 +42,7 @@
             android:fontFamily="@font/dungguenmo"
             android:layout_marginBottom="15dp"
             android:text="@string/stageButton1"
+            android:soundEffectsEnabled="false"
             android:onClick="onStageSelect"
             android:textSize="60sp" />
 
@@ -54,6 +55,7 @@
             android:layout_marginBottom="15dp"
             android:text="@string/stageButton2"
             android:onClick="onStats"
+            android:soundEffectsEnabled="false"
             android:textSize="60sp" />
 
         <Button
@@ -64,6 +66,7 @@
             android:fontFamily="@font/dungguenmo"
             android:layout_marginBottom="15dp"
             android:text="@string/stageButton3"
+            android:soundEffectsEnabled="false"
             android:onClick="onBtnLanguage"
             android:textSize="60sp" />
         <!--        소리 설정 버튼-->
