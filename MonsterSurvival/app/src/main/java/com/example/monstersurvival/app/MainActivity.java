@@ -44,31 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtnLanguage(View view) {
-
-        Log.d(TAG, "Locale"+ Locale.getDefault());
-
-        String languageToLoad  = "en_US";
-        Locale locale = new Locale(languageToLoad);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-
-        //MainActivity.this.recreate();
-//        context.getResources().updateConfiguration(config,context.getResources().getDisplayMetrics());
-//
-//        Intent intent = new Intent(XYZ.this, XYZ.class);
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
         startActivity(intent);
-    }
-
-    public void onDataReset(View view) {
-    }
-
-    public void onSound(View view) {
-    }
-
-    public void onBackButtonClicked(View view) {
-        finish();
     }
 }

@@ -33,7 +33,7 @@
             android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".framework.interfaces.saveData"
+            android:name=".app.SettingActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
     </application>
