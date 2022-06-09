@@ -52,4 +52,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
         startActivity(intent);
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Sound.playEffect(this, R.raw.ui_user_close);
+    }
 }

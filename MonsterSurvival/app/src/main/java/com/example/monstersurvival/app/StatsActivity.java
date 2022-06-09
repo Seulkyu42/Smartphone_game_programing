@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.GameView;
+import com.example.monstersurvival.framework.Sound;
 import com.example.monstersurvival.game.items.Item2active;
 import com.example.monstersurvival.game.items.Item3active;
 import com.example.monstersurvival.game.object.Player;
@@ -77,6 +78,7 @@ public class StatsActivity extends AppCompatActivity{
     //////////////////////////////////////////////////////////////////////////
 
     public void onStat1Clicked(View view) {
+        Sound.playEffect(this,R.raw.etc_item4);
 
         if(stat1Level <= 3) {
             if (MainGame.getInstance().coin >= 300) {
@@ -110,6 +112,7 @@ public class StatsActivity extends AppCompatActivity{
     //////////////////////////////////////////////////////////////////////////
 
     public void onStat2Clicked(View view) {
+        Sound.playEffect(this,R.raw.etc_item4);
 
         if(stat2Level <= 5) {
             Item1active item1active = Item1active.get();
@@ -147,6 +150,7 @@ public class StatsActivity extends AppCompatActivity{
     //////////////////////////////////////////////////////////////////////////
 
     public void onStat3Clicked(View view) {
+        Sound.playEffect(this,R.raw.etc_item4);
         if(stat3Level <= 5) {
             Item2active item2active = Item2active.get();
             float tempSpeed = item2active.getSpeed();
@@ -181,6 +185,7 @@ public class StatsActivity extends AppCompatActivity{
 
     public void onStat4Clicked(View view) {
 
+        Sound.playEffect(this,R.raw.etc_item4);
         if(stat4Level <= 5){
             Item3active item3active = Item3active.get();
         if(MainGame.getInstance().coin >= 100) {
@@ -224,6 +229,7 @@ public class StatsActivity extends AppCompatActivity{
 
     @Override
     protected void onPause() {
+        Sound.playEffect(this,R.raw.ui_user_close);
         Log.d(TAG,"stat" + stat1Level);
         editor.putInt("stat1Key", stat1Level);
         editor.putInt("stat2Key", stat2Level);

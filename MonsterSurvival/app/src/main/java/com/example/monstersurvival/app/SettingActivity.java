@@ -10,6 +10,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.monstersurvival.R;
+import com.example.monstersurvival.framework.Sound;
 import com.example.monstersurvival.game.object.CollisionChecker;
 import com.example.monstersurvival.game.scenes.MainGame;
 
@@ -28,6 +29,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     public void onDataReset(View view) {
+        Sound.playEffect(this,R.raw.ui_click);
         editor.putInt("stat1Key", 0);
         editor.putInt("stat2Key", 0);
         editor.putInt("stat3Key", 0);
@@ -37,11 +39,18 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     public void onSound(View view) {
+        Sound.playEffect(this,R.raw.ui_click);
     }
 
     public void onBackButtonClicked(View view) {
+        Sound.playEffect(this,R.raw.ui_click);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         ;
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Sound.playEffect(this, R.raw.ui_user_close);
     }
 }

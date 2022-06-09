@@ -68,6 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onClick="onStat1Clicked"
+                android:soundEffectsEnabled="false"
                 android:background="#CFD3FD"
                 android:layout_marginBottom="8dp"
                 android:src="@mipmap/stat1img"
