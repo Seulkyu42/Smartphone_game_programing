@@ -63,7 +63,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Stage 1"
+                android:text="@string/stage1"
                 android:textSize="60sp"
                 android:gravity="center"
                 android:textColor="@color/white"
@@ -92,7 +92,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Stage 2"
+                android:text="@string/stage2"
                 android:textSize="60sp"
                 android:gravity="center"
                 android:textColor="@color/white"
@@ -122,7 +122,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Infinite"
+                android:text="@string/stagei"
                 android:textSize="60sp"
                 android:gravity="center"
                 android:textColor="@color/white"

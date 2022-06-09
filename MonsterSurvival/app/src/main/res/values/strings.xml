@@ -3,4 +3,13 @@
     <string name="stageButton1">STAGESELECT</string>
     <string name="stageButton2">STATS</string>
     <string name="stageButton3">LANGUAGE</string>
+    <string name="stat4">+1 Size</string>
+    <string name="stat3">+10 Speed</string>
+    <string name="stat2">+1 Sec</string>
+    <string name="stat1">+1 Life</string>
+    <string name="coin3">-300 Coin</string>
+    <string name="coin1">-100 Coin</string>
+    <string name="stage1">Stage 1</string>
+    <string name="stage2">Stage 2</string>
+    <string name="stagei">Infinite</string>
 </resources>

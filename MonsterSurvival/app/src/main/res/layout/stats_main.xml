@@ -89,7 +89,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="-300 Coin"
+                android:text="@string/coin3"
                 android:layout_marginRight="5dp"
                 android:textSize="50sp"
                 android:gravity="right|bottom"
@@ -100,7 +100,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="+1 Life"
+                android:text="@string/stat1"
                 android:layout_marginLeft="5dp"
                 android:textSize="40sp"
                 android:gravity="left|top"
@@ -143,7 +143,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="-100 Coin"
+                android:text="@string/coin1"
                 android:layout_marginRight="5dp"
                 android:textSize="50sp"
                 android:gravity="right|bottom"
@@ -154,7 +154,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="+1 Sec"
+                android:text="@string/stat2"
                 android:layout_marginLeft="5dp"
                 android:textSize="40sp"
                 android:gravity="left|top"
@@ -198,7 +198,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="-100 Coin"
+                android:text="@string/coin1"
                 android:layout_marginRight="5dp"
                 android:textSize="50sp"
                 android:gravity="right|bottom"
@@ -208,7 +208,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="+10 Speed"
+                android:text="@string/stat3"
                 android:layout_marginLeft="5dp"
                 android:textSize="40sp"
                 android:gravity="left|top"
@@ -250,7 +250,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="-100 Coin"
+                android:text="@string/coin1"
                 android:layout_marginRight="5dp"
                 android:textSize="50sp"
                 android:gravity="right|bottom"
@@ -260,7 +260,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="+1 Size"
+                android:text="@string/stat4"
                 android:layout_marginLeft="5dp"
                 android:textSize="40sp"
                 android:gravity="left|top"
