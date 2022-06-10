@@ -35,7 +35,7 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
     private float blink = 0.0f;
     private float speed = 0.0f;
 
-    private Item3active() {
+    public Item3active() {
         super(0,size,R.dimen.item3_radius, R.mipmap.item_3);
         set();
 
@@ -120,6 +120,7 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
     public void addSize(int value) {
         this.multiply = value;
     }
+
     public int getSize(){
         return this.multiply;
     }

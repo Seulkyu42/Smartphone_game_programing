@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.monstersurvival.R;
 import com.example.monstersurvival.framework.Sound;
+import com.example.monstersurvival.game.items.Item1active;
+import com.example.monstersurvival.game.items.Item2active;
+import com.example.monstersurvival.game.items.Item3active;
 import com.example.monstersurvival.game.object.CollisionChecker;
 import com.example.monstersurvival.game.scenes.MainGame;
 
@@ -34,7 +37,6 @@ public class SettingActivity extends AppCompatActivity {
         editor.putInt("stat2Key", 0);
         editor.putInt("stat3Key", 0);
         editor.putInt("stat4Key", 0);
-        MainGame.getInstance().addHealth(0);
         editor.apply();
     }
 

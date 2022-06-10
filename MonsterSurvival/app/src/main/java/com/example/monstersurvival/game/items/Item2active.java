@@ -33,7 +33,7 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
     private float speed = 0.0f;
     static int count = 1;
 
-    private Item2active() {
+    public Item2active() {
         super(10,size,R.dimen.item2_radius, R.mipmap.item_2_active);
         set();
     }
@@ -135,7 +135,7 @@ public class Item2active extends Sprite implements BoxCollidable, Recyclable {
         this.setSpeed = life + add;
     }
     public void addSpeed(float value) {
-        this.setSpeed = 1000.0f + value;
+        this.setSpeed = 1000.0f + (100.0f*value);
     }
     public float getSpeed(){
         return this.setSpeed;

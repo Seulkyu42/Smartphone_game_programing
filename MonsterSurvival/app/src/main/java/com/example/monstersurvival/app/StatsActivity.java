@@ -68,6 +68,10 @@ public class StatsActivity extends AppCompatActivity{
         MainGame.getInstance().addHealth(stat1Level);
         Item1active item1 = new Item1active();
         item1.addLife(stat2Level);
+        Item2active item2 = new Item2active();
+        item2.addSpeed(stat3Level);
+        Item3active item3 = new Item3active();
+        item3.addSize(stat4Level);
     }
 
     public void onBackButtonClicked(View view){
