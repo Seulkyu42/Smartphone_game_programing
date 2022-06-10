@@ -26,7 +26,7 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
     static int multiply = 0;
     protected float dx,dy;
     protected RectF boundingBox = new RectF();
-
+    public int addSize;
     private float life;
     private float rotate;
     private Player player;
@@ -83,8 +83,12 @@ public class Item3active extends Sprite implements BoxCollidable, Recyclable {
             life -= frameTime;
             y -= dy * frameTime;
 
+            addSize = (int) Metrics.size(R.dimen.item3_radius_add) * multiply;
+            size = (int) Metrics.size(R.dimen.item3_radius);
+
             setDstRectWithRadius();
-            dstRect.set(x - radius, y - radius, x + radius, y + radius);
+            dstRect.set(x - (size + addSize), y - (size + addSize),
+                    x + (size + addSize), y + (size + addSize));
             boundingBox.set(dstRect);
             boundingBox.inset(size / 16, size / 16);
             if (dstRect.top > Metrics.height) {
