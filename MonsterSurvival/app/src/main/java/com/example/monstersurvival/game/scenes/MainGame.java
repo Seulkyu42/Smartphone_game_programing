@@ -84,6 +84,7 @@ public class MainGame extends Scene {
             gameTime = 60.0f;
         } else if(stageIndex == 2) {
             add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.background_2, Metrics.size(R.dimen.bg_speed_stage1)));
+            //Sound.playMusic(R.raw.cave);
             gameTime = 120.0f;
         } else {
             add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.background_i, Metrics.size(R.dimen.bg_speed_stage1)));

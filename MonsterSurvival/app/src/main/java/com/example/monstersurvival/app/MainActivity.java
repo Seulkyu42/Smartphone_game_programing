@@ -27,16 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        {
-            Sound.playEffect(this, R.raw.gelderdrop2);
-            Sound.playEffect(this, R.raw.snd_c_reg_fire);
-            Sound.playEffect(this, R.raw.snd_skl_m_108_sed);
-            Sound.playEffect(this, R.raw.snd_skl_p_109_sbg);
-            Sound.playEffect(this, R.raw.etc_item1);
-            Sound.playEffect(this, R.raw.dmg_wind_e);
-            Sound.playEffect(this, R.raw.ui_click);
-            Sound.playEffect(this, R.raw.etc_warp);
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
