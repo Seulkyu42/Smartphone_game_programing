@@ -45,6 +45,8 @@ public class MainGame extends Scene {
 
     public int resultCoin;
 
+    public static boolean soundOn = true;
+
     /////////////////////////// 레이어
     public enum Layer {
         bg1,

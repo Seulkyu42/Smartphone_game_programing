@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,7 +42,15 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     public void onSound(View view) {
-        Sound.playEffect(this,R.raw.ui_click);
+        if(MainGame.getInstance().soundOn == true){
+            MainGame.getInstance().soundOn = false;
+            Toast.makeText(getApplicationContext(), "Sound OFF", Toast.LENGTH_SHORT).show();
+        } else {
+            MainGame.getInstance().soundOn = true;
+            Sound.playEffect(this,R.raw.ui_click);
+            Toast.makeText(getApplicationContext(), "Sound On", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void onBackButtonClicked(View view) {

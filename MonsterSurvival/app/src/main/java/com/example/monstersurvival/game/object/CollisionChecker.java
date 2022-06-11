@@ -63,6 +63,7 @@ public class CollisionChecker implements GameObject {
                     Coin1 coin1 = Coin1.get(500,Metrics.getFloat(R.dimen.item2time),1);
                     coin1.setEnemy((Enemy) enemy);
                     MainGame.getInstance().add(MainGame.Layer.coin.ordinal(), coin1);
+
                     game.remove(enemy);
                 }
             }

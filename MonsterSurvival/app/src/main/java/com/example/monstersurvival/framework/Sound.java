@@ -5,6 +5,8 @@ import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 
+import com.example.monstersurvival.game.scenes.MainGame;
+
 import java.util.HashMap;
 
 public class Sound {
@@ -44,7 +46,10 @@ public class Sound {
             soundIdMap.put(resId, soundId);
         }
         // int streamId =
-        pool.play(soundId, 1f, 1f, 1, 0, 1f);
+
+        if(MainGame.getInstance().soundOn == true) {
+            pool.play(soundId, 1f, 1f, 1, 0, 1f);
+        }
     }
 
     private static SoundPool getSoundPool() {

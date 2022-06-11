@@ -13,7 +13,7 @@ import java.util.Random;
 public class itemGenerator implements GameObject {
 
     private static final String TAG = GameView.class.getSimpleName();
-    private static final float INITIAL_SPAWN_INTERVAL = 1f;
+    private static final float INITIAL_SPAWN_INTERVAL = 5f;
     private final float spawnInterval;
     private float elapsedTime;
     private static Random random = new Random();
