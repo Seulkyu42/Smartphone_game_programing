@@ -53,6 +53,15 @@ public class SettingActivity extends AppCompatActivity {
 
     }
 
+    public void onSound2(View view) {
+        if(MainGame.getInstance().soundOn2 == true){
+            MainGame.getInstance().soundOn2 = false;
+        } else {
+            MainGame.getInstance().soundOn2 = true;
+            Sound.playEffect(this,R.raw.ui_click);
+        }
+
+    }
     public void onBackButtonClicked(View view) {
         Sound.playEffect(this,R.raw.ui_click);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -64,4 +73,5 @@ public class SettingActivity extends AppCompatActivity {
         super.onPause();
         Sound.playEffect(this, R.raw.ui_user_close);
     }
+
 }

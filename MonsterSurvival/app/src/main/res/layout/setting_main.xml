@@ -53,11 +53,11 @@
             android:layout_gravity="center"
             android:background="#B3FFFFFF"
             android:fontFamily="@font/dungguenmo"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/settingButton1"
             android:onClick="onDataReset"
             android:soundEffectsEnabled="false"
-            android:textSize="60sp" />
+            android:textSize="50sp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -65,11 +65,23 @@
             android:layout_gravity="center"
             android:background="#B3FFFFFF"
             android:fontFamily="@font/dungguenmo"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/settingButton2"
             android:onClick="onSound"
             android:soundEffectsEnabled="false"
-            android:textSize="50sp" />
+            android:textSize="40sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#B3FFFFFF"
+            android:fontFamily="@font/dungguenmo"
+            android:layout_marginBottom="10dp"
+            android:text="@string/settingButton4"
+            android:onClick="onSound2"
+            android:soundEffectsEnabled="false"
+            android:textSize="40sp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -80,7 +92,7 @@
             android:text="@string/settingButton3"
             android:onClick="onBackButtonClicked"
             android:soundEffectsEnabled="false"
-            android:textSize="55sp" />
+            android:textSize="40sp" />
         <!--        소리 설정 버튼-->
         <!--        <ImageButton-->
         <!--            android:layout_width="wrap_content"-->

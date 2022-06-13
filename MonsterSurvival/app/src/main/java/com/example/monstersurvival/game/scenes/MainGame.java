@@ -23,6 +23,7 @@ public class MainGame extends Scene {
     private static final String TAG = GameView.class.getSimpleName();
     public static final String PARAM_STAGE_INDEX = "stage_index";
     private static MainGame singleton;
+
     private Button pauseButton;
 
     public static MainGame getInstance() {
@@ -41,11 +42,12 @@ public class MainGame extends Scene {
 
     public float gameTime;
     public int stageIndex = 1;
-    public int coin = 10000;
+    public int coin = 0;
 
     public int resultCoin;
 
     public static boolean soundOn = true;
+    public static boolean soundOn2 = true;
 
     /////////////////////////// 레이어
     public enum Layer {
@@ -83,13 +85,15 @@ public class MainGame extends Scene {
         ////// 배경 //////
         if(stageIndex == 1) {
             add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.background_1, Metrics.size(R.dimen.bg_speed_stage1)));
+            Sound.playMusic(R.raw.winter_loop);
             gameTime = 60.0f;
         } else if(stageIndex == 2) {
             add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.background_2, Metrics.size(R.dimen.bg_speed_stage1)));
-            //Sound.playMusic(R.raw.cave);
+            Sound.playMusic(R.raw.cave);
             gameTime = 120.0f;
         } else {
             add(Layer.bg1.ordinal(), new VertScrollBackground(R.mipmap.background_i, Metrics.size(R.dimen.bg_speed_stage1)));
+            Sound.playMusic(R.raw.night_walker_loop);
             gameTime = 9999.0f;
         }
         ////// 배경 //////
@@ -133,19 +137,19 @@ public class MainGame extends Scene {
         ////// 점수 ///////
     }
 
-    public boolean onTouchEvent(MotionEvent event) {
-        int action = event.getAction();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:
-            case MotionEvent.ACTION_MOVE:
-                float x = event.getX();
-                float y = event.getY();
-
-                player.debugTouch(x,y);
-                return true;
-        }
-        return false;
-    }
+//    public boolean onTouchEvent(MotionEvent event) {
+//        int action = event.getAction();
+//        switch (action) {
+//            case MotionEvent.ACTION_DOWN:
+//            case MotionEvent.ACTION_MOVE:
+//                float x = event.getX();
+//                float y = event.getY();
+//
+//                player.debugTouch(x,y);
+//                return true;
+//        }
+//        return false;
+//    }
 
 
 //    @Override

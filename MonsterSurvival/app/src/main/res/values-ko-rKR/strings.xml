@@ -14,6 +14,7 @@
     <string name="stage2">스테이지 2</string>
     <string name="stagei">"무한 "</string>
     <string name="settingButton3">돌아가기</string>
-    <string name="settingButton2">소리 켜기/끄기</string>
+    <string name="settingButton2">배경음 켜기/끄기</string>
     <string name="settingButton1">데이터 리셋</string>
+    <string name="settingButton4">효과음 켜기/끄기</string>
 </resources>

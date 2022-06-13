@@ -19,7 +19,10 @@ public class Sound {
         }
         mediaPlayer = MediaPlayer.create(GameView.view.getContext(), resId);
         mediaPlayer.setLooping(true);
-        mediaPlayer.start();
+
+        if(MainGame.getInstance().soundOn == true) {
+            mediaPlayer.start();
+        }
     }
     public static void stopMusic() {
         if (mediaPlayer == null) return;
@@ -47,7 +50,7 @@ public class Sound {
         }
         // int streamId =
 
-        if(MainGame.getInstance().soundOn == true) {
+        if(MainGame.getInstance().soundOn2 == true) {
             pool.play(soundId, 1f, 1f, 1, 0, 1f);
         }
     }

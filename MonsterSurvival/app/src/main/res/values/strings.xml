@@ -13,6 +13,7 @@
     <string name="stage2">Stage 2</string>
     <string name="stagei">Infinite</string>
     <string name="settingButton3">return_Back</string>
-    <string name="settingButton2">Sound_On/Off</string>
+    <string name="settingButton2">BGM_On/Off</string>
     <string name="settingButton1">Data_Reset</string>
+    <string name="settingButton4">SE_On/Off</string>
 </resources>
