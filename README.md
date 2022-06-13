@@ -95,3 +95,4 @@ https://www.youtube.com/watch?v=HJSiP9UzruI
 
 
 # 　　　　　:bulb: 최종 발표영상
+https://www.youtube.com/watch?v=UdpJmFxjhjs
