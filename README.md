@@ -135,4 +135,10 @@ https://www.youtube.com/watch?v=HJSiP9UzruI
 
 
 # 　　　　　:bulb: 최종 발표영상
+
+# 　　　　　:bulb: 
 https://www.youtube.com/watch?v=UdpJmFxjhjs
+
+
+# 　　　　　:bulb: 부록 :: 개발중 생긴 장면
+![Honeycam 2022-06-13 19-52-24](https://user-images.githubusercontent.com/34563275/173338538-e7ac023f-1c00-4c1b-906b-54571f1a9287.gif)
